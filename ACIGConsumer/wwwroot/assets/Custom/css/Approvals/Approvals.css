@@ -1,0 +1,17 @@
+﻿
+.separator.separator-solid {
+    width: 455px;
+}
+
+body {
+}
+
+.btn {
+    border-radius: 5px;
+    width:100px;
+    display: inline-block;
+}
+
+.card.card-custom > .card-body {
+    padding: 1rem 0.75rem;
+}

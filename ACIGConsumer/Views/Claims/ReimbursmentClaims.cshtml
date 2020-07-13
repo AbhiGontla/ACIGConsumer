@@ -1,0 +1,370 @@
+﻿@model IEnumerable<Core.Api.ReImClaims>
+
+@{
+    ViewData["Title"] = "Reimbursment Claims";
+}
+<style>
+    .btn {
+        border-radius: 25px;
+    }
+
+    .card.card-custom > .card-body {
+        padding: 1rem 0.75rem;
+    }
+</style>
+@{
+    if (ViewBag.lang == "en")
+    {
+        Layout = "_Layouten";
+
+
+        <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+            <!--begin::Subheader-->
+            <div class="subheader py-3 py-lg-8 subheader-transparent" id="kt_subheader">
+                <div class="container d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+                    <!--begin::Details-->
+                    <div class="d-flex align-items-center flex-wrap mr-1">
+                        <!--begin::Page Heading-->
+                        <div class="d-flex align-items-baseline mr-5">
+                            <!--begin::Title-->
+                            <h2 class="subheader-title text-white font-weight-bold my-2 mr-3">Reimbursment Claims</h2>
+                            <!--end::Title-->
+                        </div>
+
+                    </div>
+                    <!--end::Details-->
+                    <!--begin::Toolbar-->
+                    <div class="d-flex align-items-center">
+                        <!--begin::Button-->
+                        <a href="#" class=""></a>
+                        <!--end::Button-->
+
+                    </div>
+                    <!--end::Toolbar-->
+                </div>
+            </div>
+            <!--end::Subheader-->
+            <!--begin::Entry-->
+            <div class="d-flex flex-column-fluid">
+                <!--begin::Container-->
+                <div class="container">
+                    <div class="mb-7">
+                        <div class="row align-items-center">
+                            <div class="col-lg-9 col-xl-8">
+                                <div class="row align-items-center">
+                                    <div class="col-md-3 my-2 my-md-0">
+                                        <div class="input-icon">
+                                            <input type="text" class="border border-white form-control form-control-plaintext " placeholder="Search..." id="kt_datatable_search_query" />
+
+                                            <span>
+                                                <i class="flaticon2-search-1 text-muted"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 my-2 my-md-0">
+                                        <div class="d-flex align-items-center ">
+                                            <label class="mr-3 text-white mb-0 d-none d-md-block">Sort:</label>
+                                            <select class="form-control form-control-plaintext " id="kt_datatable_search_status">
+                                                <option value="">All</option>
+                                                <option value="1">Pending</option>
+                                                <option value="2">Delivered</option>
+                                                <option value="3">Canceled</option>
+                                                <option value="4">Success</option>
+                                                <option value="5">Info</option>
+                                                <option value="6">Danger</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 my-2 my-md-0">
+                                        <div class="d-flex align-items-center ">
+                                            <label class="mr-3 text-white mb-0 d-none d-md-block">Date:</label>
+                                            <div class="input-daterange input-group" id="kt_datepicker_5">
+                                                <input type="text" class="form-control" name="start" placeholder="start date">
+                                                <div class="input-group-append">
+                                                    <span class="input-group-text">
+                                                        <i class="la la-ellipsis-h"></i>
+                                                    </span>
+                                                </div>
+                                                <input type="text" class="form-control" name="end" placeholder="end date">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+
+                                <a href="/claims/AddClaim?lang=en" class="btn btn-sm btn-light-info font-weight-bolder font-size-sm " style="float:right;margin:1px;">Add Claim</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                        @foreach (var item in Model)
+                        {
+                            <!--begin::Card-->
+                            <div class="card card-custom gutter-b ">
+                                <div class="card-body">
+                                    <!--begin::Top-->
+                                    <div class="d-flex">
+                                        <!--begin::Pic-->
+                                        <div class="flex-shrink-0 mr-7">
+                                            <div class="symbol symbol-50 symbol-lg-80">
+                                                <img alt="Pic" src="~/assets/Custom/Images/hospital-2.jpg" />
+                                                @*<img  src="assets/media//users/300_1.jpg">*@
+                                            </div>
+                                        </div>
+                                        <!--end::Pic-->
+                                        <!--begin: Info-->
+                                        <div class="flex-grow-1">
+                                            <!--begin::Title-->
+                                            <div class="d-flex align-items-center justify-content-between flex-wrap mt-2">
+                                                <!--begin::User-->
+
+                                                <div class="mr-3">
+                                                    <!--begin::Name-->
+                                                    <a href="#" class="d-flex align-items-center text-dark  font-size-h5 font-weight-bold mr-3">
+                                                        @item.ClientDTO.ClientName
+                                                    </a>
+                                                    <!--end::Name-->
+                                                    <!--begin::Contacts-->
+                                                    <div class="d-flex flex-wrap my-2">
+                                                        <a href="#" class="text-muted  font-weight-bold mr-lg-8 mr-5 mb-lg-0 mb-2">
+                                                            Policy Number - <span class="text-dark-75  font-size-h7 font-weight-bold mr-3" id="kt_subheader_total">@item.PolicyNumber</span>
+                                                        </a>
+                                                        <a href="#" class="text-muted  font-weight-bold mr-lg-8 mr-5 mb-lg-0 mb-2">
+                                                            Premium - <span class="text-dark-75  font-size-h7 font-weight-bold mr-3" id="kt_subheader_total">@item.ExpectedAmount SAR</span>
+                                                        </a>&nbsp;&nbsp;
+                                                        <a href="#" class="text-muted font-weight-bold">
+                                                            Policy Date - <span class="text-dark-75  font-size-h9 font-weight-bold mr-3" id="kt_subheader_total">@item.RequestDate.ToString("dd-mm-yyyy")</span>
+                                                        </a>
+                                                    </div>
+                                                    <!--end::Contacts-->
+                                                </div>
+                                                <!--begin::User-->
+                                                <!--begin::Actions-->
+                                                <div class="my-lg-0 my-1">
+                                                    <a href="#" class="btn btn-sm btn-light-success font-weight-bolder">@item.RequestStatusName</a>
+                                                    <a href="/Claims/ReImClaimDetais/1?lang=en" class="btn btn-sm btn-light-success font-weight-bolder">Details</a>
+
+                                                </div>
+                                                <!--end::Actions-->
+                                            </div>
+                                            <!--end::Title-->
+                                            <!--begin::Content-->
+                                            <div class="d-flex align-items-center flex-wrap justify-content-between">
+                                                <!--begin::Description-->
+                                                <div class="d-flex mt-4 mt-sm-0">
+                                                    <span class="font-weight-bold mr-4">@item.ClaimTypeName</span>
+
+                                                </div>
+                                                <!--end::Description-->
+                                                <!--begin::Progress-->
+                                                <!--end::Progress-->
+                                            </div>
+                                            <!--end::Content-->
+                                        </div>
+                                        <!--end::Info-->
+                                    </div>
+                                    <!--end::Top-->
+                                    <!--begin::Separator-->
+                                    <!--end::Separator-->
+                                    <!--begin::Bottom-->
+                                    <!--end::Bottom-->
+                                </div>
+                            </div>
+                            <!--end::Card-->
+                        }
+                  
+
+
+                </div>
+                <!--end::Container-->
+            </div>
+            <!--end::Entry-->
+        </div>
+
+
+    }
+    else if (ViewBag.lang == "ar")
+    {
+        Layout = "_Layoutv1";
+
+        <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+            <!--begin::Subheader-->
+            <div class="subheader py-3 py-lg-8 subheader-transparent" id="kt_subheader">
+                <div class="container d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+                    <!--begin::Details-->
+                    <div class="d-flex align-items-center flex-wrap mr-1">
+                        <!--begin::Page Heading-->
+                        <div class="d-flex align-items-baseline mr-5">
+                            <!--begin::Title-->
+                            <h2 class="subheader-title text-white font-weight-bold my-2 mr-3">مطالبات السداد</h2>
+                            <!--end::Title-->
+                        </div>
+                        <!--end::Page Heading-->
+                        <!--begin::Separator-->
+                        @*<div class="subheader-separator subheader-separator-ver mt-2 mb-2 mr-5 bg-gray-200"></div>*@
+                        <!--end::Separator-->
+                        <!--begin::Search Form-->
+                        <!--end::Search Form-->
+                        <!--begin::Group Actions-->
+                        <!--end::Group Actions-->
+                    </div>
+                    <!--end::Details-->
+                    <!--begin::Toolbar-->
+                    <div class="d-flex align-items-center">
+                        <!--begin::Button-->
+                        <a href="#" class=""></a>
+                        <!--end::Button-->
+                        <!--begin::Button-->
+                        <!--end::Button-->
+                        <!--begin::Dropdown-->
+                        <!--end::Dropdown-->
+                    </div>
+                    <!--end::Toolbar-->
+                </div>
+            </div>
+            <!--end::Subheader-->
+            <!--begin::Entry-->
+            <div class="d-flex flex-column-fluid">
+                <!--begin::Container-->
+                <div class="container">
+                    <div class="mb-7">
+                        <div class="row align-items-center">
+                            <div class="col-lg-9 col-xl-8">
+                                <div class="row align-items-center">
+                                    <div class="col-md-3 my-2 my-md-0">
+                                        <div class="input-icon">
+                                            <input type="text" class="border border-white form-control form-control-plaintext  " placeholder="بحث..." id="kt_datatable_search_query" />
+                                            <span>
+                                                <i class="flaticon2-search-1 text-muted"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 my-2 my-md-0">
+                                        <div class="d-flex align-items-center ">
+                                            <label class="mr-3 text-white mb-0 d-none d-md-block">الحالة:</label>&nbsp;
+                                            <select class="form-control form-control-plaintext " id="kt_datatable_search_status">
+                                                <option value="">الجميع</option>
+                                                <option value="1">ريثما</option>
+                                                <option value="2">سلم</option>
+                                                <option value="3">ألغيت</option>
+                                                <option value="4">نجاح</option>
+                                                <option value="5">معلومات</option>
+                                                <option value="6">خطر</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 my-2 my-md-0">
+                                        <div class="d-flex align-items-center ">
+                                            <label class="mr-3 text-white mb-0 d-none d-md-block">تاريخ:</label>&nbsp;
+                                            <div class="input-daterange input-group" id="kt_datepicker_5">
+                                                <input type="text" class="form-control" name="start" placeholder="start date">
+                                                <div class="input-group-append">
+                                                    <span class="input-group-text">
+                                                        <i class="la la-ellipsis-h"></i>
+                                                    </span>
+                                                </div>
+                                                <input type="text" class="form-control" name="end" placeholder="end date">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <a href="#" class="btn btn-sm btn-light-info font-weight-bolder font-size-sm " style="float:left;margin:1px;">Add Claim</a>
+                            </div>
+                        </div>
+                    </div>
+                    @foreach (var item in Model)
+                    {
+                        <!--begin::Card-->
+                        <div class="card card-custom gutter-b ">
+                            <div class="card-body">
+                                <!--begin::Top-->
+                                <div class="d-flex">
+                                    <!--begin::Pic-->
+                                    <div class="flex-shrink-0 mr-7">
+                                        <div class="symbol symbol-50 symbol-lg-80">
+                                            <img alt="Pic" src="~/assets/Custom/Images/hospital-2.jpg" />
+                                            @*<img  src="assets/media//users/300_1.jpg">*@
+                                        </div>
+                                    </div>
+                                    <!--end::Pic-->
+                                    <!--begin: Info-->
+                                    <div class="flex-grow-1">
+                                        <!--begin::Title-->
+                                        <div class="d-flex align-items-center justify-content-between flex-wrap mt-2">
+                                            <!--begin::User-->
+
+                                            <div class="mr-3">
+                                                <!--begin::Name-->
+                                                <a href="#" class="d-flex align-items-center text-dark  font-size-h5 font-weight-bold mr-3">
+                                                    @item.ClientDTO.ClientName
+                                                </a>
+                                                <!--end::Name-->
+                                                <!--begin::Contacts-->
+                                                <div class="d-flex flex-wrap my-2">
+                                                    <a href="#" class="text-muted  font-weight-bold mr-lg-8 mr-5 mb-lg-0 mb-2">
+                                                        Policy Number - <span class="text-dark-75  font-size-h7 font-weight-bold mr-3" id="kt_subheader_total">@item.PolicyNumber</span>
+                                                    </a>
+                                                    <a href="#" class="text-muted  font-weight-bold mr-lg-8 mr-5 mb-lg-0 mb-2">
+                                                        Premium - <span class="text-dark-75  font-size-h7 font-weight-bold mr-3" id="kt_subheader_total">@item.ExpectedAmount SAR</span>
+                                                    </a>&nbsp;&nbsp;
+                                                    <a href="#" class="text-muted font-weight-bold">
+                                                        Policy Date - <span class="text-dark-75  font-size-h9 font-weight-bold mr-3" id="kt_subheader_total">@item.RequestDate.ToString("dd-mm-yyyy")</span>
+                                                    </a>
+                                                </div>
+                                                <!--end::Contacts-->
+                                            </div>
+                                            <!--begin::User-->
+                                            <!--begin::Actions-->
+                                            <div class="my-lg-0 my-1">
+                                                <a href="#" class="btn btn-sm btn-light-success font-weight-bolder">@item.RequestStatusName</a>
+                                                <a href="/Claims/ReImClaimDetais/1?lang=ar" class="btn btn-sm btn-light-success font-weight-bolder">Details</a>
+
+                                            </div>
+                                            <!--end::Actions-->
+                                        </div>
+                                        <!--end::Title-->
+                                        <!--begin::Content-->
+                                        <div class="d-flex align-items-center flex-wrap justify-content-between">
+                                            <!--begin::Description-->
+                                            <div class="d-flex mt-4 mt-sm-0">
+                                                <span class="font-weight-bold mr-4">@item.ClaimTypeName</span>
+
+                                            </div>
+                                            <!--end::Description-->
+                                            <!--begin::Progress-->
+                                            <!--end::Progress-->
+                                        </div>
+                                        <!--end::Content-->
+                                    </div>
+                                    <!--end::Info-->
+                                </div>
+                                <!--end::Top-->
+                                <!--begin::Separator-->
+                                <!--end::Separator-->
+                                <!--begin::Bottom-->
+                                <!--end::Bottom-->
+                            </div>
+                        </div>
+                        <!--end::Card-->
+                    }
+                </div>
+                <!--end::Container-->
+            </div>
+            <!--end::Entry-->
+        </div>
+
+
+    }
+}
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/assets/js/scripts.bundle.js"></script>
+<script src="~/assets/js/pages/crud/forms/widgets/bootstrap-datepicker.js"></script>
+<script src="~/assets/Custom/js/datepicker.js"></script>
+<script src="~/assets/Custom/js/dropdown.js"></script>
+<link href="~/assets/Custom/css/Approvals/Approvals.css" rel="stylesheet" />

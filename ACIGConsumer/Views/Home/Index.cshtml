@@ -1,0 +1,44 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+
+}
+@{
+    if (ViewBag.lang == "en")
+    {
+        Layout = "_Layouten";
+    }
+    else if (ViewBag.lang == "ar")
+    {
+        Layout = "_Layoutv1";
+    }
+}
+
+@*<div class="text-center">
+        <h1 class="display-4">Welcome</h1>
+        <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    </div>*@
+<style>
+    #tes {
+        background-image: url(assets/Custom/Images/logo-1.jpeg);
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+</style>
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <!--begin::Subheader-->
+    <div class="subheader py-3 py-lg-8 subheader-transparent" id="kt_subheader">
+        <div class="container d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+            <!--begin::Details-->
+            <div class="d-flex align-items-center flex-wrap mr-1">
+                <!--begin::Page Heading-->
+                <div class="d-flex align-items-baseline mr-5">
+                    <!--begin::Title-->
+                    <h2 class="subheader-title text-white  font-weight-bold my-2 mr-3">Dashboard</h2>
+                    <!--end::Title-->
+                </div>                
+            </div>
+            <!--end::Details-->           
+        </div>
+    </div>
+</div>

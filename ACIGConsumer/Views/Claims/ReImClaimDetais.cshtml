@@ -1,0 +1,251 @@
+﻿@model Core.Api.RequestCreateDTO
+
+@{
+    ViewData["Title"] = "ReimbursmentClaim Details";
+}
+@*<style>
+        .btn {
+            border-radius: 25px;
+        }
+
+        .card.card-custom > .card-body {
+            padding: 1rem 0.75rem;
+        }
+    </style>*@
+@{
+    if (ViewBag.lang == "en")
+    {
+        Layout = "_Layouten";
+
+
+        <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+            <!--begin::Subheader-->
+            <div class="subheader py-3 py-lg-8 subheader-transparent" id="kt_subheader">
+                <div class="container d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+                    <!--begin::Details-->
+                    <div class="d-flex align-items-center flex-wrap mr-1">
+                        <!--begin::Page Heading-->
+                        <div class="d-flex align-items-baseline mr-5">
+                            <!--begin::Title-->
+                            <h2 class="subheader-title text-white font-weight-bold my-2 mr-3">Reimbursment Claim Details</h2>
+                            <!--end::Title-->
+                        </div>
+                        <!--end::Page Heading-->
+                        <!--begin::Separator-->
+                        @*<div class="subheader-separator subheader-separator-ver mt-2 mb-2 mr-5 bg-gray-200"></div>*@
+                        <!--end::Separator-->
+                        <!--begin::Search Form-->
+                        <!--end::Search Form-->
+                        <!--begin::Group Actions-->
+                        <!--end::Group Actions-->
+                    </div>
+                    <!--end::Details-->
+                    <!--begin::Toolbar-->
+                    <div class="d-flex align-items-center">
+                        <!--begin::Button-->
+                        <a href="/Claims/ReimbursmentClaims?lang=en" class="btn btn-primary btn-sm">Back</a>
+                        <!--end::Button-->
+                        <!--begin::Button-->
+                        <!--end::Button-->
+                        <!--begin::Dropdown-->
+                        <!--end::Dropdown-->
+                    </div>
+                    <!--end::Toolbar-->
+                </div>
+            </div>
+            <!--end::Subheader-->
+            <!--begin::Entry-->
+            <div class="d-flex flex-column-fluid">
+                <!--begin::Container-->
+                <div class="container">
+                    <div class="card card-custom">
+                        <!--begin::Header-->
+                        <div class="card-header h-auto py-4">
+                            <div class="card-title">
+                                <h3 class="card-label">
+                                    @Html.DisplayFor(model => model.MemberName)
+                                    <span class="d-block text-muted pt-2 font-size-sm">ID - @Html.DisplayFor(model => model.ClientDTO.IDNumber)</span>
+                                </h3>
+                            </div>                          
+                        </div>
+                        <!--end::Header-->
+                        <!--begin::Body-->
+                        <div class="card-body py-4">
+                            <div class="form-group row my-2">
+                                <label class="col-4 col-form-label">PolicyNumber:</label>
+                                <div class="col-8">
+                                    <span class="form-control-plaintext font-weight-bolder">@Html.DisplayFor(model => model.PolicyNumber)</span>
+                                </div>
+                            </div>
+                            <div class="form-group row my-2">
+                                <label class="col-4 col-form-label">HolderName:</label>
+                                <div class="col-8">
+                                    <span class="form-control-plaintext font-weight-bolder">@Html.DisplayFor(model => model.HolderName)</span>
+                                </div>
+                            </div>
+                            <div class="form-group row my-2">
+                                <label class="col-4 col-form-label">MemberID:</label>
+                                <div class="col-8">
+                                    <span class="form-control-plaintext font-weight-bolder">@Html.DisplayFor(model => model.MemberID)</span>
+                                </div>
+                            </div>
+                            <div class="form-group row my-2">
+                                <label class="col-4 col-form-label">MemberName:</label>
+                                <div class="col-8">
+                                    <span class="form-control-plaintext font-weight-bolder">@Html.DisplayFor(model => model.MemberName)</span>
+                                </div>
+                            </div>
+                            <div class="form-group row my-2">
+                                <label class="col-4 col-form-label">ExpectedAmount:</label>
+                                <div class="col-8">
+                                    <span class="form-control-plaintext font-weight-bolder">@Html.DisplayFor(model => model.ExpectedAmount)</span>
+                                </div>
+                            </div>
+                            <div class="form-group row my-2">
+                                <label class="col-4 col-form-label">VATAmount:</label>
+                                <div class="col-8">
+                                    <span class="form-control-plaintext font-weight-bolder">@Html.DisplayFor(model => model.VATAmount)</span>
+                                </div>
+                            </div>
+                            <div class="form-group row my-2">
+                                <label class="col-4 col-form-label">CardNumber:</label>
+                                <div class="col-8">
+                                    <span class="form-control-plaintext font-weight-bolder">@Html.DisplayFor(model => model.CardNumber)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!--end::Body-->
+                        <!--begin::Footer-->
+                        <div class="card-footer">
+                            @*<a href="#" class="btn btn-primary font-weight-bold mr-2">Manage company</a>
+                            <a href="#" class="btn btn-light-primary font-weight-bold">Learn more</a>*@
+                        </div>
+                        <!--end::Footer-->
+                    </div>
+
+                </div>
+                <!--end::Container-->
+            </div>
+            <!--end::Entry-->
+        </div>
+
+
+    }
+    else if (ViewBag.lang == "ar")
+    {
+        Layout = "_Layoutv1";
+
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <!--begin::Subheader-->
+    <div class="subheader py-3 py-lg-8 subheader-transparent" id="kt_subheader">
+        <div class="container d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+            <!--begin::Details-->
+            <div class="d-flex align-items-center flex-wrap mr-1">
+                <!--begin::Page Heading-->
+                <div class="d-flex align-items-baseline mr-5">
+                    <!--begin::Title-->
+                    <h2 class="subheader-title text-white font-weight-bold my-2 mr-3">مطالبات المزود</h2>
+                    <!--end::Title-->
+                </div>
+                <!--end::Page Heading-->
+                <!--begin::Separator-->
+                @*<div class="subheader-separator subheader-separator-ver mt-2 mb-2 mr-5 bg-gray-200"></div>*@
+                <!--end::Separator-->
+                <!--begin::Search Form-->
+                <!--end::Search Form-->
+                <!--begin::Group Actions-->
+                <!--end::Group Actions-->
+            </div>
+            <!--end::Details-->
+            <!--begin::Toolbar-->
+            <div class="d-flex align-items-center">
+                <!--begin::Button-->
+                <a href="/Claims/ReimbursmentClaims?lang=ar" class="btn btn-primary ">Back</a>
+                <!--end::Button-->
+                <!--begin::Button-->
+                <!--end::Button-->
+                <!--begin::Dropdown-->
+                <!--end::Dropdown-->
+            </div>
+            <!--end::Toolbar-->
+        </div>
+    </div>
+    <!--end::Subheader-->
+    <!--begin::Entry-->
+    <div class="d-flex flex-column-fluid">
+        <!--begin::Container-->
+        <div class="container">
+            <div class="card card-custom">
+                <!--begin::Header-->
+                <div class="card-header h-auto py-4">
+                    <div class="card-title">
+                        <h3 class="card-label">
+                            @Html.DisplayFor(model => model.MemberName)
+                            <span class="d-block text-muted pt-2 font-size-sm">ID - @Html.DisplayFor(model => model.ClientDTO.IDNumber)</span>
+                        </h3>
+                    </div>
+                </div>
+                <!--end::Header-->
+                <!--begin::Body-->
+                <div class="card-body py-4">
+                    <div class="form-group row my-2">
+                        <label class="col-4 col-form-label">PolicyNumber:</label>
+                        <div class="col-8">
+                            <span class="form-control-plaintext font-weight-bolder">@Html.DisplayFor(model => model.PolicyNumber)</span>
+                        </div>
+                    </div>
+                    <div class="form-group row my-2">
+                        <label class="col-4 col-form-label">HolderName:</label>
+                        <div class="col-8">
+                            <span class="form-control-plaintext font-weight-bolder">@Html.DisplayFor(model => model.HolderName)</span>
+                        </div>
+                    </div>
+                    <div class="form-group row my-2">
+                        <label class="col-4 col-form-label">MemberID:</label>
+                        <div class="col-8">
+                            <span class="form-control-plaintext font-weight-bolder">@Html.DisplayFor(model => model.MemberID)</span>
+                        </div>
+                    </div>
+                    <div class="form-group row my-2">
+                        <label class="col-4 col-form-label">MemberName:</label>
+                        <div class="col-8">
+                            <span class="form-control-plaintext font-weight-bolder">@Html.DisplayFor(model => model.MemberName)</span>
+                        </div>
+                    </div>
+                    <div class="form-group row my-2">
+                        <label class="col-4 col-form-label">ExpectedAmount:</label>
+                        <div class="col-8">
+                            <span class="form-control-plaintext font-weight-bolder">@Html.DisplayFor(model => model.ExpectedAmount)</span>
+                        </div>
+                    </div>
+                    <div class="form-group row my-2">
+                        <label class="col-4 col-form-label">VATAmount:</label>
+                        <div class="col-8">
+                            <span class="form-control-plaintext font-weight-bolder">@Html.DisplayFor(model => model.VATAmount)</span>
+                        </div>
+                    </div>
+                    <div class="form-group row my-2">
+                        <label class="col-4 col-form-label">CardNumber:</label>
+                        <div class="col-8">
+                            <span class="form-control-plaintext font-weight-bolder">@Html.DisplayFor(model => model.CardNumber)</span>
+                        </div>
+                    </div>
+                </div>
+                <!--end::Body-->
+                <!--begin::Footer-->
+                <div class="card-footer">
+                    @*<a href="#" class="btn btn-primary font-weight-bold mr-2">Manage company</a>
+                        <a href="#" class="btn btn-light-primary font-weight-bold">Learn more</a>*@
+                </div>
+                <!--end::Footer-->
+            </div>
+
+        </div>
+        <!--end::Container-->
+    </div>
+    <!--end::Entry-->
+</div>
+
+
+    }
+}

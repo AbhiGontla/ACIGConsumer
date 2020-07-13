@@ -1,0 +1,473 @@
+﻿
+@{
+    ViewData["Title"] = "Apply Claims";
+
+}
+<style>
+    element.style {
+        width: 300px;
+        height: 920px;
+    }
+</style>
+@{
+    if (ViewBag.lang == "en")
+    {
+        Layout = "_Layouten";
+        <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+            <!--begin::Subheader-->
+            <div class="subheader py-3 py-lg-8 subheader-transparent" id="kt_subheader">
+                <div class="container d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+                    <!--begin::Info-->
+                    <div class="d-flex align-items-center flex-wrap mr-1">
+                        <!--begin::Mobile Toggle-->
+                        <button class="burger-icon burger-icon-left mr-4 d-inline-block d-lg-none" id="kt_subheader_mobile_toggle">
+                            <span></span>
+                        </button>
+                        <!--end::Mobile Toggle-->
+                        <!--begin::Page Heading-->
+                        <div class="d-flex align-items-baseline mr-5">
+                            <!--begin::Page Title-->
+                            <h2 class="subheader-title text-white font-weight-bold my-2 mr-3">Apply Claim</h2>
+                            <!--end::Page Title-->
+                        </div>
+                        <!--end::Page Heading-->
+                    </div>
+                    <!--end::Info-->
+                    <!--begin::Toolbar-->
+                    <div class="d-flex align-items-center">
+                        <!--begin::Button-->
+                        <a href="/Claims/ReimbursmentClaims?lang=en" class="btn btn-fh btn-white btn-hover-primary font-weight-bold px-2 px-lg-5 mr-2">
+                            Back
+                        </a>
+                        <!--end::Button-->
+                    </div>
+                    <!--end::Toolbar-->
+                </div>
+            </div>
+            <!--end::Subheader-->
+            <!--begin::Entry-->
+            <div class="d-flex flex-column-fluid">
+                <!--begin::Container-->
+                <div class="container">
+                    <!--begin::Profile Account Information-->
+                    <div class="d-flex flex-row">
+                        <div class="card-body">
+                            <div class="uppy" id="kt_uppy_1" style="width: 300px; height: 950px;">
+                                <div class="uppy-Root uppy-Dashboard uppy-Dashboard--animateOpenClose uppy-size--height-md uppy-Dashboard--isInnerWrapVisible" data-uppy-theme="light" data-uppy-num-acquirers="4" data-uppy-drag-drop-supported="true" aria-hidden="false" aria-label="File Uploader">
+                                    <div class="uppy-Dashboard-overlay" tabindex="-1"></div>
+                                    <div class="uppy-Dashboard-inner">
+                                        <div class="uppy-Dashboard-innerWrap">
+                                            <div class="uppy-Dashboard-dropFilesHereHint">Drop your files here</div>
+                                            <div class="uppy-Dashboard-AddFiles">
+                                                <input class="uppy-Dashboard-input" hidden="" aria-hidden="true" tabindex="-1" type="file" name="files[]" multiple="">
+                                                <div class="uppy-Dashboard-AddFiles-title">
+                                                    Drop files here, paste,
+                                                    <button type="button" class="uppy-u-reset uppy-Dashboard-browse">browse</button> or&nbsp;import&nbsp;from:
+                                                </div>
+                                                <div class="uppy-Dashboard-AddFiles-list" role="tablist">
+                                                    <div class="uppy-DashboardTab" role="presentation">
+                                                        <button type="button" class="uppy-DashboardTab-btn" role="tab" tabindex="0" data-uppy-super-focusable="true">
+                                                            <svg aria-hidden="true" focusable="false" width="32" height="32" viewBox="0 0 32 32"
+                                                                 xmlns="http://www.w3.org/2000/svg">
+                                                                <g fill="none" fill-rule="evenodd">
+                                                                    <rect width="32" height="32" rx="16" fill="#2275D7"></rect>
+                                                                    <path d="M21.973 21.152H9.863l-1.108-5.087h14.464l-1.246 5.087zM9.935 11.37h3.958l.886 1.444a.673.673 0 0 0 .585.316h6.506v1.37H9.935v-3.13zm14.898 3.44a.793.793 0 0 0-.616-.31h-.978v-2.126c0-.379-.275-.613-.653-.613H15.75l-.886-1.445a.673.673 0 0 0-.585-.316H9.232c-.378 0-.667.209-.667.587V14.5h-.782a.793.793 0 0 0-.61.303.795.795 0 0 0-.155.663l1.45 6.633c.078.36.396.618.764.618h13.354c.36 0 .674-.246.76-.595l1.631-6.636a.795.795 0 0 0-.144-.675z" fill="#FFF"></path>
+                                                                </g>
+                                                            </svg>
+                                                            <div class="uppy-DashboardTab-name">My Device</div>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <span></span>
+                                            <span></span>
+                                            <span></span>
+                                            <div class="uppy-Dashboard-progressindicators">
+                                                <div class="uppy-StatusBar is-waiting" aria-hidden="true">
+                                                    <div class="uppy-StatusBar-progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" style="width: 0%;"></div>
+                                                    <div class="uppy-StatusBar-actions"></div>
+                                                </div>
+                                                <div class="uppy uppy-Informer" aria-hidden="true">
+                                                    <p role="alert"></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!--begin::Content-->
+                        <div class="flex-row-fluid ml-lg-8">
+                            <!--begin::Card-->
+                            <div class="card card-custom" style="width: 500px;">
+                                <!--begin::Header-->
+                                <div class="card-header py-3">
+                                    <div class="card-title align-items-start flex-column">
+                                        <h3 class="text-dark font-weight-bold  mt-1">Select Insured Member</h3><br />
+                                        <div class="col-lg-9 col-xl-6">
+                                            <div class="col-lg-9 col-xl-6">
+                                                <div class="image-input image-input-outline" id="kt_image_1">
+                                                    <div class="image-input-wrapper" style="background-image: url(assets/media/users/100_1.jpg)"></div>
+                                                    <span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="cancel" data-toggle="tooltip" title="" data-original-title="Cancel avatar">
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--end::Header-->
+                                <!--begin::card body-->
+                                <div class="card-body">
+
+                                    <div class="d-flex align-items-center justify-content-between mb-4">
+                                        <span class="text-muted">Claim Type</span>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-lg-9 col-md-9 col-sm-12">
+                                            <select class="form-control" name="option" id="claimtypeid">
+                                                <option value="">Select</option>
+                                                <option value="1">In Patient</option>
+                                                <option value="2">Out Patient</option>
+                                                <option value="3">Repartriation</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <span id="errormessage"></span>
+                                    <!--begin::Separator-->
+                                    <div class="separator separator-solid my-5"></div>
+                                    <!--end::Separator-->
+                                    <div class="d-flex align-items-center justify-content-between mb-4">
+                                        <span class="text-muted">Bank Name</span>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-lg-9 col-md-9 col-sm-12">
+                                            <select class="form-control" name="option" id="banknameid">
+                                                <option value="">Select</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <span id="bnkerror"></span>
+                                    <!--begin::Separator-->
+                                    <div class="separator separator-solid my-5"></div>
+                                    <!--end::Separator-->
+                                    <div class="d-flex align-items-center justify-content-between mb-4">
+                                        <span class="text-muted">IBAN Number</span>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-lg-2">
+                                            <input type="text" class="form-control" name="" placeholder="" value="" id="ibanid" />
+                                        </div>
+                                        <div class="col-lg-2">
+                                            <input type="text" class="form-control" name="" placeholder="" value="" id="ibanid" />
+                                        </div>
+                                        <div class="col-lg-2">
+                                            <input type="text" class="form-control" name="" placeholder="" value="" id="ibanid" />
+                                        </div>
+                                        <div class="col-lg-2">
+                                            <input type="text" class="form-control" name="" placeholder="" value="" id="ibanid" />
+                                        </div>
+                                        <div class="col-lg-2">
+                                            <input type="text" class="form-control" name="" placeholder="" value="" id="ibanid" />
+                                        </div>
+                                        <div class="col-lg-2">
+                                            <input type="text" class="form-control" name="" placeholder="" value="" id="ibanid" />
+                                        </div>
+                                    </div>
+                                    <span id="ibanerror"></span>
+                                    <!--begin::Separator-->
+                                    <div class="separator separator-solid my-5"></div>
+                                    <!--end::Separator-->
+                                    <div class="d-flex align-items-center justify-content-between ">
+                                        <span class="text-muted">Reiumbursement Claim Amount</span>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="input-group input-group-solid">
+                                            <input type="text" class="form-control form-control-solid" placeholder="" id="claimamoutid" />
+                                        </div>
+                                    </div>
+                                    <span id="claimerror"></span>
+                                    <!--begin::Separator-->
+                                    <div class="separator separator-solid my-5"></div>
+                                    <!--end::Separator-->
+                                    <div class="d-flex align-items-center justify-content-between ">
+                                        <span class="text-muted">VAT Amount</span>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="input-group input-group-solid">
+                                            <input type="text" class="form-control form-control-solid" placeholder="" id="vatid" />
+                                        </div>
+                                    </div>
+                                    <span id="vaterror"></span>
+                                    <!--begin::Separator-->
+                                    <div class="separator separator-solid my-5"></div>
+                                    <!--end::Separator-->
+                                    <div class="d-flex align-items-center justify-content-between ">
+                                        <span class="text-muted">Notes/Remarks</span>
+                                    </div>
+                                    <div class="form-group">
+                                        <textarea class="form-control form-control-solid" rows="3" id="noteid"></textarea>
+                                    </div>
+                                    <span id="noteerror"></span>
+                                    <div class="card-footer">
+                                        <button id="btnapply" type="reset" class="btn btn-primary mr-2">Apply Claim</button>
+                                    </div>
+                                </div>
+                                <!--end::card body-->
+                            </div>
+                            <!--end::Card-->
+                        </div>
+                        <!--end::Content-->
+                    </div>
+                    <!--end::Profile Account Information-->
+                </div>
+                <!--end::Container-->
+            </div>
+            <!--end::Entry-->
+        </div>
+    }
+    else if (ViewBag.lang == "ar")
+    {
+        Layout = "_Layoutv1";
+        <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+            <!--begin::Subheader-->
+            <div class="subheader py-3 py-lg-8 subheader-transparent" id="kt_subheader">
+                <div class="container d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+                    <!--begin::Info-->
+                    <div class="d-flex align-items-center flex-wrap mr-1">
+                        <!--begin::Mobile Toggle-->
+                        <button class="burger-icon burger-icon-left mr-4 d-inline-block d-lg-none" id="kt_subheader_mobile_toggle">
+                            <span></span>
+                        </button>
+                        <!--end::Mobile Toggle-->
+                        <!--begin::Page Heading-->
+                        <div class="d-flex align-items-baseline mr-5">
+                            <!--begin::Page Title-->
+                            <h2 class="subheader-title text-white font-weight-bold my-2 mr-3">Apply Claim</h2>
+                            <!--end::Page Title-->
+                        </div>
+                        <!--end::Page Heading-->
+                    </div>
+                    <!--end::Info-->
+                    <!--begin::Toolbar-->
+                    <div class="d-flex align-items-center">
+                        <!--begin::Button-->
+                        <a href="/claims/index?lang=en" class="btn btn-fh btn-white btn-hover-primary font-weight-bold px-2 px-lg-5 mr-2">
+                            Back
+                        </a>
+                        <!--end::Button-->
+                    </div>
+                    <!--end::Toolbar-->
+                </div>
+            </div>
+            <!--end::Subheader-->
+            <!--begin::Entry-->
+            <div class="d-flex flex-column-fluid">
+                <!--begin::Container-->
+                <div class="container">
+                    <!--begin::Profile Account Information-->
+                    <div class="d-flex flex-row">
+                        <div class="card-body">
+                            <div class="uppy" id="kt_uppy_2">
+                                <div class="uppy-Root uppy-Dashboard uppy-Dashboard--animateOpenClose uppy-size--height-md uppy-Dashboard--isInnerWrapVisible" data-uppy-theme="light" data-uppy-num-acquirers="0" data-uppy-drag-drop-supported="true" aria-hidden="false" aria-label="File Uploader">
+                                    <div class="uppy-Dashboard-overlay" tabindex="-1">
+                                    </div>
+                                    <div class="uppy-Dashboard-inner" style="width: 290px; height: 470px;">
+                                        <div class="uppy-Dashboard-innerWrap">
+                                            <div class="uppy-Dashboard-dropFilesHereHint">
+                                            </div>
+                                            <div class="uppy-Dashboard-AddFiles">
+                                                <input class="uppy-Dashboard-input" hidden="" aria-hidden="true" tabindex="-1" type="file" name="files[]" multiple="" accept="image/*,video/*">
+                                                <div class="uppy-Dashboard-AddFiles-title">
+                                                    <div class="col-lg-6">
+                                                        <div class="uppy" id="kt_uppy_5">
+                                                            <div class="uppy-wrapper">
+                                                                <div class="uppy-Root uppy-FileInput-container">
+                                                                    <input class="uppy-FileInput-input uppy-input-control" type="file" name="files[]" multiple="" id="kt_uppy_5_input_control" style="">
+                                                                    <label class="uppy-input-label btn btn-light-primary btn-sm btn-bold" for="kt_uppy_5_input_control">Upload File</label>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="uppy-Dashboard-AddFiles-info">
+                                                    <div class="uppy-Dashboard-note">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="uppy-Dashboard-progressindicators">
+                                                <div class="uppy-StatusBar is-waiting" aria-hidden="true">
+                                                    <div class="uppy-StatusBar-progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" style="width: 0%;"></div><div class="uppy-StatusBar-actions"></div>
+                                                </div>
+                                                <div class="uppy uppy-Informer" aria-hidden="true">
+                                                    <p role="alert">
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!--begin::Content-->
+                        <div class="flex-row-fluid ml-lg-8">
+                            <!--begin::Card-->
+                            <div class="card card-custom">
+                                <!--begin::Header-->
+                                <div class="card-header py-3">
+                                    <div class="card-title align-items-start flex-column">
+                                        <h3 class="text-dark font-weight-bold  mt-1">Select Insured Member</h3>
+                                    </div>
+                                    <div class="col-lg-9 col-xl-6">
+                                        <div class="image-input" id="kt_image_2">
+                                            <div class="image-input-wrapper" style="background-image: url(assets/media/users/100_2.jpg)"></div>
+                                            <label class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="change" data-toggle="tooltip" title="" data-original-title="Change avatar">
+                                                <i class="fa fa-pen icon-sm text-muted"></i>
+                                                <input type="file" name="profile_avatar" accept=".png, .jpg, .jpeg" />
+                                                <input type="hidden" name="profile_avatar_remove" />
+                                            </label>
+                                            <span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="cancel" data-toggle="tooltip" title="Cancel avatar">
+                                                <i class="ki ki-bold-close icon-xs text-muted"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--end::Header-->
+                                <!--begin::card body-->
+                                <div class="card-body">
+                                    <div class="d-flex align-items-center justify-content-between mb-4">
+                                        <span class="text-muted">Hospital Name</span>
+                                    </div>
+                                    <span class="font-size-sm font-weight-bold mr-2">Riyadh National Hospital</span>
+                                    <!--begin::Separator-->
+                                    <div class="separator separator-solid my-5"></div>
+                                    <!--end::Separator-->
+                                    <div class="d-flex align-items-center justify-content-between mb-4">
+                                        <span class="text-muted">Claim Type</span>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-lg-9 col-md-9 col-sm-12">
+                                            <select class="form-control" name="option">
+                                                <option value="">Select</option>
+                                                <option>In Patient</option>
+                                                <option>Out Patient</option>
+                                                <option>Repartriation</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <!--begin::Separator-->
+                                    <div class="separator separator-solid my-5"></div>
+                                    <!--end::Separator-->
+                                    <div class="d-flex align-items-center justify-content-between mb-4">
+                                        <span class="text-muted">Bank Name</span>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-lg-9 col-md-9 col-sm-12">
+                                            <select class="form-control" name="option">
+                                                <option value="">Select</option>
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <!--begin::Separator-->
+                                    <div class="separator separator-solid my-5"></div>
+                                    <!--end::Separator-->
+                                    <div class="d-flex align-items-center justify-content-between mb-4">
+                                        <span class="text-muted">IBAN Number</span>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-lg-2">
+                                            <input type="text" class="form-control" name="" placeholder="" value="" />
+                                        </div>
+                                        <div class="col-lg-2">
+                                            <input type="text" class="form-control" name="" placeholder="" value="" />
+                                        </div>
+                                        <div class="col-lg-2">
+                                            <input type="text" class="form-control" name="" placeholder="" value="" />
+                                        </div>
+                                        <div class="col-lg-2">
+                                            <input type="text" class="form-control" name="" placeholder="" value="" />
+                                        </div>
+                                        <div class="col-lg-2">
+                                            <input type="text" class="form-control" name="" placeholder="" value="" />
+                                        </div>
+                                        <div class="col-lg-2">
+                                            <input type="text" class="form-control" name="" placeholder="" value="" />
+                                        </div>
+                                    </div>
+                                    <!--begin::Separator-->
+                                    <div class="separator separator-solid my-5"></div>
+                                    <!--end::Separator-->
+                                    <div class="d-flex align-items-center justify-content-between ">
+                                        <span class="text-muted">Reiumbursement Claim Amount</span>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="input-group input-group-solid">
+                                            <input type="text" class="form-control form-control-solid" placeholder="" />
+                                        </div>
+                                    </div>
+                                    <!--begin::Separator-->
+                                    <div class="separator separator-solid my-5"></div>
+                                    <!--end::Separator-->
+                                    <div class="d-flex align-items-center justify-content-between ">
+                                        <span class="text-muted">VAT Amount</span>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="input-group input-group-solid">
+                                            <input type="text" class="form-control form-control-solid" placeholder="" />
+                                        </div>
+                                    </div>
+                                    <!--begin::Separator-->
+                                    <div class="separator separator-solid my-5"></div>
+                                    <!--end::Separator-->
+                                    <div class="d-flex align-items-center justify-content-between ">
+                                        <span class="text-muted">Notes/Remarks</span>
+                                    </div>
+                                    <div class="form-group">
+                                        <textarea class="form-control form-control-solid" rows="3"></textarea>
+                                    </div>
+                                    <!--begin::Separator-->
+                                    <div class="separator separator-solid my-5"></div>
+                                    <!--end::Separator-->
+                                    <div class="col-lg-6">
+                                        <div class="uppy" id="kt_uppy_5">
+                                            <div class="uppy-wrapper">
+                                                <div class="uppy-Root uppy-FileInput-container">
+                                                    <input class="uppy-FileInput-input uppy-input-control" type="file" name="files[]" multiple="" id="kt_uppy_5_input_control" style="">
+                                                    <label class="uppy-input-label btn btn-light-primary btn-sm btn-bold" for="kt_uppy_5_input_control">Attach files</label>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--end::card body-->
+                            </div>
+                            <!--end::Card-->
+                        </div>
+                        <!--end::Content-->
+                    </div>
+                    <!--end::Profile Account Information-->
+                </div>
+                <!--end::Container-->
+            </div>
+            <!--end::Entry-->
+        </div>
+    }
+}
+<link href="/assets/Custom/css/policy/policy.css" rel="stylesheet">
+<link href="~/assets/plugins/custom/uppy/uppy.bundle.css" rel="stylesheet" />
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+<script src="~/assets/plugins/custom/uppy/uppy.bundle.js"></script>
+<script src="~/assets/Custom/js/Claims/applyclaim.js"></script>
+

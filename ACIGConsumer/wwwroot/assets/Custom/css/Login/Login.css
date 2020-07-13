@@ -1,0 +1,12 @@
+﻿body {
+}
+.btn.btn-dark {
+    color: #ffffff;
+    background-color: #4092bb;
+    border-color: #4092bb;
+}
+.btn:hover {
+    color: #ffffff;
+    background-color: #4092bb;
+    border-color: #4092bb;
+}

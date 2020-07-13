@@ -1,0 +1,439 @@
+﻿@model IEnumerable<Core.Api.Providers>
+@{
+    ViewData["Title"] = "Index";
+
+}
+<style>
+    .btn {
+        width: 80px;
+    }
+</style>
+
+@{
+    if (@ViewBag.lang == "en")
+    {
+        Layout = "_Layouten";
+
+        <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+            <!--begin::Subheader-->
+            <div class="subheader py-3 py-lg-8 subheader-transparent" id="kt_subheader">
+                <div class="container d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+                    <!--begin::Details-->
+                    <div class="d-flex align-items-center flex-wrap mr-1">
+                        <!--begin::Page Heading-->
+                        <div class="d-flex align-items-baseline mr-5">
+                            <!--begin::Title-->
+                            <h2 class="subheader-title text-white  font-weight-bold my-2 mr-3">Hospital</h2>
+                            <!--end::Title-->
+                        </div>
+                        <!--end::Page Heading-->
+                        <!--begin::Separator-->
+                        <div class="subheader-separator subheader-separator-ver mt-2 mb-2 mr-5 bg-gray-200">
+
+                        </div>
+                        <h4 class="subheader-title text-white  font-weight-bold my-2 mr-3">450 Total</h4>
+                        <!--end::Separator-->
+                      
+                    </div>
+                    <!--end::Details-->
+                    <!--begin::Toolbar-->
+                    <div class="d-flex align-items-center">
+                        <!--begin::Button-->
+                        <a href="#" class=""></a>
+                        <!--end::Button-->
+                        <!--begin::Button-->
+                        <!--end::Button-->
+                        <!--begin::Dropdown-->
+                        <!--end::Dropdown-->
+                    </div>
+                    <!--end::Toolbar-->
+                </div>
+            </div>
+            <!--end::Subheader-->
+            <!--begin::Entry-->
+            <div class="d-flex flex-column-fluid">
+                <!--begin::Container-->
+                <div class="container">
+                    <div class="mb-7">
+                        <div class="row align-items-center">
+                            <div class="col-lg-9 col-xl-8">
+                                <div class="row align-items-center">
+                                    <div class="col-md-4 my-2 my-md-0">
+                                        <div class="input-icon ">
+                                            <span class="kt-input-icon__icon kt-input-icon__icon--right">
+                                                <i class="flaticon2-search-1 text-muted"></i>
+                                            </span>
+                                            <input type="text" class="border border-white form-control form-control-plaintext " placeholder="Search..." id="kt_datatable_search_query" />
+
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <div class="col-lg-4">
+                                <a href="#" class="btn btn-light-info font-weight-bolder font-size-sm " style="float:right;">Filter</a>
+                            </div>
+
+
+
+                        </div>
+                    </div>
+                    <div class="card card-custom gutter-b">
+                        <!--begin::Header-->
+                        <!--end::Header-->
+                        <!--begin::Body-->
+
+                        <div class="card-body py-0">
+                            <!--begin::Table-->
+                            <div class="table-responsive">
+                                <table class="table table-head-custom table-head-bg table-borderless table-vertical-center">
+                                    <thead>
+                                        <tr class="text-left text-uppercase">
+                                            <th style="min-width: 50px"><span class="text-dark-75 font-weight-bolder  mb-1 font-size-lg">ID</span></th>
+                                            <th style="min-width: 250px" class="pl-7">
+                                                <span class="text-dark-75 font-weight-bolder  mb-1 font-size-lg">Name</span>
+                                            </th>
+                                            <th style="min-width: 150px"><span class="text-dark-75 font-weight-bolder  mb-1 font-size-lg">Type</span></th>
+                                            <th style="min-width: 50px"><span class="text-dark-75 font-weight-bolder  mb-1 font-size-lg">Location</span></th>
+                                            <th style="min-width: 50px"><span class="text-dark-75 font-weight-bolder  mb-1 font-size-lg">Action</span></th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    <span class="text-dark-75 font-weight-bolder  mb-1 font-size-lg">@item.ProviderNumber</span>
+                                                </td>
+                                                <td class="pl-0 py-8">
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="symbol symbol-50 symbol-light mr-4">
+                                                            <span class="symbol-label">
+                                                                <img src="assets/media/svg/avatars/001-boy.svg" class="h-75 align-self-end" alt="">
+                                                            </span>
+                                                        </div>
+                                                        <div>
+                                                            @{
+
+                                                                string posternameShort = "";
+
+                                                                if (item.ProviderName.Contains("-"))
+                                                                {
+                                                                    posternameShort = item.ProviderName.Substring(0, item.ProviderName.IndexOf("-"));
+                                                                }
+
+                                                            }
+                                                            <a href="#" class="text-dark-75 font-weight-bolder text-hover-primary mb-1 font-size-lg">@posternameShort</a>
+                                                            <span class="text-muted font-weight-bold d-block"> Phone- <span class="text-dark font-weight-light ">123456789</span></span>
+                                                            <span class="text-muted font-weight-bold d-block"> CCHI- <span class="text-dark font-weight-light ">@item.CCHINumber</span></span>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+
+                                                    @{
+                                                        string provtype = "";
+                                                        if (item.ProviderType == "RAD")
+                                                        {
+                                                            provtype = "RADIOLOGY";
+                                                        }
+                                                        else if (item.ProviderType == "TPA")
+                                                        {
+                                                            provtype = "THIRD PARTY ADMINISTRATOR";
+                                                        }
+                                                        else if (item.ProviderType == "CLN")
+                                                        {
+                                                            provtype = "CLINIC";
+                                                        }
+                                                        else if (item.ProviderType == "DEN")
+                                                        {
+                                                            provtype = "DENTIST";
+                                                        }
+                                                        else if (item.ProviderType == "DIS")
+                                                        {
+                                                            provtype = "DISPENSARY";
+                                                        }
+                                                        else if (item.ProviderType == "DOC")
+                                                        {
+                                                            provtype = "DOCTOR";
+                                                        }
+                                                        else if (item.ProviderType == "HOS")
+                                                        {
+                                                            provtype = "HOSPITAL";
+                                                        }
+                                                        else if (item.ProviderType == "MDC")
+                                                        {
+                                                            provtype = "MEDICAL CENTER";
+                                                        }
+                                                        else if (item.ProviderType == "PHR")
+                                                        {
+                                                            provtype = "PHARMACY";
+                                                        }
+                                                        else if (item.ProviderType == "PLY")
+                                                        {
+                                                            provtype = "POLYCLINIC";
+                                                        }
+                                                        else if (item.ProviderType == "PVT")
+                                                        {
+                                                            provtype = "PRIVATE CLINIC";
+                                                        }
+                                                        else if (item.ProviderType == "REM")
+                                                        {
+                                                            provtype = "REIMBURSEMENT";
+                                                        }
+                                                    }
+                                                    <span class="text-dark-75 font-weight-bolder d-block font-size-lg mb-5">@provtype</span>
+                                                </td>
+                                                <td>
+                                                    @{
+
+                                                        string stringAfterChar = "";
+
+                                                        if (item.ProviderName.Contains("-"))
+                                                        {                                                           
+                                                            stringAfterChar = item.ProviderName.Substring(item.ProviderName.IndexOf("-") + 2);
+                                                        }
+
+                                                    }
+                                                    <span class="text-dark-75 font-weight-bolder d-block mb-5 font-size-lg">@stringAfterChar</span>
+                                                </td>
+                                                <td class="pr-0 text-left">
+                                                    <a href="/providers/details/@item.ProviderNumber?lang=en" class="btn btn-sm btn-light-info font-weight-bolder font-size-sm">View</a>
+                                                </td>
+
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!--end::Table-->
+                        </div>
+                        <!--end::Body-->
+                    </div>
+
+                </div>
+                <!--end::Container-->
+            </div>
+            <!--end::Entry-->
+        </div>
+    }
+    if (@ViewBag.lang == "ar")
+    {
+        Layout = "_Layoutv1";
+
+        <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+            <!--begin::Subheader-->
+            <div class="subheader py-3 py-lg-8 subheader-transparent" id="kt_subheader">
+                <div class="container d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+                    <!--begin::Details-->
+                    <div class="d-flex align-items-center flex-wrap mr-1">
+                        <!--begin::Page Heading-->
+                        <div class="d-flex align-items-baseline mr-5">
+                            <!--begin::Title-->
+                            <h2 class="subheader-title text-white  font-weight-bold my-2 mr-3">مستشفى</h2>
+                            <!--end::Title-->
+                        </div>
+                        <!--end::Page Heading-->
+                        <!--begin::Separator-->
+                        <div class="subheader-separator subheader-separator-ver mt-2 mb-2 mr-5 bg-gray-200">
+
+                        </div>
+                        <h4 class="subheader-title text-white  font-weight-bold my-2 mr-3">450 مجموع</h4>
+                        <!--end::Separator-->
+                        <!--begin::Search Form-->
+                        <!--end::Search Form-->
+                        <!--begin::Group Actions-->
+                        <!--end::Group Actions-->
+                    </div>
+                    <!--end::Details-->
+                    <!--begin::Toolbar-->
+                    <div class="d-flex align-items-center">
+                        <!--begin::Button-->
+                        <a href="#" class=""></a>
+                        <!--end::Button-->
+                        <!--begin::Button-->
+                        <!--end::Button-->
+                        <!--begin::Dropdown-->
+                        <!--end::Dropdown-->
+                    </div>
+                    <!--end::Toolbar-->
+                </div>
+            </div>
+            <!--end::Subheader-->
+            <!--begin::Entry-->
+            <div class="d-flex flex-column-fluid">
+                <!--begin::Container-->
+                <div class="container">
+                    <div class="mb-7">
+                        <div class="row align-items-center">
+                            <div class="col-lg-9 col-xl-8">
+                                <div class="row align-items-center">
+                                    <div class="col-md-4 my-2 my-md-0">
+                                        <div class="input-icon ">
+                                            <span class="kt-input-icon__icon kt-input-icon__icon--right">
+                                                <i class="flaticon2-search-1 text-muted"></i>
+                                            </span>
+                                            <input type="text" class="border border-white form-control form-control-plaintext " placeholder="بحث..." id="kt_datatable_search_query" />
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <div class="col-lg-4">
+                                <a href="#" class="btn btn-light-info font-weight-bolder font-size-sm " style="float:left;">Filter</a>
+                            </div>
+
+
+
+                        </div>
+                    </div>
+                    <div class="card card-custom gutter-b">
+                        <!--begin::Header-->
+                        <!--end::Header-->
+                        <!--begin::Body-->
+
+                        <div class="card-body py-0">
+                            <!--begin::Table-->
+                            <div class="table-responsive">
+                                <table class="table table-head-custom table-head-bg table-borderless table-vertical-center">
+                                    <thead>
+                                        <tr class="text-left text-uppercase">
+                                            <th style="min-width: 50px"><span class="text-dark-75 font-weight-bolder  mb-1 font-size-lg">ID</span></th>
+                                            <th style="min-width: 250px" class="pl-7">
+                                                <span class="text-dark-75 font-weight-bolder  mb-1 font-size-lg">Name</span>
+                                            </th>
+                                            <th style="min-width: 150px"><span class="text-dark-75 font-weight-bolder  mb-1 font-size-lg">Type</span></th>
+                                            <th style="min-width: 50px"><span class="text-dark-75 font-weight-bolder  mb-1 font-size-lg">Location</span></th>
+                                            <th style="min-width: 50px"><span class="text-dark-75 font-weight-bolder  mb-1 font-size-lg">عمل</span></th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    <span class="text-dark-75 font-weight-bolder  mb-1 font-size-lg">@item.ProviderNumber</span>
+                                                </td>
+                                                <td class="pl-0 py-8">
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="symbol symbol-50 symbol-light mr-4">
+                                                            <span class="symbol-label">
+                                                                <img src="assets/media/svg/avatars/001-boy.svg" class="h-75 align-self-end" alt="">
+                                                            </span>
+                                                        </div>
+                                                        <div>
+                                                            @{
+
+                                                                string pameShort = "";
+
+                                                                if (item.ProviderName.Contains("-"))
+                                                                {
+                                                                    pameShort = item.ProviderName.Substring(0, item.ProviderName.IndexOf("-"));
+                                                                }
+
+                                                            }
+                                                            <a href="#" class="text-dark-75 font-weight-bolder text-hover-primary mb-1 font-size-lg">@pameShort</a>
+                                                            <span class="text-muted font-weight-bold d-block"> هاتف- <span class="text-dark font-weight-light ">123456789</span></span>
+                                                            <span class="text-muted font-weight-bold d-block"> CCHI- <span class="text-dark font-weight-light ">@item.CCHINumber</span></span>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+
+                                                    @{
+                                                        string provtype = "";
+                                                        if (item.ProviderType == "RAD")
+                                                        {
+                                                            provtype = "RADIOLOGY";
+                                                        }
+                                                        else if (item.ProviderType == "TPA")
+                                                        {
+                                                            provtype = "THIRD PARTY ADMINISTRATOR";
+                                                        }
+                                                        else if (item.ProviderType == "CLN")
+                                                        {
+                                                            provtype = "CLINIC";
+                                                        }
+                                                        else if (item.ProviderType == "DEN")
+                                                        {
+                                                            provtype = "DENTIST";
+                                                        }
+                                                        else if (item.ProviderType == "DIS")
+                                                        {
+                                                            provtype = "DISPENSARY";
+                                                        }
+                                                        else if (item.ProviderType == "DOC")
+                                                        {
+                                                            provtype = "DOCTOR";
+                                                        }
+                                                        else if (item.ProviderType == "HOS")
+                                                        {
+                                                            provtype = "HOSPITAL";
+                                                        }
+                                                        else if (item.ProviderType == "MDC")
+                                                        {
+                                                            provtype = "MEDICAL CENTER";
+                                                        }
+                                                        else if (item.ProviderType == "PHR")
+                                                        {
+                                                            provtype = "PHARMACY";
+                                                        }
+                                                        else if (item.ProviderType == "PLY")
+                                                        {
+                                                            provtype = "POLYCLINIC";
+                                                        }
+                                                        else if (item.ProviderType == "PVT")
+                                                        {
+                                                            provtype = "PRIVATE CLINIC";
+                                                        }
+                                                        else if (item.ProviderType == "REM")
+                                                        {
+                                                            provtype = "REIMBURSEMENT";
+                                                        }
+                                                    }
+                                                    <span class="text-dark-75 font-weight-bolder d-block font-size-lg">@provtype</span>
+                                                </td>
+                                                <td>
+                                                    @{
+
+                                                        string stringAfterChar = "";
+
+                                                        if (item.ProviderName.Contains("-"))
+                                                        {
+                                                            stringAfterChar = item.ProviderName.Substring(item.ProviderName.IndexOf("-") + 2);
+                                                        }
+
+                                                    }
+                                                    <span class="text-dark-75 font-weight-bolder d-block mb-5 font-size-lg">@stringAfterChar</span>                                                   
+                                                </td>
+                                                <td class="pr-0 text-left">
+                                                    <a href="/providers/details/@item.ProviderNumber?lang=ar" class="btn btn-sm btn-light-info font-weight-bolder font-size-sm">رأي</a>
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!--end::Table-->
+                        </div>
+                        <!--end::Body-->
+                    </div>
+
+                </div>
+                <!--end::Container-->
+            </div>
+            <!--end::Entry-->
+        </div>
+    }
+}
+
+
+
+
+

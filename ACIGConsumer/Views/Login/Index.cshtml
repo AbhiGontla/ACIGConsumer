@@ -1,0 +1,393 @@
+﻿@{
+    ViewData["Title"] = "Login";
+    Layout = "";
+}
+<style>
+    .col-lg-3 {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 25%;
+        flex: 0 0 25%;
+        max-width: 1%;
+    }
+
+    .smalltextbox {
+        width: 50px;
+        height: 50px;
+        padding: 0;
+        margin-right: 25px;
+        text-align: center;
+        background-color: #e5eaee;
+        border: #e5eaee;
+        border-radius: 5px;
+        margin: 25px;
+    }
+    @@font-face {
+        font-family: 'quicksand-semibold';
+        src: url('assets/custom/fonts/quicksand-semibold.ttf') format('truetype');
+    }
+
+    div {
+        font-family: quicksand-semibold;
+    }
+</style>
+<!--begin::Head-->
+<head>
+    <base href="../../../">
+    <meta charset="utf-8" />
+    <title>ACIG | Login</title>
+    <meta name="description" content="Login page example" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  
+        <!--begin::Fonts-->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
+        <!--end::Fonts-->
+        <!--begin::Page Custom Styles(used by this page)-->
+        <link href="assets/css/pages/login/login-2.css?v=7.0.4" rel="stylesheet" type="text/css" />
+        <!--end::Page Custom Styles-->
+        <!--begin::Global Theme Styles(used by all pages)-->
+        <link href="assets/plugins/global/plugins.bundle.css?v=7.0.4" rel="stylesheet" type="text/css" />
+        <link href="assets/plugins/custom/prismjs/prismjs.bundle.css?v=7.0.4" rel="stylesheet" type="text/css" />
+        <link href="assets/css/style.bundle.css?v=7.0.4" rel="stylesheet" type="text/css" />
+        <!--end::Global Theme Styles-->
+        <!--begin::Layout Themes(used by all pages)-->
+        <!--end::Layout Themes-->
+        <link rel="shortcut icon" href="assets/media/logos/favicon.ico" />
+    
+   
+    @*<style>
+            #kt_body {
+                background-image: url('assets/custom/images/logo.jpeg');
+                background-color: #4092bb;
+                width: 100%;
+                height: auto;
+            }
+        </style>*@
+</head>
+<!--end::Head-->
+<!--begin::Body-->
+<body id="kt_body" class="header-mobile-fixed subheader-enabled aside-enabled aside-fixed aside-secondary-enabled page-loading">
+    <!--begin::Main-->
+    <div class="d-flex flex-column flex-root">
+       
+        <!--begin::Login-->
+        <div class="login login-2 login-signin-on d-flex flex-column flex-lg-row flex-column-fluid bg-white" id="kt_login">
+
+            <!--begin::Aside-->
+            <div class="login-aside order-2 order-lg-1 d-flex flex-row-auto position-relative overflow-hidden">
+
+                <!--begin: Aside Container-->
+                <div class="d-flex flex-column-fluid flex-column justify-content-between py-9 px-7 py-lg-13 px-lg-35">
+
+                    <!--begin::Aside body-->
+                    <div class="d-flex flex-column-fluid flex-column flex-center">
+
+                        <!--begin::Signin-->
+                        <div class="login-form login-signin py-11">
+                            <button class="btn btn-primary btn-sm text-white " style="float:right" id="btnarlang">Arabic</button>
+                            <button class="btn btn-primary btn-sm text-white " style="float:right" id="btnenlang">English</button>
+                            <!--begin::Form-->
+                            <form class="form" novalidate="novalidate" id="kt_login_signin_form">
+
+                                <!--begin::Title-->
+                                <div class="text-center pb-8">
+                                    <h2 class="font-weight-bolder text-dark font-size-h2 font-size-h1-lg">Login</h2>
+                                    <span class="text-muted font-weight-bold font-size-h4">
+                                        or
+                                        <a href="" class="text-primary font-weight-bolder .btn.btn-dark" id="kt_login_signup">Create An Account</a>
+                                    </span>
+                                </div>
+                                <!--end::Title-->
+                                <!--begin::Form group-->
+                                <span class="text-danger text-center font-weight-bold font-size-h6-sm" id="errormessage">
+                                </span>
+                                <div class="form-group">
+                                    <label class="font-size-h6 font-weight-bolder text-dark">National id / Iqama id</label>
+                                    <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="National id / Iqama id" name="National id / Iqama id" autocomplete="off" id="natId" />
+                                    <span class="text-danger font-weight-bold font-size-h6-sm" id="Niderror">
+                                    </span>
+                                </div>
+                                <!--end::Form group-->
+                                <!--begin::Form group-->
+                                <div class="form-group">
+                                    <div class="d-flex justify-content-between mt-n5">
+                                        <label class="font-size-h6 font-weight-bolder text-dark pt-5">PIN</label>
+                                        <a href="javascript:;" class="text-primary font-size-h6 font-weight-bolder text-hover-primary pt-5" id="kt_login_forgot">Forgot Pin ?</a>
+                                    </div>
+                                    <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="password" placeholder="Pin" name="Pin" autocomplete="off" id="pincode" />
+                                    @*<input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg" type="password" name="password" autocomplete="off" />*@
+                                    <span class="text-danger font-weight-bold font-size-h6-sm" id="pinerror">
+                                    </span>
+                                </div>
+                                <!--end::Form group-->
+                                <!--begin::Action-->
+                                <div class="text-center pt-2">
+                                    <a class="btn btn-info font-weight-bolder font-size-h6 px-8 py-4 my-3" id="loginbutton">Login</a>
+                                    @*<button id="kt_login_signin_submit" class="btn btn-dark font-weight-bolder font-size-h6 px-8 py-4 my-3" href="/Home/Index">Login</button>*@
+                                </div>
+                                <!--end::Action-->
+                            </form>
+
+                            <form class="form" novalidate="novalidate" id="kt_login_signin_arform">
+
+                                <!--begin::Title-->
+                                <div class="text-center pb-8">
+                                    <h2 class="font-weight-bolder text-dark font-size-h2 font-size-h1-lg">تسجيل الدخول</h2>
+                                    <span class="text-muted font-weight-bold font-size-h4">
+                                        or
+                                        <a href="" class="text-primary font-weight-bolder .btn.btn-dark" id="kt_login_signup">انشئ حساب</a>
+                                    </span>
+                                </div>
+                                <!--end::Title-->
+                                <!--begin::Form group-->
+                                <span class="text-danger text-center font-weight-bold font-size-h6-sm" id="errorarmessage">
+                                </span>
+                                <div class="form-group">
+                                    <label class="font-size-h6 font-weight-bolder text-dark">الهوية الوطنية</label>
+                                    <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="الهوية الوطنية" name="National id / Iqama id" autocomplete="off" id="natarId" />
+                                    <span class="text-danger font-weight-bold font-size-h6-sm" id="Nidarerror">
+                                    </span>
+                                </div>
+                                <!--end::Form group-->
+                                <!--begin::Form group-->
+                                <div class="form-group">
+                                    <div class="d-flex justify-content-between mt-n5">
+                                        <label class="font-size-h6 font-weight-bolder text-dark pt-5">دبوس</label>
+                                        <a href="javascript:;" class="text-primary font-size-h6 font-weight-bolder text-hover-primary pt-5" id="kt_login_forgot">نسيت رقم التعريف الشخصي ?</a>
+                                    </div>
+                                    <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="password" placeholder="دبوس" name="Pin" autocomplete="off" id="arpincode" />
+                                    @*<input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg" type="password" name="password" autocomplete="off" />*@
+                                    <span class="text-danger font-weight-bold font-size-h6-sm" id="pinarerror">
+                                    </span>
+                                </div>
+                                <!--end::Form group-->
+                                <!--begin::Action-->
+                                <div class="text-center pt-2">
+                                    <a class="btn btn-info font-weight-bolder font-size-h6 px-8 py-4 my-3" id="loginarbutton">Login</a>
+                                    @*<button id="kt_login_signin_submit" class="btn btn-dark font-weight-bolder font-size-h6 px-8 py-4 my-3" href="/Home/Index">Login</button>*@
+                                </div>
+                                <!--end::Action-->
+                            </form>
+                            <!--end::Form-->
+
+                        </div>
+                        <!--end::Signin-->
+                        <!--begin::Signup-->
+                        <div class="login-form login-signup pt-19">
+                          
+                            <!--begin::Form-->
+                            <form class="form" novalidate="novalidate" id="kt_login_signup_form">
+                                <!--begin::Title-->
+                                <div class="text-center pb-8">
+                                    <h2 class="font-weight-bolder text-dark font-size-h2 font-size-h1-lg">Registration</h2>
+                                    <p class="text-muted font-weight-bold font-size-h4">Enter your details to create your account</p>
+                                </div>
+                                <!--end::Title-->
+                                <!--begin::Form group-->
+                                <div class="form-group">
+                                    <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="National id / Iqama id" name="National id / Iqama id" autocomplete="off" id="nId" />
+                                </div>
+                                <!--end::Form group-->
+                                <!--begin::Form group-->
+                                <div class="form-group">
+                                    <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 kt_datepicker_4_2" type="text" placeholder="Date of Birth" name="Date of Birth" autocomplete="off" id="dob" />
+                                </div>
+                                <span class="text-danger font-weight-bold font-size-h6-sm" id="signuperror">
+                                </span>
+                                <!--end::Form group-->
+                                <!--begin::Form group-->
+                                <div class="form-group d-flex flex-wrap flex-center pb-lg-0 pb-3">
+                                    <button type="button" id="kt_login_signup_submit" class="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mx-4">Submit</button>
+                                    <button type="button" id="kt_login_signup_cancel" class="btn btn-light-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mx-4">Cancel</button>
+                                </div>
+                                <!--end::Form group-->
+                            </form>
+                            <!--end::Form-->
+                        </div>
+                        <!--end::Signup-->
+                        <!--begin::Verify Details-->
+                        <div class="login-form login-verify py-11" id="login-verify-on">
+                            <!--begin::Form-->
+                            <form class="form" novalidate="novalidate" id="kt_login_verify_form">
+                                <!--begin::Title-->
+                                <div class="text-center pb-8">
+                                    <h2 class="font-weight-bolder text-dark font-size-h2 font-size-h1-lg">Verify Details</h2>
+                                    <p class="text-muted font-weight-bold font-size-h4">
+                                        Hello,Your Registered Mobile number with us 91xxxxxx73<br />
+                                        are you sure, you want to<br />
+                                        verify it with OTP
+                                    </p>
+                                </div>
+                                <!--end::Title-->
+                                <!--begin::Form group-->
+                                <div class="form-group d-flex flex-wrap flex-center pb-lg-0 pb-3">
+                                    <button type="button" id="kt_login_verify_submit" class="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mx-4">Yes</button>
+                                    <button type="button" id="kt_login_verify_cancel" class="btn btn-light-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mx-4">No</button>
+                                </div>
+                                <!--end::Form group-->
+                                <!--begin::Title-->
+                                <div class="text-center pb-8">
+                                    <h2 class="font-weight-bolder text-dark font-size-h2 font-size-h1-lg">-------Contact Us-------</h2>
+                                    <p class="text-muted font-weight-bold font-size-h4">
+                                        For help call Customer Support<br />
+                                        <img src="~/assets/Custom/Images/callLogo.png" style="width:5%"> 1235468790
+                                    </p>
+                                </div>
+                                <!--end::Title-->
+                            </form>
+                            <!--end::Form-->
+                        </div>
+                        <!--end::Verify Details-->
+                        <!--begin::Verification-->
+                        <div class="login-form login-verifyOTP py-11" id="kt_login_verifyOTP_form">
+                            <!--begin::Form-->
+                            <form class="form" novalidate="novalidate" id="kt_login_verifyOTP">
+                                <!--begin::Title-->
+                                <div class="text-center pb-8">
+                                    <h2 class="font-weight-bolder text-dark font-size-h2 font-size-h1-lg">Verify Mobile Number</h2>
+                                    <p class="text-muted font-weight-bold font-size-h4">Enter the OTP sent to your registered Mobile Number 91xxxxxx73</p>
+                                </div>
+                                <div class="right" style="right:20px">
+                                    <input id="codeBox1" class="smalltextbox" type="text" maxlength="1">
+                                    <input id="codeBox2" class="smalltextbox" type="text" maxlength="1">
+                                    <input id="codeBox3" class="smalltextbox" type="text" maxlength="1">
+                                    <input id="codeBox4" class="smalltextbox" type="text" maxlength="1">
+                                </div>
+                                <!--end::Title-->
+                                <!--begin::Form group-->
+                                <!--end::Form group-->
+                                <!--begin::Form group-->
+                                <br />
+                                <span class="text-danger align-items-center font-weight-light font-size-h6-sm" id="otpError">
+                                </span>
+                                <div class="form-group d-flex flex-wrap flex-center pb-lg-0 pb-3">
+                                    <button type="button" id="kt_login_verifyOTP_submit" class="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mx-4">Verify OTP</button>
+                                    @*<button type="button" id="kt_login_verify_cancel" class="btn btn-light-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mx-4">Cancel</button>*@
+                                </div>
+                                <!--end::Form group-->
+                            </form>
+                            <!--end::Form-->
+                        </div>
+                        <!--end::Verification-->
+                        <!--begin::Forgot-->
+                        <div class="login-form login-forgotPIN pt-11" id="kt_login_forgotPIN_form">
+                            <!--begin::Form-->
+                            <form class="form" novalidate="novalidate" id="kt_login_forgotPIN">
+                                <!--begin::Title-->
+                                <div class="text-center pb-8">
+                                    <h2 class="font-weight-bolder text-dark font-size-h2 font-size-h1-lg">Enter Mobile Number</h2>
+                                    <div class="form-group">
+                                        <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="number" placeholder="Enter Mobile Number" name="Enter Mobile Number" autocomplete="off" />
+                                    </div>
+                                    <!--end::Form group-->
+                                </div>
+                                <!--end::Title-->
+                                <!--begin::Form group-->
+                                <div class="form-group d-flex flex-wrap flex-center pb-lg-0 pb-3">
+                                    <button type="button" id="kt_login_forgotPIN_submit" class="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mx-4">Submit</button>
+                                    <button type="button" id="kt_login_forgotPIN_cancel" class="btn btn-light-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mx-4">Cancel</button>
+                                </div>
+                                <!--end::Form group-->
+                            </form>
+                            <!--end::Form-->
+                            <!--begin::Form-->
+                        </div>
+                        <!--end::Forgot-->
+                        <!--begin::Forgot-->
+                        <div class="login-form login-forgot pt-11" id="kt_login_forgot_form">
+                            <!--begin::Form-->
+                            <form class="form" novalidate="novalidate" id="kt_login_forgot">
+
+                                <!--begin::Title-->
+                                <div class="text-center pb-8">
+                                    <h2 class="font-weight-bolder text-dark font-size-h2 font-size-h1-lg">Create PIN</h2>
+                                    <div class="form-group">
+                                        <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="Enter Pin" name="Enter Pin" autocomplete="off" id="enterpin" />
+                                    </div>
+                                    <!--end::Form group-->
+                                    <!--begin::Form group-->
+                                    <div class="form-group">
+                                        <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="Confirm Pin" name="Confirm Pin" autocomplete="off" id="confirmpin" />
+                                    </div>
+                                    <!--end::Form group-->
+
+                                </div>
+                                <span class="text-danger text-center font-weight-bold font-size-h6-sm" id="peror">
+                                </span>
+                                <!--end::Title-->
+                                <!--begin::Form group-->
+                                <div class="form-group d-flex flex-wrap flex-center pb-lg-0 pb-3">
+                                    <a class="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mx-4" id="pinbutton">Submit</a>
+                                    @*<button type="button" id="kt_login_forgot_submit" class="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mx-4">Submit</button>*@
+                                    <button type="button" id="kt_login_forgot_cancel" class="btn btn-light-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mx-4">Cancel</button>
+                                </div>
+                                <!--end::Form group-->
+                            </form>
+
+                            <!--end::Form-->
+                            <!--begin::Form-->
+                        </div>
+                        <!--end::Forgot-->
+                    </div>
+                    <!--end::Aside body-->
+                    <!--begin: Aside footer for desktop-->
+                    <div class="text-center">
+                        @*<button type="button" class="btn btn-light-primary font-weight-bolder px-8 py-4 my-3 font-size-h6">*@
+                        @*<span class="svg-icon svg-icon-md">*@
+                        <!--begin::Svg Icon | path:assets/media/svg/social-icons/google.svg-->
+                        @*<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M19.9895 10.1871C19.9895 9.36767 19.9214 8.76973 19.7742 8.14966H10.1992V11.848H15.8195C15.7062 12.7671 15.0943 14.1512 13.7346 15.0813L13.7155 15.2051L16.7429 17.4969L16.9527 17.5174C18.879 15.7789 19.9895 13.221 19.9895 10.1871Z" fill="#4285F4" />
+                            <path d="M10.1993 19.9313C12.9527 19.9313 15.2643 19.0454 16.9527 17.5174L13.7346 15.0813C12.8734 15.6682 11.7176 16.0779 10.1993 16.0779C7.50243 16.0779 5.21352 14.3395 4.39759 11.9366L4.27799 11.9466L1.13003 14.3273L1.08887 14.4391C2.76588 17.6945 6.21061 19.9313 10.1993 19.9313Z" fill="#34A853" />
+                            <path d="M4.39748 11.9366C4.18219 11.3166 4.05759 10.6521 4.05759 9.96565C4.05759 9.27909 4.18219 8.61473 4.38615 7.99466L4.38045 7.8626L1.19304 5.44366L1.08875 5.49214C0.397576 6.84305 0.000976562 8.36008 0.000976562 9.96565C0.000976562 11.5712 0.397576 13.0882 1.08875 14.4391L4.39748 11.9366Z" fill="#FBBC05" />
+                            <path d="M10.1993 3.85336C12.1142 3.85336 13.406 4.66168 14.1425 5.33717L17.0207 2.59107C15.253 0.985496 12.9527 0 10.1993 0C6.2106 0 2.76588 2.23672 1.08887 5.49214L4.38626 7.99466C5.21352 5.59183 7.50242 3.85336 10.1993 3.85336Z" fill="#EB4335" />
+                        </svg>*@
+                        <!--end::Svg Icon-->
+                        @*</span>Sign in with Google*@
+                        @*</button>*@
+                    </div>
+                    <!--end: Aside footer for desktop-->
+                </div>
+                <!--end: Aside Container-->
+            </div>
+            <!--begin::Aside-->
+            <!--begin::Content-->
+            <div class="content order-1 order-lg-2 d-flex flex-column w-100 pb-0" style=" background-color: #4092bb;">
+                <!--begin::Title-->
+                @*<div class="d-flex flex-column justify-content-center text-center pt-lg-40 pt-md-5 pt-sm-5 px-lg-0 pt-5 px-7">
+                    <h3 class="display4 font-weight-bolder my-7 text-dark" style="color: #986923;">Amazing Wireframes</h3>
+                    <p class="font-weight-bolder font-size-h2-md font-size-lg text-dark opacity-70">
+                        User Experience &amp; Interface Design, Product Strategy
+                        <br />Web Application SaaS Solutions
+                    </p>
+                </div>*@
+
+                <div class="content-img d-flex flex-row-fluid bgi-no-repeat bgi-position-y-bottom bgi-position-x-center" style="background-image: url(assets/Custom/Images/logo-1.jpeg);
+        background-size: contain;"></div>
+            </div>
+            <!--end::Content-->
+        </div>
+        <!--end::Login-->
+    </div>
+    <!--end::Main-->
+    <script>var HOST_URL = "https://keenthemes.com/metronic/tools/preview";</script>
+    <!--begin::Global Config(global config for global JS scripts)-->
+    <script>var KTAppSettings = { "breakpoints": { "sm": 576, "md": 768, "lg": 992, "xl": 1200, "xxl": 1200 }, "colors": { "theme": { "base": { "white": "#ffffff", "primary": "#1BC5BD", "secondary": "#E5EAEE", "success": "#1BC5BD", "info": "#6993FF", "warning": "#FFA800", "danger": "#F64E60", "light": "#F3F6F9", "dark": "#212121" }, "light": { "white": "#ffffff", "primary": "#1BC5BD", "secondary": "#ECF0F3", "success": "#C9F7F5", "info": "#E1E9FF", "warning": "#FFF4DE", "danger": "#FFE2E5", "light": "#F3F6F9", "dark": "#D6D6E0" }, "inverse": { "white": "#ffffff", "primary": "#ffffff", "secondary": "#212121", "success": "#ffffff", "info": "#ffffff", "warning": "#ffffff", "danger": "#ffffff", "light": "#464E5F", "dark": "#ffffff" } }, "gray": { "gray-100": "#F3F6F9", "gray-200": "#ECF0F3", "gray-300": "#E5EAEE", "gray-400": "#D6D6E0", "gray-500": "#B5B5C3", "gray-600": "#80808F", "gray-700": "#464E5F", "gray-800": "#1B283F", "gray-900": "#212121" } }, "font-family": "Poppins" };</script>
+    <!--end::Global Config-->
+    <!--begin::Global Theme Bundle(used by all pages)-->
+    <script src="assets/plugins/global/plugins.bundle.js?v=7.0.4"></script>
+    <script src="assets/plugins/custom/prismjs/prismjs.bundle.js?v=7.0.4"></script>
+    <script src="assets/js/scripts.bundle.js?v=7.0.4"></script>
+    <!--end::Global Theme Bundle-->
+    <!--begin::Page Scripts(used by this page)-->
+    @*<script src="assets/js/pages/custom/login/login-general.js?v=7.0.4"></script>*@
+    <script src="~/assets/js/pages/custom/login/login-general.js"></script>
+    <link href="~/assets/Custom/css/Login/Login.css" rel="stylesheet" />
+    @*<script src="~/assets/Custom/js/LoginCustom.js"></script>*@
+    @*<script src="~/assets/js/pages/custom/login/Verify.js"></script>*@
+    <script src="~/assets/Custom/js/CustomLogin.js"></script>
+
+    <script src="~/assets/Custom/js/Login/LoginValidate.js"></script>
+    <script src="~/assets/Custom/js/datepicker.js"></script>
+    <!--end::Page Scripts-->
+</body>
+<!--end::Body-->

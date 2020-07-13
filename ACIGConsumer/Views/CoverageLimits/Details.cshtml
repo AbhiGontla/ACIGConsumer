@@ -1,0 +1,339 @@
+﻿@model IEnumerable<Core.Api.CoverageBalance>
+@{
+    ViewData["Title"] = "CoverageBalanceDetails";
+    Layout = "_Layoutv1";
+}
+<style>
+    .mr-5, .mx-5 {
+        margin-right: 0.25rem !important;
+    }
+
+    /* .timeline-content {
+        width: 500px;
+    }*/
+</style>
+@{
+    if (ViewBag.lang == "en")
+    {
+        Layout = "_Layouten";
+        <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+            <!--begin::Subheader-->
+            <div class="subheader py-3 py-lg-8 subheader-transparent" id="kt_subheader">
+                <div class="container d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+                    <!--begin::Info-->
+                    <div class="d-flex align-items-center flex-wrap mr-1">
+                        <!--begin::Mobile Toggle-->
+                        <button class="burger-icon burger-icon-left mr-4 d-inline-block d-lg-none" id="kt_subheader_mobile_toggle">
+                            <span></span>
+                        </button>
+                        <!--end::Mobile Toggle-->
+                        <!--begin::Page Heading-->
+                        <div class="d-flex align-items-baseline mr-5">
+                            <!--begin::Page Title-->
+                            <h2 class="subheader-title text-white font-weight-bold my-2 mr-3">Coverage Detail</h2>
+                            <!--end::Page Title-->
+                        </div>
+                        <!--end::Page Heading-->
+                    </div>
+                    <!--end::Info-->
+                    <!--begin::Toolbar-->
+                    <div class="d-flex align-items-center">
+                        <!--begin::Button-->
+                        <a href="/CoverageLimits/index?lang=en" class="btn btn-fh btn-white btn-hover-info font-weight-bold px-2 px-lg-5 mr-2">
+                          Back
+                        </a>
+                        <!--end::Button-->
+                    </div>
+                    <!--end::Toolbar-->
+                </div>
+            </div>
+            <!--end::Subheader-->
+            <!--begin::Entry-->
+            <div class="d-flex flex-column-fluid">
+                <!--begin::Container-->
+                @foreach (var item in Model)
+                {
+                    <div class="container">
+                        <div class="card card-custom gutter-b">
+                            <div class="card-body">
+                                <div class="d-flex">
+                                    <!--begin::Pic-->
+                                    <div class="flex-shrink-0 mr-7">
+                                        <div class="symbol symbol-50 symbol-lg-120">
+                                            <img alt="Pic" src="assets/media//users/300_1.jpg">
+                                        </div>
+                                    </div>
+                                    <!--end::Pic-->
+                                    <!--begin: Info-->
+                                    <div class="flex-grow-1">
+                                        <!--begin::Title-->
+                                        <div class="d-flex align-items-center justify-content-between flex-wrap">
+                                            <!--begin::User-->
+                                            <div class="mr-3">
+                                                <div class="d-flex align-items-center mr-3">
+                                                    <!--begin::Name-->
+                                                    <a href="#" class="d-flex align-items-center text-dark text-hover-primary font-size-h5 font-weight-bold mr-3">@item.Description</a>
+                                                    <!--end::Name-->
+                                                </div>
+                                                <!--begin::Contacts-->
+                                                <div class="d-flex flex-wrap my-2">
+
+                                                    <a href="#" class="text-muted  font-weight-bold mr-lg-8 mr-5 mb-lg-0 mb-2">
+                                                        Allocated :<span class="text-dark-75  font-size-h7 font-weight-bold mr-3" id="kt_subheader_total">@item.Limit SAR</span>
+                                                    </a>&nbsp;
+                                                    <a href="#" class="text-muted  font-weight-bold mr-lg-8 mr-5 mb-lg-0 mb-2">
+                                                        Available :<span class="text-dark-75  font-size-h7 font-weight-bold mr-3" id="kt_subheader_total">@item.RemainingAmount SAR</span>
+                                                    </a>&nbsp;&nbsp;
+                                                    @{
+                                                        int limit = @Convert.ToInt32(item.Limit);
+                                                        int remainlimit = @Convert.ToInt32(item.RemainingAmount);
+                                                        int usedamount = limit - remainlimit;
+
+                                                    }
+
+                                                    <a href="#" class="text-muted font-weight-bold">
+                                                        Used :<span class="text-dark-75  font-size-h9 font-weight-bold mr-3" id="kt_subheader_total">@usedamount SAR</span>
+                                                    </a>&nbsp;
+
+                                                </div>
+                                                <!--end::Contacts-->
+                                            </div>
+                                            <!--begin::User-->
+                                        </div>
+                                        <!--end::Title-->
+                                        <!--begin::Content-->
+                                        <div class="d-flex align-items-center flex-wrap justify-content-between">
+                                            <!--begin::Description-->
+                                            <div class="flex-grow-1 font-weight-bold text-dark-50 py-2 py-lg-2 mr-5">
+                                                Mr. Abu Bakr underwent surgery at the root canal and was under treatment for a week.
+                                                <br />
+                                                The entire surgery went well and the surgery was performed under the direction of Dr. Ahmed, BDS.
+                                            </div>
+                                            <!--end::Description-->
+                                            <!--begin::Progress-->
+                                            @{
+                                                decimal lmit = @Convert.ToDecimal(item.Limit);
+                                                decimal remlmit = @Convert.ToDecimal(item.RemainingAmount);
+                                                decimal a = lmit / remlmit;
+                                                int b = Convert.ToInt32(a * 100);
+                                                int res = 100 - b;
+                                            }
+                                            <div class="d-flex mt-4 mt-sm-0">
+                                                <span class="font-weight-bold mr-4">Usage</span>
+                                                <div class="progress progress-xs mt-2 mb-2 flex-shrink-0 w-150px w-xl-500px">
+                                                    <div class="progress-bar bg-success" role="progressbar" style="width: @res%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+                                                <span class="font-weight-bolder text-dark ml-4">@res%</span>
+                                            </div>
+                                            <!--end::Progress-->
+                                        </div>
+                                        <!--end::Content-->
+                                    </div>
+                                    <!--end::Info-->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card card-custom gutter-b">
+                            <div class="card-body">
+                                <div class="d-flex">
+
+                                    <!--begin: Info-->
+                                    <div class="flex-grow-1">
+                                        <!--begin::Title-->
+                                        <div class="d-flex align-items-center justify-content-between flex-wrap">
+                                            <!--begin::User-->
+                                            <div class="mr-3">
+                                                <div class="d-flex align-items-center mr-3">
+                                                    <!--begin::Name-->
+                                                    <a href="#" class="d-flex align-items-center text-dark text-hover-primary font-size-h3 font-weight-bold mr-3">Claims</a>
+                                                    <!--end::Name-->
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="timeline timeline-3">
+                                            <div class="timeline-items">
+                                                <div class="timeline-item">
+                                                    --No Claims Found--
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                }
+
+                <!--end::Container-->
+            </div>
+            <!--end::Entry-->
+        </div>
+    }
+    else if (ViewBag.lang == "ar")
+    {
+        Layout = "_Layoutv1";
+        <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+            <!--begin::Subheader-->
+            <div class="subheader py-3 py-lg-8 subheader-transparent" id="kt_subheader">
+                <div class="container d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+                    <!--begin::Info-->
+                    <div class="d-flex align-items-center flex-wrap mr-1">
+                        <!--begin::Mobile Toggle-->
+                        <button class="burger-icon burger-icon-left mr-4 d-inline-block d-lg-none" id="kt_subheader_mobile_toggle">
+                            <span></span>
+                        </button>
+                        <!--end::Mobile Toggle-->
+                        <!--begin::Page Heading-->
+                        <div class="d-flex align-items-baseline mr-5">
+                            <!--begin::Page Title-->
+                            <h2 class="subheader-title text-white font-weight-bold my-2 mr-3">تفاصيل التغطية</h2>
+                            <!--end::Page Title-->
+                        </div>
+                        <!--end::Page Heading-->
+                    </div>
+                    <!--end::Info-->
+                    <!--begin::Toolbar-->
+                    <div class="d-flex align-items-center">
+                        <!--begin::Button-->
+                        <a href="/CoverageLimits/index?lang=ar" class="btn btn-fh btn-white btn-hover-info font-weight-bold px-2 px-lg-5 mr-2">
+                            عودة
+                        </a>
+                        <!--end::Button-->
+                    </div>
+                    <!--end::Toolbar-->
+                </div>
+            </div>
+            <!--end::Subheader-->
+            <!--begin::Entry-->
+            <div class="d-flex flex-column-fluid">
+                <!--begin::Container-->
+                @foreach (var item in Model)
+                {
+                    <div class="container">
+                        <div class="card card-custom gutter-b">
+                            <div class="card-body">
+                                <div class="d-flex">
+                                    <!--begin::Pic-->
+                                    <div class="flex-shrink-0 mr-7">
+                                        <div class="symbol symbol-50 symbol-lg-120">
+                                            <img alt="Pic" src="assets/media//users/300_1.jpg">
+                                        </div>
+                                    </div>
+                                    <!--end::Pic-->
+                                    <!--begin: Info-->
+                                    <div class="flex-grow-1">
+                                        <!--begin::Title-->
+                                        <div class="d-flex align-items-center justify-content-between flex-wrap">
+                                            <!--begin::User-->
+                                            <div class="mr-3">
+                                                <div class="d-flex align-items-center mr-3">
+                                                    <!--begin::Name-->
+                                                    <a href="#" class="d-flex align-items-center text-dark text-hover-primary font-size-h5 font-weight-bold mr-3">@item.Description</a>
+                                                    <!--end::Name-->
+                                                </div>
+                                                <!--begin::Contacts-->
+                                                <div class="d-flex flex-wrap my-2">
+
+                                                    <a href="#" class="text-muted  font-weight-bold mr-lg-8 mr-5 mb-lg-0 mb-2">
+                                                        مخصص :<span class="text-dark-75  font-size-h7 font-weight-bold mr-3" id="kt_subheader_total">@item.Limit SAR</span>
+                                                    </a>&nbsp;
+                                                    <a href="#" class="text-muted  font-weight-bold mr-lg-8 mr-5 mb-lg-0 mb-2">
+                                                        متاح :<span class="text-dark-75  font-size-h7 font-weight-bold mr-3" id="kt_subheader_total">@item.RemainingAmount SAR</span>
+                                                    </a>&nbsp;&nbsp;
+                                                    @{
+                                                        int limit = @Convert.ToInt32(item.Limit);
+                                                        int remainlimit = @Convert.ToInt32(item.RemainingAmount);
+                                                        int usedamount = limit - remainlimit;
+
+                                                    }
+
+                                                    <a href="#" class="text-muted font-weight-bold">
+                                                        مستخدم :<span class="text-dark-75  font-size-h9 font-weight-bold mr-3" id="kt_subheader_total">@usedamount SAR</span>
+                                                    </a>&nbsp;
+
+                                                </div>
+                                                <!--end::Contacts-->
+                                            </div>
+                                            <!--begin::User-->
+                                        </div>
+                                        <!--end::Title-->
+                                        <!--begin::Content-->
+                                        <div class="d-flex align-items-center flex-wrap justify-content-between">
+                                            <!--begin::Description-->
+                                            <div class="flex-grow-1 font-weight-bold text-dark-50 py-2 py-lg-2 mr-5">
+                                                خضع السيد أبوبكر لعملية جراحية في قناة الجذر وكان تحت العلاج لمدة أسبوع.
+                                                <br />
+                                                سارت الجراحة بأكملها بشكل جيد وتم إجراء الجراحة بتوجيه من الدكتور أحمد ، BDS.
+                                            </div>
+                                            <!--end::Description-->
+                                            <!--begin::Progress-->
+                                            @{
+                                                decimal lmit = @Convert.ToDecimal(item.Limit);
+                                                decimal remlmit = @Convert.ToDecimal(item.RemainingAmount);
+                                                decimal a = lmit / remlmit;
+                                                int b = Convert.ToInt32(a * 100);
+                                                int res = 100 - b;
+                                            }
+                                            <div class="d-flex mt-4 mt-sm-0">
+                                                <span class="font-weight-bold mr-4">الاستخدام</span>
+                                                <div class="progress progress-xs mt-2 mb-2 flex-shrink-0 w-150px w-xl-500px">
+                                                    <div class="progress-bar bg-success" role="progressbar" style="width: @res%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+                                                <span class="font-weight-bolder text-dark ml-4">@res%</span>
+                                            </div>
+                                            <!--end::Progress-->
+                                        </div>
+                                        <!--end::Content-->
+                                    </div>
+                                    <!--end::Info-->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card card-custom gutter-b">
+                            <div class="card-body">
+                                <div class="d-flex">
+
+                                    <!--begin: Info-->
+                                    <div class="flex-grow-1">
+                                        <!--begin::Title-->
+                                        <div class="d-flex align-items-center justify-content-between flex-wrap">
+                                            <!--begin::User-->
+                                            <div class="mr-3">
+                                                <div class="d-flex align-items-center mr-3">
+                                                    <!--begin::Name-->
+                                                    <a href="#" class="d-flex align-items-center text-dark text-hover-primary font-size-h3 font-weight-bold mr-3">المطالبات </a>
+                                                    <!--end::Name-->
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="timeline timeline-3">
+                                            <div class="timeline-items">
+                                                <div class="timeline-item">
+                                                    --No Claims Found--
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                }
+
+                <!--end::Container-->
+            </div>
+            <!--end::Entry-->
+        </div>
+    }
+}
+
+
+

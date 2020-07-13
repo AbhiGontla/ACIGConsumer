@@ -1,0 +1,296 @@
+﻿@{
+    ViewData["Title"] = "Login";
+    Layout = "";
+}
+<style>
+    .col-lg-3 {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 25%;
+        flex: 0 0 25%;
+        max-width: 1%;
+    }
+
+    .smalltextbox {
+        width: 50px;
+        height: 50px;
+        padding: 0;
+        margin-right: 25px;
+        text-align: center;
+        background-color: #e5eaee;
+        border: #e5eaee;
+        border-radius: 5px;
+        margin: 25px;
+    }
+
+   
+</style>
+<!--begin::Head-->
+<head>
+    <base href="../../../">
+    <meta charset="utf-8" />
+    <title>ACIG | Login</title>
+    <meta name="description" content="Login page example" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+
+    <!--begin::Fonts-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
+    <!--end::Fonts-->
+    @if (ViewBag.lang == "en")
+    {
+        <!--begin::Page Custom Styles(used by this page)-->
+        <link href="assets/css/pages/login/login-2.css?v=7.0.4" rel="stylesheet" type="text/css" />
+        <!--end::Page Custom Styles-->
+        <!--begin::Global Theme Styles(used by all pages)-->
+        <link href="assets/plugins/global/plugins.bundle.css?v=7.0.4" rel="stylesheet" type="text/css" />
+        <link href="assets/plugins/custom/prismjs/prismjs.bundle.css?v=7.0.4" rel="stylesheet" type="text/css" />
+        <link href="assets/css/style.bundle.css?v=7.0.4" rel="stylesheet" type="text/css" />
+    }
+    @if (ViewBag.lang == "ar")
+    {
+        <link href="assets/css/pages/login/login-2.rtl.css?v=7.0.4" rel="stylesheet" type="text/css" />
+        <!--end::Page Custom Styles-->
+        <!--begin::Global Theme Styles(used by all pages)-->
+        <link href="assets/plugins/global/plugins.bundle.rtl.css?v=7.0.4" rel="stylesheet" type="text/css" />
+        <link href="assets/plugins/custom/prismjs/prismjs.bundle.rtl.css?v=7.0.4" rel="stylesheet" type="text/css" />
+        <link href="assets/css/style.bundle.rtl.css?v=7.0.4" rel="stylesheet" type="text/css" />
+    }
+    <!--end::Layout Themes-->
+    <link rel="shortcut icon" href="assets/media/logos/favicon.ico" />
+
+
+ 
+</head>
+<!--end::Head-->
+<!--begin::Body-->
+<body id="kt_body" class="header-mobile-fixed subheader-enabled aside-enabled aside-fixed aside-secondary-enabled page-loading">
+    <!--begin::Main-->
+    <div class="d-flex flex-column flex-root">
+        @if (ViewBag.lang == "en")
+        {
+            <!--begin::Login-->
+            <div class="login login-2 login-signin-on d-flex flex-column flex-lg-row flex-column-fluid bg-white" id="kt_login">
+
+                <!--begin::Aside-->
+                <div class="login-aside order-2 order-lg-1 d-flex flex-row-auto position-relative overflow-hidden">
+
+                    <!--begin: Aside Container-->
+                    <div class="d-flex flex-column-fluid flex-column justify-content-between py-9 px-7 py-lg-13 px-lg-35">
+
+                        <!--begin::Aside body-->
+                        <div class="d-flex flex-column-fluid flex-column flex-center">
+
+                            <!--begin::Signup-->
+                            <div class="">
+                                <button class="btn btn-primary btn-sm text-white " style="float:right" id="btnar">عربى</button>
+                                <!--begin::Form-->
+                                <form class="form" novalidate="novalidate">
+                                    <!--begin::Title-->
+                                    <div class="text-center pb-8">
+                                        <h2 class="font-weight-bolder text-dark font-size-h2 font-size-h1-lg">Registration</h2>
+                                        <p class="text-muted font-weight-bold font-size-h4">Enter your details to create your account</p>
+                                    </div>
+                                    <!--end::Title-->
+                                    <!--begin::Form group-->
+                                    <div class="form-group">
+                                        <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="National id / Iqama id" name="National id / Iqama id" autocomplete="off" id="nId" />
+                                    </div>
+                                    <!--end::Form group-->
+                                    <!--begin::Form group-->
+                                    <div class="form-group">
+                                        <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 " type="date" placeholder="Date of Birth"   id="dob" />
+                                    </div>
+                                    <span class="text-danger font-weight-bold font-size-h6-sm" id="signuperror">
+                                    </span>
+                                    <!--end::Form group-->
+                                    <!--begin::Form group-->
+                                    <div class="form-group d-flex flex-wrap flex-center pb-lg-0 pb-3">
+                                        <a id="btn_signup_submit" class="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mx-4">Submit</a>
+                                        <a href="/test/login?lang=en" id="" class="btn btn-light-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mx-4">Cancel</a>
+                                    </div>
+                                    <!--end::Form group-->
+                                </form>
+                                <!--end::Form-->
+                            </div>
+                            <!--end::Signup-->
+
+
+                        </div>
+                        <!--end::Aside body-->
+                        <!--begin: Aside footer for desktop-->
+                        <div class="text-center">
+
+                        </div>
+                        <!--end: Aside footer for desktop-->
+                    </div>
+                    <!--end: Aside Container-->
+                </div>
+                <!--begin::Aside-->
+                <!--begin::Content-->
+                <div class="content order-1 order-lg-2 d-flex flex-column w-100 pb-0" style=" background-color: #4092bb;">
+                    <!--begin::Title-->
+                    @*<div class="d-flex flex-column justify-content-center text-center pt-lg-40 pt-md-5 pt-sm-5 px-lg-0 pt-5 px-7">
+                            <h3 class="display4 font-weight-bolder my-7 text-dark" style="color: #986923;">Amazing Wireframes</h3>
+                            <p class="font-weight-bolder font-size-h2-md font-size-lg text-dark opacity-70">
+                                User Experience &amp; Interface Design, Product Strategy
+                                <br />Web Application SaaS Solutions
+                            </p>
+                        </div>*@
+
+                    <div class="content-img d-flex flex-row-fluid bgi-no-repeat bgi-position-y-bottom bgi-position-x-center" style="background-image: url(assets/Custom/Images/logo-1.jpeg);
+        background-size: contain;"></div>
+                </div>
+                <!--end::Content-->
+            </div>
+            <!--end::Login-->
+        }
+        else if (ViewBag.lang == "ar")
+        {
+            <div class="login login-2 login-signin-on d-flex flex-column flex-lg-row flex-column-fluid bg-white" id="kt_login">
+
+                <!--begin::Aside-->
+                <div class="login-aside order-2 order-lg-1 d-flex flex-row-auto position-relative overflow-hidden">
+
+                    <!--begin: Aside Container-->
+                    <div class="d-flex flex-column-fluid flex-column justify-content-between py-9 px-7 py-lg-13 px-lg-35">
+
+                        <!--begin::Aside body-->
+                        <div class="d-flex flex-column-fluid flex-column flex-center">
+
+                            <!--begin::Signup-->
+                            <div class="">
+                                <button class="btn btn-primary btn-sm text-white " style="float:right" id="btnen">English</button>
+                                <!--begin::Form-->
+                                <form class="form" novalidate="novalidate">
+                                    <!--begin::Title-->
+                                    <div class="text-center pb-8">
+                                        <h2 class="font-weight-bolder text-dark font-size-h2 font-size-h1-lg">التسجيل</h2>
+                                        <p class="text-muted font-weight-bold font-size-h4">أدخل التفاصيل الخاصة بك لإنشاء حسابك</p>
+                                    </div>
+                                    <!--end::Title-->
+                                    <!--begin::Form group-->
+                                    <div class="form-group">
+                                        <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="الهوية الوطنية / هوية الإقامة" name="National id / Iqama id" autocomplete="off" id="nIdar" />
+                                    </div>
+                                    <!--end::Form group-->
+                                    <!--begin::Form group-->
+                                    <div class="form-group">
+                                      
+                                        <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 " placeholder="تاريخ الولادة"  autocomplete="off" type="date" id="dobar" />
+                                    </div>
+                                    <span class="text-danger font-weight-bold font-size-h6-sm" id="signuperror">
+                                    </span>
+                                    <!--end::Form group-->
+                                    <!--begin::Form group-->
+                                    <div class="form-group d-flex flex-wrap flex-center pb-lg-0 pb-3">
+                                        <a  id="btnar_signup_submit" class="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mx-4">إرسال</a>
+                                        <a href="/test/login?lang=ar" id="" class="btn btn-light-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mx-4">إلغاء</a>
+                                    </div>
+                                    <!--end::Form group-->
+                                </form>
+                                <!--end::Form-->
+                            </div>
+                            <!--end::Signup-->
+
+
+                        </div>
+                        <!--end::Aside body-->
+                        <!--begin: Aside footer for desktop-->
+                        <div class="text-center">
+
+                        </div>
+                        <!--end: Aside footer for desktop-->
+                    </div>
+                    <!--end: Aside Container-->
+                </div>
+                <!--begin::Aside-->
+                <!--begin::Content-->
+                <div class="content order-1 order-lg-2 d-flex flex-column w-100 pb-0" style=" background-color: #4092bb;">
+                    <!--begin::Title-->
+                    @*<div class="d-flex flex-column justify-content-center text-center pt-lg-40 pt-md-5 pt-sm-5 px-lg-0 pt-5 px-7">
+                            <h3 class="display4 font-weight-bolder my-7 text-dark" style="color: #986923;">Amazing Wireframes</h3>
+                            <p class="font-weight-bolder font-size-h2-md font-size-lg text-dark opacity-70">
+                                User Experience &amp; Interface Design, Product Strategy
+                                <br />Web Application SaaS Solutions
+                            </p>
+                        </div>*@
+
+                    <div class="content-img d-flex flex-row-fluid bgi-no-repeat bgi-position-y-bottom bgi-position-x-center" style="background-image: url(assets/Custom/Images/logo-1.jpeg);
+        background-size: contain;"></div>
+                </div>
+                <!--end::Content-->
+            </div>
+
+        }
+    </div>
+    <!--end::Main-->
+    <script>var HOST_URL = "https://keenthemes.com/metronic/tools/preview";</script>
+    <!--begin::Global Config(global config for global JS scripts)-->
+    <script>var KTAppSettings = { "breakpoints": { "sm": 576, "md": 768, "lg": 992, "xl": 1200, "xxl": 1200 }, "colors": { "theme": { "base": { "white": "#ffffff", "primary": "#1BC5BD", "secondary": "#E5EAEE", "success": "#1BC5BD", "info": "#6993FF", "warning": "#FFA800", "danger": "#F64E60", "light": "#F3F6F9", "dark": "#212121" }, "light": { "white": "#ffffff", "primary": "#1BC5BD", "secondary": "#ECF0F3", "success": "#C9F7F5", "info": "#E1E9FF", "warning": "#FFF4DE", "danger": "#FFE2E5", "light": "#F3F6F9", "dark": "#D6D6E0" }, "inverse": { "white": "#ffffff", "primary": "#ffffff", "secondary": "#212121", "success": "#ffffff", "info": "#ffffff", "warning": "#ffffff", "danger": "#ffffff", "light": "#464E5F", "dark": "#ffffff" } }, "gray": { "gray-100": "#F3F6F9", "gray-200": "#ECF0F3", "gray-300": "#E5EAEE", "gray-400": "#D6D6E0", "gray-500": "#B5B5C3", "gray-600": "#80808F", "gray-700": "#464E5F", "gray-800": "#1B283F", "gray-900": "#212121" } }, "font-family": "Poppins" };</script>
+    <!--end::Global Config-->
+    <!--begin::Global Theme Bundle(used by all pages)-->
+
+    <script src="assets/plugins/global/plugins.bundle.js?v=7.0.4"></script>
+
+    <script src="assets/plugins/custom/prismjs/prismjs.bundle.js?v=7.0.4"></script>
+    <script src="assets/js/scripts.bundle.js?v=7.0.4"></script>
+    <!--end::Global Theme Bundle-->
+    <!--begin::Page Scripts(used by this page)-->
+    @*<script src="assets/js/pages/custom/login/login-general.js?v=7.0.4"></script>*@
+    @*<script src="~/assets/js/pages/custom/login/login-general.js"></script>*@
+    @*<link href="~/assets/Custom/css/Login/Login.css" rel="stylesheet" />*@
+    @*<script src="~/assets/Custom/js/LoginCustom.js"></script>*@
+    @*<script src="~/assets/js/pages/custom/login/Verify.js"></script>*@
+
+    @*<script src="~/assets/Custom/js/CustomLogin.js"></script>*@
+  
+    <script src="~/assets/Custom/js/Login/Signupvalidate.js"></script>
+    <!--end::Page Scripts-->
+</body>
+<!--end::Body-->
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#btnen').click(function () {
+            debugger;
+            var pageURL = $(location).attr("href");
+            var baseaddress = pageURL.substring(0, pageURL.indexOf('?'));
+            var tech = getUrlParameter('lang');
+
+            if (tech == "en") {
+                location.href = baseaddress + "?lang=ar";
+            } else if (tech == "ar") {
+                location.href = baseaddress + "?lang=en";
+            }
+        });
+        $('#btnar').click(function () {
+            debugger;
+            var pageURL = $(location).attr("href");
+            var baseaddress = pageURL.substring(0, pageURL.indexOf('?'));
+            var tech = getUrlParameter('lang');
+
+            if (tech == "en") {
+                location.href = baseaddress + "?lang=ar";
+            } else if (tech == "ar") {
+                location.href = baseaddress + "?lang=en";
+            }
+        });
+    });
+
+    var getUrlParameter = function getUrlParameter(sParam) {
+
+        var sPageURL = window.location.search.substring(1),
+            sURLVariables = sPageURL.split('&'),
+            sParameterName,
+            i;
+
+
+        for (i = 0; i < sURLVariables.length; i++) {
+            sParameterName = sURLVariables[i].split('=');
+
+            if (sParameterName[0] === sParam) {
+                return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+            }
+        }
+    };
+</script>
