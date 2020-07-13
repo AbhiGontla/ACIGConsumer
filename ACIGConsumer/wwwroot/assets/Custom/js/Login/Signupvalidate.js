@@ -1,4 +1,5 @@
-﻿var Nationalid;
+﻿/// <reference path="jquery.session.js" />
+var Nationalid;
 var dateofbirth;
 var sentotp;
 var enterpin;
@@ -17,31 +18,44 @@ function validateNid() {
     $("#signuperror").hide();
 
     Nationalid = $("#nId").val();
-    dateofbirth = $("#dob").val();
+    dateofbirth = $(".dob").val();
     var nid = Nationalid;
     var status = "true";
     if (Nationalid.length < 10) {
         $("#signuperror").show();
         $("#signuperror").text("Please enter valid nationalId");
         status = "false";
-    } else if (Nationalid.length > 10) {
+        return status;
+    }
+    if (Nationalid.length > 10) {
         $("#signuperror").show();
         $("#signuperror").text("Please enter valid nationalId");
         status = "false";
-    } else if (!(/^\S{3,}$/.test(Nationalid))) {
+        return status;
+    }
+    if (!(/^\S{3,}$/.test(Nationalid))) {
         $("#signuperror").show();
         $("#signuperror").text("Please enter whithout space");
         status = "false";
-        return false;
-    } else if (!$.isNumeric(Nationalid)) {
+        return status;
+    }
+    if (!$.isNumeric(Nationalid)) {
         $("#signuperror").show();
         $("#signuperror").text("Please enter number only");
         status = "false";
+        return status;
     }
-    else if (Nationalid.length = 10) {
+    if (Nationalid.length > 10) {
+        $("#signuperror").show();
+        $("#signuperror").text("Please enter valid nationalId");
+        status = "false";
+        return status;
+    }
+    if (Nationalid.length = 10) {
         $("#signuperror").hide();
         status = "true";
         flag = 1;
+        return status;
     } else {
         return status;
     }
@@ -52,31 +66,44 @@ function validateNidar() {
     $("#signuperror").hide();
 
     Nationalid = $("#nIdar").val();
-    dateofbirth = $("#dobar").val();
+    dateofbirth = $(".dobar").val();
     var nid = Nationalid;
     var status = "true";
     if (Nationalid.length < 10) {
         $("#signuperror").show();
         $("#signuperror").text("Please enter valid nationalId");
         status = "false";
-    } else if (Nationalid.length > 10) {
+        return status;
+    }
+    if (Nationalid.length > 10) {
         $("#signuperror").show();
         $("#signuperror").text("Please enter valid nationalId");
         status = "false";
-    } else if (!(/^\S{3,}$/.test(Nationalid))) {
+        return status;
+    }
+    if (!(/^\S{3,}$/.test(Nationalid))) {
         $("#signuperror").show();
         $("#signuperror").text("Please enter whithout space");
         status = "false";
-        return false;
-    } else if (!$.isNumeric(Nationalid)) {
+        return status;
+    }
+    if (!$.isNumeric(Nationalid)) {
         $("#signuperror").show();
         $("#signuperror").text("Please enter number only");
         status = "false";
+        return status;
     }
-    else if (Nationalid.length = 10) {
+    if (Nationalid.length > 10) {
+        $("#signuperror").show();
+        $("#signuperror").text("Please enter valid nationalId");
+        status = "false";
+        return status;
+    }
+    if (Nationalid.length = 10) {
         $("#signuperror").hide();
         status = "true";
         flag = 1;
+        return status;
     } else {
         return status;
     }
@@ -87,10 +114,34 @@ function validateNidar() {
 $('#btn_signup_submit').on('click', function (e) {
     e.preventDefault();
     Nationalid = $("#nId").val();
-    dateofbirth = $("#dob").val();
-    validateNid();
-    if (flag = 1) {     
-        $.ajax({           
+    dateofbirth = $(".dob").val();
+    var status = "false";
+    if (Nationalid.length < 10) {
+        $("#signuperror").show();
+        $("#signuperror").text("Please enter valid nationalId");
+        status = "false";      
+    }
+    if (Nationalid.length > 10) {
+        $("#signuperror").show();
+        $("#signuperror").text("Please enter valid nationalId");
+        status = "false";      
+    }
+    if (!(/^\S{3,}$/.test(Nationalid))) {
+        $("#signuperror").show();
+        $("#signuperror").text("Please enter whithout space");
+        status = "false";       
+    }
+    if (!$.isNumeric(Nationalid)) {
+        $("#signuperror").show();
+        $("#signuperror").text("Please enter number only");
+        status = "false";      
+    }
+    if (Nationalid.length > 10 || Nationalid.length < 10 || Nationalid.length == 0) {
+        $("#signuperror").show();
+        $("#signuperror").text("Please enter valid nationalId");
+        status = "false";      
+    } else {
+        $.ajax({
             type: "GET",
             url: "/Test/VerifyDetails",
             data: { nid: Nationalid, dob: dateofbirth },
@@ -101,7 +152,7 @@ $('#btn_signup_submit').on('click', function (e) {
                 if (result.success) {
                     location.href = "https://localhost:44310/Test/VerifyDetails?lang=en";
                 }
-               
+
                 //$("#dataDiv").html(result);
             },
             error: function (error) {
@@ -109,7 +160,6 @@ $('#btn_signup_submit').on('click', function (e) {
             }
         });
     }
-  
 
 });
 
@@ -117,10 +167,12 @@ $('#btn_signup_submit').on('click', function (e) {
 $('#btnar_signup_submit').on('click', function (e) {
     e.preventDefault();
     Nationalid = $("#nIdar").val();
-    dateofbirth = $("#dobar").val();
+    dateofbirth = $(".dobar").val();
+    $.session.set("Nationid", Nationalid);
+ 
     validateNidar();
-    if (flag = 1) {        
-        $.ajax({           
+    if (flag = 1) {
+        $.ajax({
             type: "GET",
             url: "/Test/VerifyDetails",
             data: { nid: Nationalid, dob: dateofbirth },
@@ -131,7 +183,7 @@ $('#btnar_signup_submit').on('click', function (e) {
                 if (result.success) {
                     location.href = "https://localhost:44310/Test/VerifyDetails?lang=ar";
                 }
-               
+
                 //$("#dataDiv").html(result);
             },
             error: function (error) {
@@ -139,11 +191,11 @@ $('#btnar_signup_submit').on('click', function (e) {
             }
         });
     }
-  
+
 
 });
 $('#btn_verify').on('click', function (e) {
-    e.preventDefault();   
+    e.preventDefault();
     $.ajax({
         type: "POST",
         url: "/Login/sendsms",
@@ -152,18 +204,23 @@ $('#btn_verify').on('click', function (e) {
         dataType: "json",
         success: function (result) {
             debugger;
-            sentotp = $.trim(result.sentotp).toUpperCase();
-            alert(sentotp);
-            location.href = "https://localhost:44310/Test/VerifyOTP?lang=en";
-            //$("#dataDiv").html(result);
+            if ($.trim(result.success).toUpperCase() == "TRUE") {
+                sentotp = $.trim(result.sentotp).toUpperCase();
+                alert(sentotp);
+                location.href = "https://localhost:44310/Test/VerifyOTP?lang=en";
+                //$("#dataDiv").html(result);
+            } else {               
+                $("#sendError").text("OTP Sending Failed");
+            }
+           
         },
         error: function (error) {
-           
+
         }
     });
 });
 $('#btn_verify_ar').on('click', function (e) {
-    e.preventDefault();   
+    e.preventDefault();
     $.ajax({
         type: "POST",
         url: "/Login/sendsms",
@@ -172,13 +229,18 @@ $('#btn_verify_ar').on('click', function (e) {
         dataType: "json",
         success: function (result) {
             debugger;
-            sentotp = $.trim(result.sentotp).toUpperCase();
-            alert(sentotp);
-            location.href = "https://localhost:44310/Test/VerifyOTP?lang=ar";
-            //$("#dataDiv").html(result);
+            if ($.trim(result.success).toUpperCase() == "TRUE") {
+                sentotp = $.trim(result.sentotp).toUpperCase();
+                alert(sentotp);
+                location.href = "https://localhost:44310/Test/VerifyOTP?lang=en";
+                //$("#dataDiv").html(result);
+            } else {
+                
+                $("#otpError").text("OTP Sending Failed");
+            }
         },
         error: function (error) {
-           
+
         }
     });
 });
@@ -188,7 +250,7 @@ $('#btn_otp_verify').on('click', function (e) {
     e.preventDefault();
     alert(sentotp);
     var enteredotp = $("#codeBox1").val() + $("#codeBox2").val() + $("#codeBox3").val() + $("#codeBox4").val();
- 
+
     $.ajax({
         type: "GET",
         url: "/Login/validateOTP",
@@ -211,7 +273,7 @@ $('#btn_otp_verify').on('click', function (e) {
 });
 $('#btn_otp_verify_ar').on('click', function (e) {
     e.preventDefault();
-  
+
     var enteredotp = $("#codeBox1").val() + $("#codeBox2").val() + $("#codeBox3").val() + $("#codeBox4").val();
 
     $.ajax({
@@ -236,7 +298,7 @@ $('#btn_otp_verify_ar').on('click', function (e) {
 });
 
 $('#btn_verify_pin').on('click', function (e) {
-    e.preventDefault(); 
+    e.preventDefault();
 
     var epin = $("#enterpin").val();
     var cpin = $("#confirmpin").val();
@@ -257,7 +319,7 @@ $('#btn_verify_pin').on('click', function (e) {
         $("#peror").hide();
         $.ajax({
             type: "POST",
-            url: "/Login/RegisterUser",
+            url: "/Test/RegisterUser",
             data: { enterpin: epin, confirmpin: cpin },
             dataType: "json",
             success: function (result) {
@@ -303,7 +365,7 @@ $('#btn_verify_pin_ar').on('click', function (e) {
         $("#peror").hide();
         $.ajax({
             type: "POST",
-            url: "/Login/RegisterUser",
+            url: "/Test/RegisterUser",
             data: { enterpin: epin, confirmpin: cpin },
             dataType: "json",
             success: function (result) {

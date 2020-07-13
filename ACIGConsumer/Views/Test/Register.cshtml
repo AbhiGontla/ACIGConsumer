@@ -2,28 +2,7 @@
     ViewData["Title"] = "Login";
     Layout = "";
 }
-<style>
-    .col-lg-3 {
-        -webkit-box-flex: 0;
-        -ms-flex: 0 0 25%;
-        flex: 0 0 25%;
-        max-width: 1%;
-    }
 
-    .smalltextbox {
-        width: 50px;
-        height: 50px;
-        padding: 0;
-        margin-right: 25px;
-        text-align: center;
-        background-color: #e5eaee;
-        border: #e5eaee;
-        border-radius: 5px;
-        margin: 25px;
-    }
-
-   
-</style>
 <!--begin::Head-->
 <head>
     <base href="../../../">
@@ -58,8 +37,32 @@
     <!--end::Layout Themes-->
     <link rel="shortcut icon" href="assets/media/logos/favicon.ico" />
 
+    <style>
+        .col-lg-3 {
+            -webkit-box-flex: 0;
+            -ms-flex: 0 0 25%;
+            flex: 0 0 25%;
+            max-width: 1%;
+        }
 
- 
+        .smalltextbox {
+            width: 50px;
+            height: 50px;
+            padding: 0;
+            margin-right: 25px;
+            text-align: center;
+            background-color: #e5eaee;
+            border: #e5eaee;
+            border-radius: 5px;
+            margin: 25px;
+        }
+
+        @@font-face {
+            font-family: 'cairo-bold';
+            src: url('assets/custom/fonts/cairo/cairo-bold.ttf') format('truetype');
+        }
+    </style>
+
 </head>
 <!--end::Head-->
 <!--begin::Body-->
@@ -82,7 +85,7 @@
 
                             <!--begin::Signup-->
                             <div class="">
-                                <button class="btn btn-primary btn-sm text-white " style="float:right" id="btnar">عربى</button>
+                                <button class="btn btn-primary btn-sm text-white " style="float:right;font-family:cairo-bold" id="btnar">عربى</button>
                                 <!--begin::Form-->
                                 <form class="form" novalidate="novalidate">
                                     <!--begin::Title-->
@@ -98,7 +101,7 @@
                                     <!--end::Form group-->
                                     <!--begin::Form group-->
                                     <div class="form-group">
-                                        <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 " type="date" placeholder="Date of Birth"   id="dob" />
+                                        <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 dob" type="text" autocomplete="off" placeholder="DateofBirth" id="kt_datepicker_5" />                                       
                                     </div>
                                     <span class="text-danger font-weight-bold font-size-h6-sm" id="signuperror">
                                     </span>
@@ -161,7 +164,7 @@
                             <div class="">
                                 <button class="btn btn-primary btn-sm text-white " style="float:right" id="btnen">English</button>
                                 <!--begin::Form-->
-                                <form class="form" novalidate="novalidate">
+                                <form class="form" novalidate="novalidate" style="font-family:cairo-bold">
                                     <!--begin::Title-->
                                     <div class="text-center pb-8">
                                         <h2 class="font-weight-bolder text-dark font-size-h2 font-size-h1-lg">التسجيل</h2>
@@ -175,15 +178,15 @@
                                     <!--end::Form group-->
                                     <!--begin::Form group-->
                                     <div class="form-group">
-                                      
-                                        <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 " placeholder="تاريخ الولادة"  autocomplete="off" type="date" id="dobar" />
+
+                                        <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6 dobar" placeholder="تاريخ الولادة" autocomplete="off" type="text" id="kt_datepicker_5" />
                                     </div>
                                     <span class="text-danger font-weight-bold font-size-h6-sm" id="signuperror">
                                     </span>
                                     <!--end::Form group-->
                                     <!--begin::Form group-->
                                     <div class="form-group d-flex flex-wrap flex-center pb-lg-0 pb-3">
-                                        <a  id="btnar_signup_submit" class="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mx-4">إرسال</a>
+                                        <a id="btnar_signup_submit" class="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mx-4">إرسال</a>
                                         <a href="/test/login?lang=ar" id="" class="btn btn-light-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mx-4">إلغاء</a>
                                     </div>
                                     <!--end::Form group-->
@@ -232,8 +235,8 @@
 
     <script src="assets/plugins/global/plugins.bundle.js?v=7.0.4"></script>
 
-    <script src="assets/plugins/custom/prismjs/prismjs.bundle.js?v=7.0.4"></script>
-    <script src="assets/js/scripts.bundle.js?v=7.0.4"></script>
+    @*<script src="assets/plugins/custom/prismjs/prismjs.bundle.js?v=7.0.4"></script>*@
+    @*<script src="assets/js/scripts.bundle.js?v=7.0.4"></script>*@
     <!--end::Global Theme Bundle-->
     <!--begin::Page Scripts(used by this page)-->
     @*<script src="assets/js/pages/custom/login/login-general.js?v=7.0.4"></script>*@
@@ -243,12 +246,15 @@
     @*<script src="~/assets/js/pages/custom/login/Verify.js"></script>*@
 
     @*<script src="~/assets/Custom/js/CustomLogin.js"></script>*@
-  
-    <script src="~/assets/Custom/js/Login/Signupvalidate.js"></script>
+
+
+
     <!--end::Page Scripts-->
 </body>
 <!--end::Body-->
-<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/assets/js/scripts.bundle.js"></script>
+<script src="~/assets/js/pages/crud/forms/widgets/bootstrap-datepicker.js"></script>
+<script src="~/assets/Custom/js/Login/Signupvalidate.js"></script>
 <script>
     $(document).ready(function () {
         $('#btnen').click(function () {

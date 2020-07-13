@@ -73,12 +73,7 @@ namespace ACIGConsumer.Controllers
         {            
             Registration Item = _customerService.ValidateCustomer(nid, pin);
 
-            //second request, get value marking it from deletion
-            TempData["NationalId"] = Item.Iqama_NationalID;
-            TempData["YOB"] = Item.DOB;
-            //later on decide to keep it
-            TempData.Keep("YOB");
-            TempData.Keep("NationalId");
+        
 
             if (Item == null)
             {
@@ -86,6 +81,12 @@ namespace ACIGConsumer.Controllers
             }
             else
             {
+                //second request, get value marking it from deletion
+                TempData["NationalId"] = Item.Iqama_NationalID;
+                TempData["YOB"] = Item.DOB;
+                //later on decide to keep it
+                TempData.Keep("YOB");
+                TempData.Keep("NationalId");
                 return Json(new { success = true, responseText = "Login Success." });
             }
         }
@@ -137,6 +138,8 @@ namespace ACIGConsumer.Controllers
 
         public IActionResult validateOTP(string otp)
         {
+            TempData["SentOTP"] = otp;
+            TempData.Keep("SentOTP");
             if (TempData["SentOTP"].ToString() == otp)
             {
                 return Json(new { success = true, responseText = "OTP Verified." });

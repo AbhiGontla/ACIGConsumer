@@ -45,9 +45,9 @@ namespace ACIGConsumer
             });
 
             services.AddSession(options => {
-                options.IdleTimeout = TimeSpan.FromMinutes(1);
+                options.IdleTimeout = TimeSpan.FromMinutes(1);//You can set Time   
             });
-          
+
         }
 
         public void RegisterPluginServices(IServiceCollection services)
@@ -95,11 +95,7 @@ namespace ACIGConsumer
                     pattern: "{controller=Login}/{action=Index}/{id?}");
             });
 
-            var cultureInfo = new CultureInfo("ar");
         
-
-            CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
-            CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
         }
     }
 }

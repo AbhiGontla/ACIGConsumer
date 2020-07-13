@@ -32,6 +32,7 @@ namespace ACIGConsumer.Controllers
         {
             ViewBag.lang = langcode;
             var _paidclaims = GetPaidClaimsById();
+           
             var _osClaims = GetOSClaimsById();
             var claimsResponse = new ClaimsResponse();
             claimsResponse.OSClaims = _osClaims;
@@ -75,8 +76,10 @@ namespace ACIGConsumer.Controllers
                 DateTime date = Convert.ToDateTime(yob);
                 clsInput.yearOfBirth = date.Year.ToString();
                 clsInput.insPolicyNo = "";
-                result = await _claimsHandler.GetPaidClaimsByNationalId(clsInput);
+                result = await _claimsHandler.GetPaidClaimsByNationalId(clsInput);     
+               
             }
+            
             return result;
         }
         public List<OSClaims> GetOSClaimsById()
@@ -99,6 +102,7 @@ namespace ACIGConsumer.Controllers
                 clsInput.yearOfBirth = date.Year.ToString();
                 clsInput.insPolicyNo = "";
                 result = await _claimsHandler.GetOSClaimsByNationalId(clsInput);
+                
             }
             return result;
         }

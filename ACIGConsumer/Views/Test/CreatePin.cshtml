@@ -47,14 +47,12 @@
     <link rel="shortcut icon" href="assets/media/logos/favicon.ico" />
 
 
-    @*<style>
-            #kt_body {
-                background-image: url('assets/custom/images/logo.jpeg');
-                background-color: #4092bb;
-                width: 100%;
-                height: auto;
-            }
-        </style>*@
+    <style>
+        @@font-face {
+            font-family: 'cairo-bold';
+            src: url('assets/custom/fonts/cairo/cairo-bold.ttf') format('truetype');
+        }
+    </style>
 </head>
 <!--end::Head-->
 <!--begin::Body-->
@@ -77,19 +75,19 @@
 
                             <!--begin::Verification-->
                             <div class="" id="">
-                                <button class="btn btn-primary btn-sm text-white " style="float:right" id="btnar">عربى</button>
+                                <button class="btn btn-primary btn-sm text-white " style="float:right;font-family:cairo-bold" id="btnar">عربى</button>
                                 <!--begin::Form-->
-                                <form class="form" novalidate="novalidate">                                   
+                                <form class="form" novalidate="novalidate">
                                     <!--begin::Title-->
                                     <div class="text-center pb-8">
                                         <h2 class="font-weight-bolder text-dark font-size-h2 font-size-h1-lg">Create PIN</h2>
                                         <div class="form-group">
-                                            <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="Enter Pin" autocomplete="off" id="enterpin" />
+                                            <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="password" placeholder="Enter Pin" autocomplete="off" id="enterpin" />
                                         </div>
                                         <!--end::Form group-->
                                         <!--begin::Form group-->
                                         <div class="form-group">
-                                            <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="Confirm Pin" autocomplete="off" id="confirmpin" />
+                                            <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="password" placeholder="Confirm Pin" autocomplete="off" id="confirmpin" />
                                         </div>
                                         <!--end::Form group-->
 
@@ -148,17 +146,17 @@
                             <div class="" id="">
                                 <button class="btn btn-primary btn-sm text-white " style="float:right" id="btnen">English</button>
                                 <!--begin::Form-->
-                                <form class="form" novalidate="novalidate">
+                                <form class="form" novalidate="novalidate" style="font-family:cairo-bold">
                                     <!--begin::Title-->
                                     <div class="text-center pb-8">
                                         <h2 class="font-weight-bolder text-dark font-size-h2 font-size-h1-lg">إنشاء PIN</h2>
                                         <div class="form-group">
-                                            <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="أدخل رقم التعريف الشخصي" id="enterpin" />
+                                            <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="password" placeholder="أدخل رقم التعريف الشخصي" id="enterpin" />
                                         </div>
                                         <!--end::Form group-->
                                         <!--begin::Form group-->
                                         <div class="form-group">
-                                            <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="تأكيد PIN" id="confirmpin" />
+                                            <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="password" placeholder="تأكيد PIN" id="confirmpin" />
                                         </div>
                                         <!--end::Form group-->
 

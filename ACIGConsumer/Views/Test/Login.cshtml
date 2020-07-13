@@ -2,35 +2,7 @@
     ViewData["Title"] = "Login";
     Layout = "";
 }
-<style>
-    /*.col-lg-3 {
-        -webkit-box-flex: 0;
-        -ms-flex: 0 0 25%;
-        flex: 0 0 25%;
-        max-width: 1%;
-    }
 
-    .smalltextbox {
-        width: 50px;
-        height: 50px;
-        padding: 0;
-        margin-right: 25px;
-        text-align: center;
-        background-color: #e5eaee;
-        border: #e5eaee;
-        border-radius: 5px;
-        margin: 25px;
-    }*/
-
-    /* @@font-face {
-        font-family: 'quicksand-semibold';
-        src: url('assets/custom/fonts/quicksand-semibold.ttf') format('truetype');
-    }
-
-    div {
-        font-family: quicksand-semibold;
-    }*/
-</style>
 <!--begin::Head-->
 <head>
     <base href="../../../">
@@ -39,7 +11,31 @@
     <meta name="description" content="Login page example" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
+    @if (ViewBag.lang == "en")
+    {
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
+        <!--end::Fonts-->
+        <!--begin::Page Custom Styles(used by this page)-->
+        <link href="assets/css/pages/login/login-2.css" rel="stylesheet" type="text/css" />
+        <!--end::Page Custom Styles-->
+        <!--begin::Global Theme Styles(used by all pages)-->
+        <link href="assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
+        <link href="assets/plugins/custom/prismjs/prismjs.bundle.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
+    }
 
+    @if (ViewBag.lang == "ar")
+    {
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
+        <!--end::Fonts-->
+        <!--begin::Page Custom Styles(used by this page)-->
+        <link href="assets/css/pages/login/login-2.rtl.css" rel="stylesheet" type="text/css" />
+        <!--end::Page Custom Styles-->
+        <!--begin::Global Theme Styles(used by all pages)-->
+        <link href="assets/plugins/global/plugins.bundle.rtl.css" rel="stylesheet" type="text/css" />
+        <link href="assets/plugins/custom/prismjs/prismjs.bundle.rtl.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/style.bundle.rtl.css" rel="stylesheet" type="text/css" />
+    }
     <!--begin::Fonts-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
     <!--end::Fonts-->
@@ -58,7 +54,44 @@
     <!--end::Layout Themes-->
     <link rel="shortcut icon" href="assets/media/logos/favicon.ico" />
 
+    <style>
+        /*.col-lg-3 {
+                    -webkit-box-flex: 0;
+                    -ms-flex: 0 0 25%;
+                    flex: 0 0 25%;
+                    max-width: 1%;
+                }
 
+                .smalltextbox {
+                    width: 50px;
+                    height: 50px;
+                    padding: 0;
+                    margin-right: 25px;
+                    text-align: center;
+                    background-color: #e5eaee;
+                    border: #e5eaee;
+                    border-radius: 5px;
+                    margin: 25px;
+                }*/
+
+        /* @@font-face {
+                    font-family: 'quicksand-semibold';
+                    src: url('assets/custom/fonts/quicksand-semibold.ttf') format('truetype');
+                }
+
+                div {
+                    font-family: quicksand-semibold;
+                }*/
+        @@font-face {
+            font-family: 'cairo-bold';
+            src: url('assets/custom/fonts/cairo/cairo-bold.ttf') format('truetype');
+        }
+
+        @@font-face {
+            font-family: 'cairo-regular';
+            src: url('assets/custom/fonts/cairo/cairo-regular.ttf') format('truetype');
+        }
+    </style>
 </head>
 <!--end::Head-->
 
@@ -84,7 +117,7 @@
 
                             <!--begin::Signin-->
                             <div class="login-form login-signin py-11">
-                                <button class="btn btn-primary btn-sm text-white " style="float:right" id="btnar">عربى</button>
+                                <button class="btn btn-primary btn-sm text-white " style="float:right;font-family:cairo-bold" id="btnar">عربى</button>
                                 <!--begin::Form-->
                                 <form class="form" novalidate="novalidate" id="kt_login_signin_form">
 
@@ -170,12 +203,12 @@
 
 
     <!--begin::Body-->
-    <body id="kt_body" class="header-mobile-fixed subheader-enabled aside-enabled aside-fixed aside-secondary-enabled page-loading">
+    <body id="kt_body_ar" class="header-mobile-fixed subheader-enabled aside-enabled aside-fixed aside-secondary-enabled page-loading">
         <!--begin::Main-->
         <div class="d-flex flex-column flex-root">
 
             <!--begin::Login-->
-            <div class="login login-2 login-signin-on d-flex flex-column flex-lg-row flex-column-fluid bg-white" id="kt_login">
+            <div class="login login-2 login-signin-on d-flex flex-column flex-lg-row flex-column-fluid bg-white">
 
                 <!--begin::Aside-->
                 <div class="login-aside order-2 order-lg-1 d-flex flex-row-auto position-relative overflow-hidden">
@@ -189,7 +222,7 @@
                             <!--begin::Signin-->
                             <div class="login-form login-signin py-11">
                                 <button class="btn btn-primary btn-sm text-white " style="float:right" id="btnen">English</button>
-                                <form class="form" novalidate="novalidate" id="kt_login_signin_arform">
+                                <form class="form" novalidate="novalidate" id="" style="font-family:cairo-bold">
 
                                     <!--begin::Title-->
                                     <div class="text-center pb-8">
@@ -224,7 +257,7 @@
                                     <!--end::Form group-->
                                     <!--begin::Action-->
                                     <div class="text-center pt-2">
-                                        <a class="btn btn-info font-weight-bolder font-size-h6 px-8 py-4 my-3" id="loginarbutton">Login</a>
+                                        <a class="btn btn-info font-weight-bolder font-size-h6 px-8 py-4 my-3" id="loginarbutton">تسجيل الدخول</a>
                                         @*<button id="kt_login_signin_submit" class="btn btn-dark font-weight-bolder font-size-h6 px-8 py-4 my-3" href="/Home/Index">Login</button>*@
                                     </div>
                                     <!--end::Action-->
@@ -276,8 +309,8 @@
 <!--end::Global Theme Bundle-->
 <!--begin::Page Scripts(used by this page)-->
 @*<script src="assets/js/pages/custom/login/login-general.js?v=7.0.4"></script>
-    <script src="~/assets/js/pages/custom/login/login-general.js"></script>
-<link href="~/assets/Custom/css/Login/Login.css" rel="stylesheet" />*@
+        <script src="~/assets/js/pages/custom/login/login-general.js"></script>
+    <link href="~/assets/Custom/css/Login/Login.css" rel="stylesheet" />*@
 @*<script src="~/assets/Custom/js/LoginCustom.js"></script>
     <script src="~/assets/js/pages/custom/login/Verify.js"></script>
     <script src="~/assets/Custom/js/CustomLogin.js"></script>
