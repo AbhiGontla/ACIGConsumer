@@ -22,8 +22,7 @@
             url: "/Login/ValidateUser",
             data: { nid: nid, pin: pin },
             dataType: "json",
-            success: function (result) {
-                debugger;
+            success: function (result) {              
                 if ($.trim(result.success).toUpperCase() === "FALSE") {
                     $("#errormessage").show();
                     $("#errormessage").text("Please enter valid credentials");
@@ -120,13 +119,13 @@ $('#loginarbutton').on('click', function (e) {
     var pin = $("#arpincode").val();
     var status = "true";
     if (nid == "" && pin == "") {
-        $("#errorarmessage").text("Please enter valid credentials");
+        $("#errorarmessage").text("الرجاء إدخال أوراق اعتماد صالحة");
         status = "false";
     } else if (nid == "") {
-        $("#Nidarerror").text("Please enter 10 digit nationalId");
+        $("#Nidarerror").text("الرجاء إدخال الرقم القومي 10 أرقام");
         status = "false";
     } else if (pin == "") {
-        $("#pinarerror").text("Please enter 4 digit pin");
+        $("#pinarerror").text("الرجاء إدخال دبوس مكون من 4 أرقام");
         status = "false";
     } else if (status == "true") {
         $.ajax({
@@ -135,10 +134,10 @@ $('#loginarbutton').on('click', function (e) {
             data: { nid: nid, pin: pin },
             dataType: "json",
             success: function (result) {
-                debugger;
+             
                 if ($.trim(result.success).toUpperCase() === "FALSE") {
                     $("#errorarmessage").show();
-                    $("#errorarmessage").text("Please enter valid credentials");
+                    $("#errorarmessage").text("الرجاء إدخال أوراق اعتماد صالحة");
                     $("#natarId").val("");
                     $("#arpincode").val("");
 
@@ -169,21 +168,21 @@ function checkNid() {
     var nid = $("#natarId").val();
 
     if (nid == "") {
-        $("#Nidarerror").text("Please enter valid nationalId");
+        $("#Nidarerror").text("يرجى إدخال رقم تعريف قومي صالح");
     }
     if (nid.length < 10) {
         $("#Nidarerror").show();
-        $("#Nidarerror").text("Please enter 10 digit nationalId");
+        $("#Nidarerror").text("الرجاء إدخال الرقم القومي 10 أرقام");
     } else if (nid.length > 10) {
         $("#Nidarerror").show();
-        $("#Nidarerror").text("Please enter 10 digit nationalId");
+        $("#Nidarerror").text("الرجاء إدخال الرقم القومي 10 أرقام");
     } else if (!(/^\S{3,}$/.test(nid))) {
         $("#Nidarerror").show();
-        $("#Nidarerror").text("Please enter whithout space");
+        $("#Nidarerror").text("الرجاء إدخال المساحة دون");
         return false;
     } else if (!$.isNumeric(nid)) {
         $("#Nidarerror").show();
-        $("#Nidarerror").text("Please enter number only");
+        $("#Nidarerror").text("الرجاء إدخال الرقم فقط");
     }
     else if (nid.length = 10) {
         $("#Nidarerror").hide();
@@ -198,21 +197,21 @@ function checkpin() {
     var pin = $("#arpincode").val();
     if (pin == "") {
         $("#pinarerror").show();
-        $("#pinarerror").text("Please enter 4 digit pin");
+        $("#pinarerror").text("الرجاء إدخال دبوس مكون من 4 أرقام");
     }
     if (pin.length < 4) {
         $("#pinarerror").show();
-        $("#pinarerror").text("Please enter 4 digit pin");
+        $("#pinarerror").text("الرجاء إدخال دبوس مكون من 4 أرقام");
     } else if (pin.length > 4) {
         $("#pinarerror").show();
-        $("#pinarerror").text("Please enter 4 digit pin");
+        $("#pinarerror").text("الرجاء إدخال دبوس مكون من 4 أرقام");
     } else if (!(/^\S{3,}$/.test(pin))) {
         $("#pinarerror").show();
-        $("#pinarerror").text("Please enter without space");
+        $("#pinarerror").text("الرجاء إدخال بدون مسافة");
         return false;
     } else if (!$.isNumeric(pin)) {
         $("#pinarerror").show();
-        $("#pinarerror").text("Please enter number only");
+        $("#pinarerror").text("الرجاء إدخال الرقم فقط");
     }
     else if (pin.length = 4) {
         $("#pinarerror").hide();

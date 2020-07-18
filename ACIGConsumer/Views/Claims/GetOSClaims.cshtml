@@ -1,8 +1,13 @@
-﻿@model IEnumerable<Core.Api.PaidClaims>
-
+﻿@model Core.Api.ClaimsResponse
 
 @{
-    ViewData["Title"] = "OSClaims";  
+
+    List<Core.Api.OSClaims> osclaims = Model.OSClaims; ;
+
+}
+
+@{
+    ViewData["Title"] = "OSClaims";
 }
 <style>
     .btn {
@@ -104,12 +109,12 @@
                                 </div>
                             </div>
                             <div class="col-lg-4">
-                                <a href="#" class="btn btn-sm btn-light-info font-weight-bolder font-size-sm " style="float:right;margin:1px;">Category</a>
-                                <a href="#" class="btn btn-sm btn-light-info font-weight-bolder font-size-sm " style="float:right;margin:1px;">Add Claim</a>
+                                <a href="/Claims/Index?lang=en" class="btn btn-sm btn-light-info font-weight-bolder font-size-sm " style="float:right;margin:1px;">Paid Claims</a>
+                                <a  class="btn btn-sm btn-info font-weight-bolder font-size-sm " style="float:right;margin:1px;">OS Claims</a>
                             </div>
                         </div>
                     </div>
-                    @foreach (var item in Model)
+                    @foreach (var item in osclaims)
                     {
                         <!--begin::Card-->
                         <div class="card card-custom gutter-b ">
@@ -142,7 +147,7 @@
                                                         Insurance Id - <span class="text-dark-75  font-size-h7 font-weight-bold mr-3" id="kt_subheader_total">@item.CL_INSINSURD</span>
                                                     </a>
                                                     <a href="#" class="text-muted  font-weight-bold mr-lg-8 mr-5 mb-lg-0 mb-2">
-                                                        Premium - <span class="text-dark-75  font-size-h7 font-weight-bold mr-3" id="kt_subheader_total">@item.CL_CLMAMT_OR SAR</span>
+                                                        Amount - <span class="text-dark-75  font-size-h7 font-weight-bold mr-3" id="kt_subheader_total">@item.CL_CLMAMT_OR SAR</span>
                                                     </a>&nbsp;&nbsp;
                                                     <a href="#" class="text-muted font-weight-bold">
                                                         Policy Date - <span class="text-dark-75  font-size-h9 font-weight-bold mr-3" id="kt_subheader_total">@item.POLICY_INC</span>
@@ -153,7 +158,8 @@
                                             <!--begin::User-->
                                             <!--begin::Actions-->
                                             <div class="my-lg-0 my-1">
-                                                <a href="#" class="btn btn-sm btn-light-warning font-weight-bolder">Pending</a>
+                                                <a href="#" class="btn btn-sm btn-light-warning font-weight-bolder">OutStanding</a>
+                                                <a href="/claims/ProviderOSDetails/@item.Id" class="btn btn-sm btn-light-success font-weight-bolder">Details</a>
 
                                             </div>
                                             <!--end::Actions-->
@@ -279,13 +285,13 @@
                                 </div>
                             </div>
                             <div class="col-lg-4">
-                                <a href="#" class="btn btn-sm btn-light-info font-weight-bolder font-size-sm " style="float:left;margin:1px;">Category</a>
-                                <a href="#" class="btn btn-sm btn-light-info font-weight-bolder font-size-sm " style="float:left;margin:1px;">Add Claim</a>
+                                <a href="/Claims/Index?lang=ar" class="btn btn-sm btn-light-info font-weight-bolder font-size-sm " style="float:left;margin:1px;">Paid</a>
+
                             </div>
                         </div>
                     </div>
 
-                    @foreach (var item in Model)
+                    @foreach (var item in osclaims)
                     {
                         <!--begin::Card-->
                         <div class="card card-custom gutter-b ">
@@ -318,9 +324,10 @@
                                                         معرف المطالبة - <span class="text-dark-75  font-size-h7 font-weight-bold mr-3" id="kt_subheader_total">@item.CL_INSINSURD</span>
                                                     </a>
                                                     <a href="#" class="text-muted  font-weight-bold mr-lg-8 mr-5 mb-lg-0 mb-2">
-                                                        الممتازة - <span class="text-dark-75  font-size-h7 font-weight-bold mr-3" id="kt_subheader_total">@item.CL_CLMAMT_OR SAR</span>
+                                                        كمية - <span class="text-dark-75  font-size-h7 font-weight-bold mr-3" id="kt_subheader_total">@item.CL_CLMAMT_OR SAR</span>
                                                     </a>&nbsp;&nbsp;
                                                     <a href="#" class="text-muted font-weight-bold">
+
                                                         تاريخ الموافقة - <span class="text-dark-75  font-size-h9 font-weight-bold mr-3" id="kt_subheader_total">@item.POLICY_INC</span>
                                                     </a>
                                                 </div>
@@ -329,7 +336,7 @@
                                             <!--begin::User-->
                                             <!--begin::Actions-->
                                             <div class="my-lg-0 my-1">
-                                                <a href="#" class="btn btn-sm btn-light-warning font-weight-bolder">ريثما</a>
+                                                <a href="#" class="btn btn-sm btn-light-warning font-weight-bolder">OutStanding</a>
 
                                             </div>
                                             <!--end::Actions-->

@@ -149,10 +149,13 @@ $('#btn_signup_submit').on('click', function (e) {
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function (result) {
-                if (result.success) {
+                if ($.trim(result.success).toUpperCase() == "TRUE") {
                     location.href = "https://localhost:44310/Test/VerifyDetails?lang=en";
                 }
-
+                else {
+                    $("#signuperror").show();
+                    $("#signuperror").text($.trim(result.responseText));
+                }
                 //$("#dataDiv").html(result);
             },
             error: function (error) {
@@ -168,10 +171,34 @@ $('#btnar_signup_submit').on('click', function (e) {
     e.preventDefault();
     Nationalid = $("#nIdar").val();
     dateofbirth = $(".dobar").val();
-    $.session.set("Nationid", Nationalid);
+
  
-    validateNidar();
-    if (flag = 1) {
+    var status = "false";
+    if (Nationalid.length < 10) {
+        $("#signuperror").show();
+        $("#signuperror").text("يرجى إدخال رقم تعريف قومي صالح");
+        status = "false";
+    }
+    if (Nationalid.length > 10) {
+        $("#signuperror").show();
+        $("#signuperror").text("يرجى إدخال رقم تعريف قومي صالح");
+        status = "false";
+    }
+    if (!(/^\S{3,}$/.test(Nationalid))) {
+        $("#signuperror").show();
+        $("#signuperror").text("الرجاء إدخال المساحة دون");
+        status = "false";
+    }
+    if (!$.isNumeric(Nationalid)) {
+        $("#signuperror").show();
+        $("#signuperror").text("الرجاء إدخال الرقم فقط");
+        status = "false";
+    }
+    if (Nationalid.length > 10 || Nationalid.length < 10 || Nationalid.length == 0) {
+        $("#signuperror").show();
+        $("#signuperror").text("يرجى إدخال رقم تعريف قومي صالح");
+        status = "false";
+    } else {
         $.ajax({
             type: "GET",
             url: "/Test/VerifyDetails",
@@ -180,10 +207,13 @@ $('#btnar_signup_submit').on('click', function (e) {
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function (result) {
-                if (result.success) {
+                if ($.trim(result.success).toUpperCase() == "TRUE") {
                     location.href = "https://localhost:44310/Test/VerifyDetails?lang=ar";
                 }
-
+                else {
+                    $("#signuperror").show();
+                    $("#signuperror").text($.trim(result.responseText));
+                }
                 //$("#dataDiv").html(result);
             },
             error: function (error) {
@@ -232,11 +262,11 @@ $('#btn_verify_ar').on('click', function (e) {
             if ($.trim(result.success).toUpperCase() == "TRUE") {
                 sentotp = $.trim(result.sentotp).toUpperCase();
                 alert(sentotp);
-                location.href = "https://localhost:44310/Test/VerifyOTP?lang=en";
+                location.href = "https://localhost:44310/Test/VerifyOTP?lang=ar";
                 //$("#dataDiv").html(result);
             } else {
                 
-                $("#otpError").text("OTP Sending Failed");
+                $("#otpError").text("فشل إرسال OTP");
             }
         },
         error: function (error) {
@@ -288,11 +318,11 @@ $('#btn_otp_verify_ar').on('click', function (e) {
             if (result.success) {
                 location.href = "https://localhost:44310/Test/CreatePin?lang=ar";
             } else {
-                $("#otpError").text("Please enter valid OTP");
+                $("#otpError").text("يرجى إدخال OTP صالح");
             }
         },
         error: function (error) {
-            $("#otpError").text("Please enter valid OTP");
+            $("#otpError").text("يرجى إدخال OTP صالح");
         }
     });
 });
@@ -350,17 +380,17 @@ $('#btn_verify_pin_ar').on('click', function (e) {
     var cpin = $("#confirmpin").val();
     if (epin == "" || cpin == "") {
         $("#peror").show();
-        $("#peror").text("Please enter valid pin");
+        $("#peror").text("يرجى إدخال دبوس صالح");
 
     } else if (epin.length > 4 || cpin.length > 4) {
         $("#peror").show();
-        $("#peror").text("Please enter 4 digit pin");
+        $("#peror").text("الرجاء إدخال دبوس مكون من 4 أرقام");
     } else if (epin.length < 4 || cpin.length < 4) {
         $("#peror").show();
-        $("#peror").text("Please enter 4 digit pin");
+        $("#peror").text("الرجاء إدخال دبوس مكون من 4 أرقام");
     } else if (epin != cpin) {
         $("#peror").show();
-        $("#peror").text("Please enter same pin");
+        $("#peror").text("الرجاء إدخال نفس الدبوس");
     } else if (epin == cpin) {
         $("#peror").hide();
         $.ajax({
@@ -372,7 +402,7 @@ $('#btn_verify_pin_ar').on('click', function (e) {
                 debugger;
                 if ($.trim(result.success).toUpperCase() === "FALSE") {
                     $("#peror").show();
-                    $("#peror").text("User Registration Failed");
+                    $("#peror").text("فشل تسجيل المستخدم");
                     $("#nId").val("");
                     $("#dob").val("");
 

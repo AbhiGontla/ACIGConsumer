@@ -35,7 +35,8 @@ namespace ACIGConsumer.Controllers
         public IActionResult Index()
         {
             ViewBag.lang = langcode;
-            var _approvals = GetApprovById();
+            var _approvals = GetApprovById().OrderByDescending(x => x.CL_DATEOT);
+       
             return View(_approvals);
         }
         public IActionResult test()
@@ -64,10 +65,10 @@ namespace ACIGConsumer.Controllers
                 clsInput.yearOfBirth = date.Year.ToString();
                 clsInput.insPolicyNo = "";
                 result = await _approvalsHandler.GetApprovalsByNationalId(clsInput);
-            }
+            }           
             return result;
         }
 
-
+        
     }
 }

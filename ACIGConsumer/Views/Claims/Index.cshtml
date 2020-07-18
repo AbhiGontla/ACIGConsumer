@@ -109,8 +109,10 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
-                                    <a href="#" class="btn btn-sm btn-light-info font-weight-bolder font-size-sm " style="float:right;margin:1px;">Category</a>
-                              
+                                    <a href="/Claims/GetOSClaims?lang=en" class="btn btn-sm btn-light-info font-weight-bolder font-size-sm " style="float:right;margin:1px;">OS Claims</a>
+                                    <a class="btn btn-sm btn-info font-weight-bolder font-size-sm " style="float:right;">Paid Claims</a>
+
+
                                 </div>
                             </div>
                         </div>
@@ -159,6 +161,7 @@
                                                 <!--begin::Actions-->
                                                 <div class="my-lg-0 my-1">
                                                     <a href="#" class="btn btn-sm btn-light-success font-weight-bolder">Paid</a>
+                                                    <a href="/claims/ProviderPaidDetails/@item.Id" class="btn btn-sm btn-light-success font-weight-bolder">Details</a>
 
                                                 </div>
                                                 <!--end::Actions-->
@@ -188,80 +191,7 @@
                             </div>
                             <!--end::Card-->
                         }
-                        @foreach (var item in osclaims)
-                        {
-                            <!--begin::Card-->
-                            <div class="card card-custom gutter-b ">
-                                <div class="card-body">
-                                    <!--begin::Top-->
-                                    <div class="d-flex">
-                                        <!--begin::Pic-->
-                                        <div class="flex-shrink-0 mr-7">
-                                            <div class="symbol symbol-50 symbol-lg-80">
-                                                <img alt="Pic" src="~/assets/Custom/Images/hospital-2.jpg" />
-                                                @*<img  src="assets/media//users/300_1.jpg">*@
-                                            </div>
-                                        </div>
-                                        <!--end::Pic-->
-                                        <!--begin: Info-->
-                                        <div class="flex-grow-1">
-                                            <!--begin::Title-->
-                                            <div class="d-flex align-items-center justify-content-between flex-wrap mt-2">
-                                                <!--begin::User-->
-
-                                                <div class="mr-3">
-                                                    <!--begin::Name-->
-                                                    <a href="#" class="d-flex align-items-center text-dark  font-size-h5 font-weight-bold mr-3">
-                                                        @item.CL_PROVNAME
-                                                    </a>
-                                                    <!--end::Name-->
-                                                    <!--begin::Contacts-->
-                                                    <div class="d-flex flex-wrap my-2">
-                                                        <a href="#" class="text-muted  font-weight-bold mr-lg-8 mr-5 mb-lg-0 mb-2">
-                                                            Insurance Id - <span class="text-dark-75  font-size-h7 font-weight-bold mr-3" id="kt_subheader_total">@item.CL_INSINSURD</span>
-                                                        </a>
-                                                        <a href="#" class="text-muted  font-weight-bold mr-lg-8 mr-5 mb-lg-0 mb-2">
-                                                            Amount - <span class="text-dark-75  font-size-h7 font-weight-bold mr-3" id="kt_subheader_total">@item.CL_CLMAMT_OR SAR</span>
-                                                        </a>&nbsp;&nbsp;
-                                                        <a href="#" class="text-muted font-weight-bold">
-                                                            Policy Date - <span class="text-dark-75  font-size-h9 font-weight-bold mr-3" id="kt_subheader_total">@item.POLICY_INC</span>
-                                                        </a>
-                                                    </div>
-                                                    <!--end::Contacts-->
-                                                </div>
-                                                <!--begin::User-->
-                                                <!--begin::Actions-->
-                                                <div class="my-lg-0 my-1">
-                                                    <a href="#" class="btn btn-sm btn-light-warning font-weight-bolder">OutStanding</a>
-
-                                                </div>
-                                                <!--end::Actions-->
-                                            </div>
-                                            <!--end::Title-->
-                                            <!--begin::Content-->
-                                            <div class="d-flex align-items-center flex-wrap justify-content-between">
-                                                <!--begin::Description-->
-                                                <div class="d-flex mt-4 mt-sm-0">
-                                                    <span class="font-weight-bold mr-4">@item.CL_DIAG_DESC</span>
-
-                                                </div>
-                                                <!--end::Description-->
-                                                <!--begin::Progress-->
-                                                <!--end::Progress-->
-                                            </div>
-                                            <!--end::Content-->
-                                        </div>
-                                        <!--end::Info-->
-                                    </div>
-                                    <!--end::Top-->
-                                    <!--begin::Separator-->
-                                    <!--end::Separator-->
-                                    <!--begin::Bottom-->
-                                    <!--end::Bottom-->
-                                </div>
-                            </div>
-                            <!--end::Card-->
-                        }
+                    
                     </div>
                     <!--end::Container-->
                 </div>
@@ -434,78 +364,7 @@
                             </div>
                             <!--end::Card-->
                         }
-                        @foreach (var item in osclaims)
-                        {
-                            <!--begin::Card-->
-                            <div class="card card-custom gutter-b ">
-                                <div class="card-body">
-                                    <!--begin::Top-->
-                                    <div class="d-flex">
-                                        <!--begin::Pic-->
-                                        <div class="flex-shrink-0 mr-7">
-                                            <div class="symbol symbol-50 symbol-lg-80">
-                                                <img alt="Pic" src="~/assets/Custom/Images/Hospital-1.jpg" />
-                                                @*<img  src="assets/media//users/300_1.jpg">*@
-                                            </div>
-                                        </div>
-                                        <!--end::Pic-->
-                                        <!--begin: Info-->
-                                        <div class="flex-grow-1">
-                                            <!--begin::Title-->
-                                            <div class="d-flex align-items-center justify-content-between flex-wrap mt-2">
-                                                <!--begin::User-->
-
-                                                <div class="mr-3">
-                                                    <!--begin::Name-->
-                                                    <a href="#" class="d-flex align-items-center text-dark  font-size-h5 font-weight-bold mr-3">
-                                                        @item.CL_PROVNAME
-                                                    </a>
-                                                    <!--end::Name-->
-                                                    <!--begin::Contacts-->
-                                                    <div class="d-flex flex-wrap my-2">
-                                                        <a href="#" class="text-muted  font-weight-bold mr-lg-8 mr-5 mb-lg-0 mb-2">
-                                                            معرف المطالبة - <span class="text-dark-75  font-size-h7 font-weight-bold mr-3" id="kt_subheader_total">@item.CL_INSINSURD</span>
-                                                        </a>
-                                                        <a href="#" class="text-muted  font-weight-bold mr-lg-8 mr-5 mb-lg-0 mb-2">
-                                                            كمية - <span class="text-dark-75  font-size-h7 font-weight-bold mr-3" id="kt_subheader_total">@item.CL_CLMAMT_OR SAR</span>
-                                                        </a>&nbsp;&nbsp;
-                                                        <a href="#" class="text-muted font-weight-bold">
-                                                           
-                                                            تاريخ الموافقة - <span class="text-dark-75  font-size-h9 font-weight-bold mr-3" id="kt_subheader_total">@item.POLICY_INC</span>
-                                                        </a>
-                                                    </div>
-                                                    <!--end::Contacts-->
-                                                </div>
-                                                <!--begin::User-->
-                                                <!--begin::Actions-->
-                                                <div class="my-lg-0 my-1">
-                                                    <a href="#" class="btn btn-sm btn-light-warning font-weight-bolder">OutStanding</a>
-
-                                                </div>
-                                                <!--end::Actions-->
-                                            </div>
-                                            <!--end::Title-->
-                                            <!--begin::Content-->
-                                            <div class="d-flex align-items-center flex-wrap justify-content-between">
-                                                <!--begin::Description-->
-                                                <div class="d-flex mt-4 mt-sm-0">
-                                                    <span class="font-weight-bold mr-4">@item.CL_DIAG_DESC</span>
-
-                                                </div>
-                                                <!--end::Description-->
-                                                <!--begin::Progress-->
-                                                <!--end::Progress-->
-                                            </div>
-                                            <!--end::Content-->
-                                        </div>
-                                        <!--end::Info-->
-                                    </div>
-                                    <!--end::Top-->
-
-                                </div>
-                            </div>
-                            <!--end::Card-->
-                        }
+                       
                     </div>
                     <!--end::Container-->
                 </div>

@@ -1,32 +1,32 @@
-﻿@model IEnumerable<Core.Api.Policies>
+﻿
 @{
     ViewData["Title"] = "My Policies";
 
 }
-    <style>
+<style>
 
-        .btn {
-            border-radius: 5px;
-        }
+    .btn {
+        border-radius: 5px;
+    }
 
-        .btn-primary {
-            color: #fff;
-            background-color: #337ab7;
-            border-color: #2e6da4;
-        }
+    .btn-primary {
+        color: #fff;
+        background-color: #337ab7;
+        border-color: #2e6da4;
+    }
 
-        .card.card-custom > .card-body {
-            padding: 1rem 0.75rem;
-        }
+    .card.card-custom > .card-body {
+        padding: 1rem 0.75rem;
+    }
 
-        .btn-light-info {
-            width: 60px;
-        }
+    .btn-light-info {
+        width: 60px;
+    }
 
-        .btn-info {
-            width: 90px;
-        }
-    </style>
+    .btn-info {
+        width: 90px;
+    }
+</style>
 @{
     if (ViewBag.lang == "en")
     {
@@ -41,7 +41,7 @@
                         <!--begin::Page Heading-->
                         <div class="d-flex align-items-baseline mr-5">
                             <!--begin::Title-->
-                            <h2 class="subheader-title text-white  font-weight-bold my-2 mr-3">My Policy</h2>
+                            <h2 class="subheader-title text-white  font-weight-bold my-2 mr-3">Medical Advice</h2>
                             <!--end::Title-->
                         </div>
                         <!--end::Page Heading-->
@@ -100,15 +100,15 @@
                                         </div>
                                     </div>
                                     @*<div class="dropdown tagify__dropdown--initial">
-                                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                               All
-                                            </button>
-                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                <a class="dropdown-item" href="#">Action</a>
-                                                <a class="dropdown-item" href="#">Another action</a>
-                                                <a class="dropdown-item" href="#">Something else here</a>
-                                            </div>
-                                        </div>*@
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                               All
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="#">Action</a>
+                                <a class="dropdown-item" href="#">Another action</a>
+                                <a class="dropdown-item" href="#">Something else here</a>
+                            </div>
+                        </div>*@
                                 </div>
                             </div>
                         </div>
@@ -116,99 +116,130 @@
                     </div>
 
                     <!--begin::Content-->
-                    @foreach (var item in Model)
-                    {
-                        <!--begin::Card-->
-                        <div class="card card-custom gutter-b ">
-                            <div class="card-body">
-                                <!--begin::Top-->
-                                <div class="d-flex">
-                                    <!--begin::Pic-->
-                                    <div class="flex-shrink-0 mr-7">
-                                        <div class="symbol symbol-50 symbol-lg-80">
-                                            <img alt="Pic" src="~/assets/Custom/Images/medical-1.jpg" />
-                                            @*<img  src="assets/media//users/300_1.jpg">*@
-                                        </div>
+                    <!--begin::Card-->
+                    <div class="card card-custom gutter-b ">
+                        <div class="card-body">
+                            <!--begin::Top-->
+                            <div class="d-flex">
+                                <!--begin::Pic-->
+                                <div class="flex-shrink-0 mr-7">
+                                    <div class="symbol symbol-50 symbol-lg-80">
+                                        <img alt="Pic" src="~/assets/Custom/Images/medical-1.jpg" />
+                                        @*<img  src="assets/media//users/300_1.jpg">*@
                                     </div>
-                                    <!--end::Pic-->
-                                    <!--begin: Info-->
-                                    <div class="flex-grow-1">
-                                        <!--begin::Title-->
-                                        <div class="d-flex align-items-center justify-content-between flex-wrap mt-2">
-                                            <!--begin::User-->
-                                            <div class="mr-3">
-                                                <div class="row">
-                                                    <div class="">
-                                                        <a href="#" class="d-flex align-items-center text-muted  font-size-h5 font-weight-bold mr-3">
-                                                            Policy Holder Name
-                                                        </a>
-                                                        <!--begin::Name-->
-                                                        <a href="#" class="d-flex align-items-center text-dark  font-size-h5 font-weight-bold mr-3">
-                                                            @item.MemberName
-                                                        </a>
-                                                    </div>
-                                                    <span>&nbsp;&nbsp;</span>
-                                                    <div class="">
-                                                        <a href="#" class="d-flex align-items-center text-muted  font-size-h5 font-weight-bold mr-3">
-                                                            Policy Number
-                                                        </a>
-                                                        <!--begin::Name-->
-                                                        <a href="#" class="d-flex align-items-center text-dark  font-size-h5 font-weight-bold mr-3">
-                                                            @item.PolicyNumber
-                                                        </a>
-                                                    </div>
-                                                    <div class="">
-                                                        <a href="#" class="d-flex align-items-center text-muted  font-size-h5 font-weight-bold mr-3">
-                                                           Network
-                                                        </a>
-                                                        <!--begin::Name-->
-                                                        <a href="#" class="d-flex align-items-center text-dark  font-size-h5 font-weight-bold mr-3">
-                                                            @item.NetworkCode
-                                                        </a>
-                                                    </div>
-                                                </div>                                               
-                                               
-                                                <!--end::Name-->
-                                                <!--begin::Contacts-->
-                                                <div class="d-flex flex-wrap my-2">
-                                                    <a href="#" class="text-muted  font-weight-bold mr-lg-8 mr-5 mb-lg-0 mb-2">
-                                                        Class - <span class="text-dark-75  font-size-h7 font-weight-bold mr-3" id="kt_subheader_total">@item.ClassName</span>
-                                                    </a>
-                                                    <a href="#" class="text-muted  font-weight-bold mr-lg-8 mr-5 mb-lg-0 mb-2">
-                                                        Insurance No  - <span class="text-dark-75    font-weight-bold mr-3" id="kt_subheader_total"> @item.TushfaMemberNo</span>
-                                                    </a>                                                  
-                                                    <a href="#" class="text-muted  font-weight-bold mr-lg-8 mr-5 mb-lg-0 mb-2">
-                                                        Policy Inception Date  - <span class="text-dark-75    font-weight-bold mr-3" id="kt_subheader_total"> @item.PolicyFromDate</span>
-                                                    </a>
-                                                    <a href="#" class="text-muted  font-weight-bold mr-lg-8 mr-5 mb-lg-0 mb-2">
-                                                        Policy Expiry Date  - <span class="text-dark-75    font-weight-bold mr-3" id="kt_subheader_total"> @item.PolicyToDate</span>
-                                                    </a>
-                                                </div>
-                                                <!--end::Contacts-->
-                                            </div>
-                                            <!--begin::User-->
-                                            <!--begin::Actions-->
-                                            <div class="my-lg-0 my-1">
-
-                                                <a href="/policy/Details/@item.PolicyNumber?lang=en" type="" class="btn btn-sm btn-light-info   mr-2">View</a>
-                                                <a class="btn  btn-sm btn-info">Download</a>
-                                            </div>
-                                            <!--end::Actions-->
-                                        </div>
-                                        <!--end::Title-->
-                                        <!--begin::Content-->
-                                        <div class="d-flex align-items-center flex-wrap justify-content-between">                                         
-                                        </div>
-                                        <!--end::Content-->
-                                    </div>
-                                    <!--end::Info-->
                                 </div>
-                                <!--end::Top-->
-                                
+                                <!--end::Pic-->
+                                <!--begin: Info-->
+                                <div class="flex-grow-1">
+                                    <!--begin::Title-->
+                                    <div class="d-flex align-items-center justify-content-between flex-wrap mt-2">
+                                        <!--begin::User-->
+                                        <div class="mr-3">
+                                            <a href="#" class="d-flex align-items-center text-dark-75  font-size-h5 font-weight-bold mr-3">
+                                                Factors of Good Health<span style="margin-left: auto">12-07-2020</span>
+
+                                            </a>
+                                            <span class="text-muted">A person is born with a variety of genes. In some people, an unusual genetic pattern or change can lead to a less-than-optimum level of health. People may inherit genes from their parents that increase their risk for certain health conditions.</span>
+                                            <!--begin::Name-->
+                                            <a href="#" class="d-flex align-items-center text-dark  font-size-h5 font-weight-bold mr-3">
+                                               
+                                            </a>
+                                            <!--end::Name-->
+                                            <!--begin::Contacts-->
+                                            <div class="d-flex flex-wrap my-2">
+                                                @*<a href="#" class="text-muted  font-weight-bold mr-lg-8 mr-5 mb-lg-0 mb-2">
+                                        Class - <span class="text-dark-75  font-size-h7 font-weight-bold mr-3" id="kt_subheader_total">A Class</span>
+                                    </a>
+                                    <a href="#" class="text-muted  font-weight-bold mr-lg-8 mr-5 mb-lg-0 mb-2">
+                                        Insurance No  - <span class="text-dark-75    font-weight-bold mr-3" id="kt_subheader_total"> 123123123</span>
+                                    </a>*@
+                                            </div>
+                                            <!--end::Contacts-->
+                                        </div>
+                                        <!--begin::User-->
+                                        <!--begin::Actions-->
+                                        <div class="my-lg-0 my-1">
+
+                                            <a href="/policy/medicaldetails?lang=en" type="" class="btn btn-sm btn-light-info   mr-2">View</a>
+                                            @* <a class="btn  btn-sm btn-info">Download</a>*@
+                                        </div>
+                                        <!--end::Actions-->
+                                    </div>
+                                    <!--end::Title-->
+                                    <!--begin::Content-->
+                                    <div class="d-flex align-items-center flex-wrap justify-content-between">
+                                    </div>
+                                    <!--end::Content-->
+                                </div>
+                                <!--end::Info-->
                             </div>
+                            <!--end::Top-->
+
                         </div>
-                        <!--end::Card-->
-                    }
+                    </div>
+                    <!--end::Card-->
+               
+                    <div class="card card-custom gutter-b ">
+                        <div class="card-body">
+                            <!--begin::Top-->
+                            <div class="d-flex">
+                                <!--begin::Pic-->
+                                <div class="flex-shrink-0 mr-7">
+                                    <div class="symbol symbol-50 symbol-lg-80">
+                                        <img alt="Pic" src="~/assets/Custom/Images/medical-1.jpg" />
+                                        @*<img  src="assets/media//users/300_1.jpg">*@
+                                    </div>
+                                </div>
+                                <!--end::Pic-->
+                                <!--begin: Info-->
+                                <div class="flex-grow-1">
+                                    <!--begin::Title-->
+                                    <div class="d-flex align-items-center justify-content-between flex-wrap mt-2">
+                                        <!--begin::User-->
+                                        <div class="mr-3">
+                                            <a href="#" class="d-flex align-items-center text-dark-75  font-size-h5 font-weight-boldest mr-3">
+                                               Health tips for Diabatic Care<span style="margin-left: auto">12-07-2020</span>
+
+                                            </a>
+                                            <span class="text-muted">A person is born with a variety of genes. In some people, an unusual genetic pattern or change can lead to a less-than-optimum level of health. People may inherit genes from their parents that increase their risk for certain health conditions.</span>
+                                            <!--begin::Name-->
+                                            <a href="#" class="d-flex align-items-center text-dark  font-size-h5 font-weight-bold mr-3">
+                                                
+                                            </a>
+                                            <!--end::Name-->
+                                            <!--begin::Contacts-->
+                                            <div class="d-flex flex-wrap my-2">
+                                                @*<a href="#" class="text-muted  font-weight-bold mr-lg-8 mr-5 mb-lg-0 mb-2">
+                                        Class - <span class="text-dark-75  font-size-h7 font-weight-bold mr-3" id="kt_subheader_total">A Class</span>
+                                    </a>
+                                    <a href="#" class="text-muted  font-weight-bold mr-lg-8 mr-5 mb-lg-0 mb-2">
+                                        Insurance No  - <span class="text-dark-75    font-weight-bold mr-3" id="kt_subheader_total"> 123123123</span>
+                                    </a>*@
+                                            </div>
+                                            <!--end::Contacts-->
+                                        </div>
+                                        <!--begin::User-->
+                                        <!--begin::Actions-->
+                                        <div class="my-lg-0 my-1">
+
+                                            <a href="/policy/medicaldetails?lang=en" type="" class="btn btn-sm btn-light-info   mr-2">View</a>
+                                            @* <a class="btn  btn-sm btn-info">Download</a>*@
+                                        </div>
+                                        <!--end::Actions-->
+                                    </div>
+                                    <!--end::Title-->
+                                    <!--begin::Content-->
+                                    <div class="d-flex align-items-center flex-wrap justify-content-between">
+                                    </div>
+                                    <!--end::Content-->
+                                </div>
+                                <!--end::Info-->
+                            </div>
+                            <!--end::Top-->
+
+                        </div>
+                    </div>
+                    <!--end::Card-->
                     <!--end::Content-->
                 </div>
                 <!--end::Container-->
@@ -287,7 +318,7 @@
                                                 <option value="6">خطر</option>
                                             </select>
                                         </div>
-                                    </div>                                   
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -295,8 +326,7 @@
                     </div>
 
                     <!--begin::Content-->
-                    @foreach (var item in Model)
-                    {
+                 
                         <!--begin::Card-->
                         <div class="card card-custom gutter-b ">
                             <div class="card-body">
@@ -321,20 +351,20 @@
                                                 </a>
                                                 <!--begin::Name-->
                                                 <a href="#" class="d-flex align-items-center text-dark  font-size-h5 font-weight-bold mr-3">
-                                                    @item.PolicyNumber
+                                                 123123123
                                                 </a>
                                                 <!--end::Name-->
                                                 <!--begin::Contacts-->
                                                 <div class="d-flex flex-wrap my-2">
                                                     <a href="#" class="text-muted  font-weight-bold mr-lg-8 mr-5 mb-lg-0 mb-2">
-                                                        صف دراسي - <span class="text-dark-75  font-size-h7 font-weight-bold mr-3" id="kt_subheader_total">@item.ClassName</span>
+                                                        صف دراسي - <span class="text-dark-75  font-size-h7 font-weight-bold mr-3" id="kt_subheader_total">A Class</span>
                                                     </a>
                                                     <a href="#" class="text-muted  font-weight-bold mr-lg-8 mr-5 mb-lg-0 mb-2">
-                                                        رقم العضو  - <span class="text-dark-75    font-weight-bold mr-3" id="kt_subheader_total"> @item.TushfaMemberNo</span>
+                                                        رقم العضو  - <span class="text-dark-75    font-weight-bold mr-3" id="kt_subheader_total">123123</span>
                                                     </a>
                                                     @*<a href="#" class="text-muted font-weight-bold">
-                                                        تاريخ الانتهاء  - <span class="text-dark-75  font-size-h9 font-weight-bold mr-3" id="kt_subheader_total">@item.PolicyToDate</span>
-                                                    </a>*@
+                                                            تاريخ الانتهاء  - <span class="text-dark-75  font-size-h9 font-weight-bold mr-3" id="kt_subheader_total">@item.PolicyToDate</span>
+                                                        </a>*@
                                                 </div>
                                                 <!--end::Contacts-->
                                             </div>
@@ -342,7 +372,7 @@
                                             <!--begin::Actions-->
                                             <div class="my-lg-0 my-1">
 
-                                                <a href="/policy/Details/@item.PolicyNumber?lang=ar" type="" class="btn btn-sm btn-light-info   mr-2">رأي</a>
+                                                @*<a href="/policy/Details/@item.PolicyNumber?lang=ar" type="" class="btn btn-sm btn-light-info   mr-2">رأي</a>*@
                                                 <a class="btn  btn-sm btn-info">تحميل</a>
                                             </div>
                                             <!--end::Actions-->
@@ -367,7 +397,7 @@
                             </div>
                         </div>
                         <!--end::Card-->
-                    }
+                  
                     <!--end::Content-->
                 </div>
                 <!--end::Container-->

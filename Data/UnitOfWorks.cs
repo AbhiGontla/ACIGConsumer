@@ -114,6 +114,29 @@ namespace Data
             }
 
         }
+
+        private IRepository<MRClaimType> claimTypeRepository;
+        public IRepository<MRClaimType> ClaimTypeRepository
+        {
+            get
+            {
+                if (this.claimTypeRepository == null)
+                    this.claimTypeRepository = new Repository<MRClaimType>(_context);
+                return claimTypeRepository;
+            }
+
+        }
+        private IRepository<BankMaster> bankRepository;
+        public IRepository<BankMaster> BankRepository
+        {
+            get
+            {
+                if (this.bankRepository == null)
+                    this.bankRepository = new Repository<BankMaster>(_context);
+                return bankRepository;
+            }
+
+        }
         public void Save()
         {
             _context.SaveChanges();

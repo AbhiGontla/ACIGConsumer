@@ -46,5 +46,25 @@ namespace Services.RequestHandler
             return clientSecret;
         }
         #endregion
+
+        public List<Approvals> GetApprovById(string nationalId, string yob)
+        {
+            return GetApprovalsByNationalId(nationalId, yob).Result;
+        }
+        public async Task<List<Approvals>> GetApprovalsByNationalId(string nationalId, string yob)
+        {      
+            var result = new List<Approvals>();
+            if (nationalId != null && yob != null)
+            {
+                var clsInput = new ClsInput();
+                clsInput.code = "CI";
+                clsInput.nationalID = nationalId;
+                DateTime date = Convert.ToDateTime(yob);
+                clsInput.yearOfBirth = date.Year.ToString();
+                clsInput.insPolicyNo = "";
+                result = await GetApprovalsByNationalId(clsInput);
+            }
+            return result;
+        }
     }
 }

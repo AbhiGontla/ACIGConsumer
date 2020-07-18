@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Core.Domain;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -98,5 +99,16 @@ namespace Core.Api
 	{
 		public List<PaidClaims> PaidClaims { get; set; }
 		public List<OSClaims> OSClaims { get; set; }
+	}
+	public class ProviderClaimsDetails
+    {
+		public PaidClaims paidClaims { get; set; }
+		public Registration registration { get; set; }
+	}
+
+	public class ProviderOSClaimsDetails
+	{
+		public OSClaims OSClaims { get; set; }
+		public Registration registration { get; set; }
 	}
 }

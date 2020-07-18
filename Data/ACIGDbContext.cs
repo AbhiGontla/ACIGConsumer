@@ -350,6 +350,20 @@ namespace Data
                 builder.Property(e => e.TO_DATE);
                 builder.Property(e => e.YearofBirth);
             });
+            modelBuilder.Entity<MRClaimType>(builder =>
+            {
+                builder.Property(e => e.Id);
+                builder.Property(e => e.ClaimTypeName);
+
+            });
+            modelBuilder.Entity<BankMaster>(builder =>
+            {
+                builder.Property(e => e.Id);
+                builder.Property(e => e.BankCode);
+                builder.Property(e => e.BankNameArabic);
+                builder.Property(e => e.BankNameEnglish);
+
+            });
         }
     }
 }

@@ -3,16 +3,19 @@
     Layout = "";
 }
 
-<!--begin::Head-->
-<head>
-    <base href="../../../">
-    <meta charset="utf-8" />
-    <title>ACIG | Login</title>
-    <meta name="description" content="Login page example" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-    @if (ViewBag.lang == "en")
-    {
+
+@if (ViewBag.lang == "en")
+{
+    <!--begin::Head-->
+    <head>
+        <base href="../../../">
+        <meta charset="utf-8" />
+        <title>ACIG | Login</title>
+        <meta name="description" content="Login page example" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
         <!--end::Fonts-->
         <!--begin::Page Custom Styles(used by this page)-->
@@ -22,81 +25,25 @@
         <link href="assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
         <link href="assets/plugins/custom/prismjs/prismjs.bundle.css" rel="stylesheet" type="text/css" />
         <link href="assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
-    }
+        <!--end::Global Theme Styles-->
+        <!--begin::Layout Themes(used by all pages)-->
+        <!--end::Layout Themes-->
+        <link rel="shortcut icon" href="assets/media/logos/favicon.ico" />
 
-    @if (ViewBag.lang == "ar")
-    {
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
-        <!--end::Fonts-->
-        <!--begin::Page Custom Styles(used by this page)-->
-        <link href="assets/css/pages/login/login-2.rtl.css" rel="stylesheet" type="text/css" />
-        <!--end::Page Custom Styles-->
-        <!--begin::Global Theme Styles(used by all pages)-->
-        <link href="assets/plugins/global/plugins.bundle.rtl.css" rel="stylesheet" type="text/css" />
-        <link href="assets/plugins/custom/prismjs/prismjs.bundle.rtl.css" rel="stylesheet" type="text/css" />
-        <link href="assets/css/style.bundle.rtl.css" rel="stylesheet" type="text/css" />
-    }
-    <!--begin::Fonts-->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
-    <!--end::Fonts-->
-    <!--begin::Page Custom Styles(used by this page)-->
-    <link href="assets/css/pages/login/login-2.css" rel="stylesheet" type="text/css" />
-    <!--end::Page Custom Styles-->
-    <!--begin::Global Theme Styles(used by all pages)-->
-    <link href="assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
-    <link href="assets/plugins/custom/prismjs/prismjs.bundle.css" rel="stylesheet" type="text/css" />
-    <link href="assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
+        <style>
+           
+            @@font-face {
+                font-family: 'cairo-bold';
+                src: url('assets/custom/fonts/cairo/cairo-bold.ttf') format('truetype');
+            }
 
-
-
-    <!--end::Global Theme Styles-->
-    <!--begin::Layout Themes(used by all pages)-->
-    <!--end::Layout Themes-->
-    <link rel="shortcut icon" href="assets/media/logos/favicon.ico" />
-
-    <style>
-        /*.col-lg-3 {
-                    -webkit-box-flex: 0;
-                    -ms-flex: 0 0 25%;
-                    flex: 0 0 25%;
-                    max-width: 1%;
-                }
-
-                .smalltextbox {
-                    width: 50px;
-                    height: 50px;
-                    padding: 0;
-                    margin-right: 25px;
-                    text-align: center;
-                    background-color: #e5eaee;
-                    border: #e5eaee;
-                    border-radius: 5px;
-                    margin: 25px;
-                }*/
-
-        /* @@font-face {
-                    font-family: 'quicksand-semibold';
-                    src: url('assets/custom/fonts/quicksand-semibold.ttf') format('truetype');
-                }
-
-                div {
-                    font-family: quicksand-semibold;
-                }*/
-        @@font-face {
-            font-family: 'cairo-bold';
-            src: url('assets/custom/fonts/cairo/cairo-bold.ttf') format('truetype');
-        }
-
-        @@font-face {
-            font-family: 'cairo-regular';
-            src: url('assets/custom/fonts/cairo/cairo-regular.ttf') format('truetype');
-        }
-    </style>
-</head>
-<!--end::Head-->
-
-@if (ViewBag.lang == "en")
-{
+            @@font-face {
+                font-family: 'cairo-regular';
+                src: url('assets/custom/fonts/cairo/cairo-regular.ttf') format('truetype');
+            }
+        </style>
+    </head>
+    <!--end::Head-->
 
     <!--begin::Body-->
     <body id="kt_body" class="header-mobile-fixed subheader-enabled aside-enabled aside-fixed aside-secondary-enabled page-loading">
@@ -180,7 +127,7 @@
                 </div>
                 <!--begin::Aside-->
                 <!--begin::Content-->
-                <div class="content order-1 order-lg-2 d-flex flex-column w-100 pb-0" style=" background-color: #4092bb;">
+                <div class="content order-1 order-lg-1 d-flex flex-column w-100 pb-0" style=" background-color: #4092bb;">
                     <!--begin::Title-->
 
 
@@ -201,9 +148,71 @@
 @if (ViewBag.lang == "ar")
 {
 
+    <!--begin::Head-->
+    <head>
+        <base href="../../../">
+        <meta charset="utf-8" />
+        <title>ACIG | Login</title>
+        <meta name="description" content="Login page example" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
+        <!--end::Fonts-->
+        <!--begin::Page Custom Styles(used by this page)-->
+        <link href="assets/css/pages/login/login-2.rtl.css" rel="stylesheet" type="text/css" />
+        <!--end::Page Custom Styles-->
+        <!--begin::Global Theme Styles(used by all pages)-->
+        <link href="assets/plugins/global/plugins.bundle.rtl.css" rel="stylesheet" type="text/css" />
+        <link href="assets/plugins/custom/prismjs/prismjs.bundle.rtl.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/style.bundle.rtl.css" rel="stylesheet" type="text/css" />
+
+        <!--end::Global Theme Styles-->
+        <!--begin::Layout Themes(used by all pages)-->
+        <!--end::Layout Themes-->
+        <link rel="shortcut icon" href="assets/media/logos/favicon.ico" />
+
+        <style>
+            /*.col-lg-3 {
+                    -webkit-box-flex: 0;
+                    -ms-flex: 0 0 25%;
+                    flex: 0 0 25%;
+                    max-width: 1%;
+                }
+
+                .smalltextbox {
+                    width: 50px;
+                    height: 50px;
+                    padding: 0;
+                    margin-right: 25px;
+                    text-align: center;
+                    background-color: #e5eaee;
+                    border: #e5eaee;
+                    border-radius: 5px;
+                    margin: 25px;
+                }*/
+
+            /* @@font-face {
+                    font-family: 'quicksand-semibold';
+                    src: url('assets/custom/fonts/quicksand-semibold.ttf') format('truetype');
+                }
+
+                div {
+                    font-family: quicksand-semibold;
+                }*/
+            @@font-face {
+                font-family: 'cairo-bold';
+                src: url('assets/custom/fonts/cairo/cairo-bold.ttf') format('truetype');
+            }
+
+            @@font-face {
+                font-family: 'cairo-regular';
+                src: url('assets/custom/fonts/cairo/cairo-regular.ttf') format('truetype');
+            }
+        </style>
+    </head>
+    <!--end::Head-->
     <!--begin::Body-->
-    <body id="kt_body_ar" class="header-mobile-fixed subheader-enabled aside-enabled aside-fixed aside-secondary-enabled page-loading">
+    <body id="kt_body_ar" class="header-mobile-fixed subheader-enabled aside-enabled aside-fixed aside-secondary-enabled page-loading" style="direction:RTL;">
         <!--begin::Main-->
         <div class="d-flex flex-column flex-root">
 
@@ -237,7 +246,7 @@
                                     <span class="text-danger text-center font-weight-bold font-size-h6-sm" id="errorarmessage">
                                     </span>
                                     <div class="form-group">
-                                        <label class="font-size-h6 font-weight-bolder text-dark">الهوية الوطنية</label>
+                                        <label class="font-size-h6 font-weight-bolder text-dark" style="margin:auto">الهوية الوطنية</label>
                                         <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg font-size-h6" type="text" placeholder="الهوية الوطنية" name="National id / Iqama id" autocomplete="off" id="natarId" />
                                         <span class="text-danger font-weight-bold font-size-h6-sm" id="Nidarerror">
                                         </span>

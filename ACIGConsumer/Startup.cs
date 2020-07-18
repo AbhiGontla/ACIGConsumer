@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
+using ACIGConsumer.Controllers;
 using ACIGConsumer.Models;
 using Core;
 using Data;
@@ -60,7 +61,8 @@ namespace ACIGConsumer
             services.TryAddTransient<CoverageBalanceHandler, CoverageBalanceHandler>();
             services.TryAddTransient<ProvidersHandler, ProvidersHandler>();
             services.TryAddTransient<ClaimsHandler, ClaimsHandler>();
-            services.TryAddTransient<GetLang, GetLang>();
+            services.TryAddTransient<CustomerHandler, CustomerHandler>();
+            services.TryAddTransient<GetLang, GetLang>();         
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
         }
 

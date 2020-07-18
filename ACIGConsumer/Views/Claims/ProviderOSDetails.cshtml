@@ -1,0 +1,455 @@
+﻿@model Core.Api.ProviderOSClaimsDetails
+
+@{
+    var paidclaims = Model.OSClaims;
+    var userdetail = Model.registration;
+}
+
+@{
+    if (ViewBag.lang == "en")
+    {
+        Layout = "_Layouten";
+
+        <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+            <!--begin::Subheader-->
+            <div class="subheader py-3 py-lg-8 subheader-transparent" id="kt_subheader">
+                <div class="container d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+                    <!--begin::Info-->
+                    <div class="d-flex align-items-center flex-wrap mr-1">
+                        <!--begin::Mobile Toggle-->
+                        <button class="burger-icon burger-icon-left mr-4 d-inline-block d-lg-none" id="kt_subheader_mobile_toggle">
+                            <span></span>
+                        </button>
+                        <!--end::Mobile Toggle-->
+                        <!--begin::Page Heading-->
+                        <div class="d-flex align-items-baseline mr-5">
+                            <!--begin::Page Title-->
+                            <h2 class="subheader-title text-white font-weight-bold my-2 mr-3">Provider Claim Details</h2>
+                            <!--end::Page Title-->
+                        </div>
+                        <!--end::Page Heading-->
+                    </div>
+                    <!--end::Info-->
+                    <!--begin::Toolbar-->
+                    <div class="d-flex align-items-center">
+                        <!--begin::Button-->
+                        <a href="/Claims/GetOSClaims?lang=en" class="btn btn-fh btn-white btn-hover-primary font-weight-bold px-2 px-lg-5 mr-2">
+                            Back
+                        </a>
+                        <!--end::Button-->
+                    </div>
+                    <!--end::Toolbar-->
+                </div>
+            </div>
+            <!--end::Subheader-->
+            <!--begin::Entry-->
+            <div class="d-flex flex-column-fluid">
+                <!--begin::Container-->
+                <div class="container">
+                    <!--begin::Profile Account Information-->
+                    <div class="d-flex flex-row">
+                        <!--begin::Aside-->
+                        <div class="flex-row-auto offcanvas-mobile w-300px w-xxl-250px" id="kt_profile_aside">
+                            <!--begin::Profile Card-->
+                            <div class="card card-custom card-stretch">
+                                <!--begin::Body-->
+                                <div class="card-body pt-4">
+                                    <!--begin::Toolbar-->
+                                    <!--end::Toolbar-->
+                                    <!--begin::User-->
+                                    <div class="d-flex align-items-center">
+                                        <div class="symbol symbol-60 symbol-xxl-100 mr-5 align-self-start align-self-xxl-center">
+                                            <div class="symbol-label" style="background-image:url('assets/media/users/300_21.jpg')"></div>
+                                            @*<i class="symbol-badge bg-success"></i>*@
+                                        </div>
+                                        <div>
+                                            <span class="font-weight-bolder font-size-h5 text-dark-75 ">
+                                                @userdetail.MemberName
+
+                                            </span>
+                                            <div class="text-muted">ID - @userdetail.Iqama_NationalID</div>
+                                        </div>
+                                    </div>
+                                    <!--end::User-->
+                                    <!--begin::Contact-->
+                                    <div class="py-9">
+                                        <div class="d-flex align-items-center justify-content-between mb-4">
+                                            <span class="text-muted">Email:</span>
+                                            <span class="font-weight-bold mr-2">abubakar@gmail.com</span>
+                                        </div>
+                                        <div class="d-flex align-items-center justify-content-between mb-4">
+                                            <span class="text-muted">Phone:</span>
+                                            <span class="font-weight-bold mr-2"> @userdetail.MemberMobileNumber</span>
+                                        </div>
+                                        <div class="d-flex align-items-center justify-content-between mb-4">
+                                            <span class="text-muted">CardNo:</span>
+                                            <span class="font-weight-bold mr-2"> @userdetail.CardNo</span>
+                                        </div>
+                                        <div class="d-flex align-items-center justify-content-between mb-4">
+                                            <span class="text-muted">DOB:</span>
+                                            <span class="font-weight-bold mr-2">@userdetail.DOB</span>
+                                        </div>
+                                        <div class="d-flex align-items-center justify-content-between mb-4">
+                                            <span class="text-muted">Insurance No:</span>
+                                            <span class="font-weight-bold mr-2">@userdetail.TushfaMemberNo</span>
+                                        </div>
+                                        <div class="d-flex align-items-center justify-content-between mb-4">
+                                            <span class="text-muted">TPA ID:</span>
+                                            <span class="font-weight-bold mr-2">@userdetail.TPAID</span>
+                                        </div>
+                                        <div class="d-flex align-items-center justify-content-between mb-4">
+                                            <span class="text-muted">Member Type:</span>
+                                            <span class="font-weight-bold mr-2">@userdetail.MemberType</span>
+                                        </div>
+                                        <div class="d-flex align-items-center justify-content-between mb-4">
+                                            <span class="text-muted">Member Status:</span>
+                                            <span class="font-weight-bold mr-2">@userdetail.MemberStatus</span>
+                                        </div>
+
+                                        <div class="d-flex align-items-center justify-content-between">
+                                            @*<img style="height: 100px; padding-right: 70px;" src="~/assets/Custom/Images/QRCode.png" />*@
+                                        </div>
+                                    </div>
+                                    <!--end::Contact-->
+                                </div>
+                                <!--end::Body-->
+                            </div>
+                            <!--end::Profile Card-->
+                        </div>
+                        <!--end::Aside-->
+                        <!--begin::Content-->
+                        <div class="flex-row-fluid ml-lg-8">
+                            <!--begin::Card-->
+                            <div class="card card-custom">
+                                <!--begin::Header-->
+                                <div class="card-header py-3">
+                                    <div class="card-title align-items-start flex-column">
+                                        <h3 class="text-dark font-weight-bold  mt-1">Outstanding Claim Details</h3>
+                                    </div>
+                                    <div class="card-toolbar">
+                                        @*<button type="reset" class="btn btn-success btn-sm mr-2">Download</button>*@
+                                    </div>
+                                </div>
+                                <!--end::Header-->
+                                <!--begin::card body-->
+                                <div class="card-body">
+
+                                    <div class="d-flex align-items-center justify-content-between mb-3">
+                                        <span class="text-muted">ProviderName</span>
+                                        <span class="font-size-sm font-weight-bold mr-2">
+                                            @paidclaims.CL_PROVNAME
+                                        </span>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between mb-3">
+                                        <span class="text-muted">Company Policy Number</span>
+                                        <span class="font-size-sm font-weight-bold mr-2">@paidclaims.CL_INSPOLNO</span>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between mb-3">
+                                        <span class="text-muted">Company Insured Number</span>
+                                        <span class="font-size-sm font-weight-bold mr-2">@paidclaims.CL_INSINSURD</span>
+                                    </div>
+                                    <!--begin::-->
+
+                                    <div class="d-flex align-items-center justify-content-between mb-3">
+                                        <span class="text-muted">Claim Amount</span>
+                                        <span class="font-size-sm font-weight-bold mr-2">   @paidclaims.CL_CLMAMT_LL</span>
+                                    </div>
+
+                                    <div class="d-flex align-items-center justify-content-between mb-3">
+                                        <span class="text-muted">Invoice Number</span>
+                                        <span class="font-size-sm font-weight-bold mr-2">@paidclaims.CL_INV_NO</span>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between mb-3">
+                                        <span class="text-muted">CCHI Number</span>
+                                        <span class="font-size-sm font-weight-bold mr-2">@paidclaims.CL_CCHINO</span>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between mb-3">
+                                        <span class="text-muted">Claim Number</span>
+                                        <span class="font-size-sm font-weight-bold mr-2">@paidclaims.CL_VISA</span>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between mb-3">
+                                        <span class="text-muted">Admission Date</span>
+                                        <span class="font-size-sm font-weight-bold mr-2">@paidclaims.CL_ADMDATE</span>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between mb-3">
+                                        <span class="text-muted">Discharge Date</span>
+                                        <span class="font-size-sm font-weight-bold mr-2">@paidclaims.CL_DISCHARGE</span>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between mb-3">
+                                        <span class="text-muted">Processed Date</span>
+                                        <span class="font-size-sm font-weight-bold mr-2">@paidclaims.CL_STLDATE</span>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between mb-3">
+                                        <span class="text-muted">Claim Type</span>
+                                        <span class="font-size-sm font-weight-bold mr-2">@paidclaims.CL_CLMTYPE</span>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between mb-3">
+                                        <span class="text-muted">Service Desciption</span>
+                                        <span class="font-size-sm font-weight-bold mr-2">@paidclaims.SRV_DESC</span>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between mb-3">
+                                        <span class="text-muted">Claim  Gross Amount</span>
+                                        <span class="font-size-sm font-weight-bold mr-2">@paidclaims.GROSS_OR</span>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between mb-3">
+                                        <span class="text-muted">Admission Type</span>
+                                        <span class="font-size-sm font-weight-bold mr-2">@paidclaims.ADM_TYPE</span>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between mb-3">
+                                        <span class="text-muted">Diagnostics</span>
+                                        <span class="font-size-sm font-weight-bold mr-2">
+                                            @paidclaims.CL_DIAG_DESC
+                                        </span>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between mb-3">
+                                        <span class="text-muted">PP NO</span>
+                                        <span class="font-size-sm font-weight-bold mr-2">@paidclaims.CL_PP_NO</span>
+                                    </div>
+                                    <!--end::-->
+                                    <!--begin::-->
+                                    <div class="separator separator-solid my-5"></div>
+                                    <!--end::Separator-->
+                                    <!--begin::-->
+                                    @*<div class="d-flex align-items-center justify-content-between">
+                                            <span class="text-muted">For 24/7 Assistance</span>
+                                            <span class="font-size-sm font-weight-bold mr-2">920005006</span>
+                                        </div>*@
+                                    <!--end::-->
+                                </div>
+                                <!--end::card body-->
+                            </div>
+                            <!--end::Card-->
+                        </div>
+                        <!--end::Content-->
+                    </div>
+                    <!--end::Profile Account Information-->
+                </div>
+                <!--end::Container-->
+            </div>
+            <!--end::Entry-->
+        </div>
+    }
+    else if (ViewBag.lang == "ar")
+    {
+        Layout = "_Layoutv1";
+
+        <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+            <!--begin::Subheader-->
+            <div class="subheader py-3 py-lg-8 subheader-transparent" id="kt_subheader">
+                <div class="container d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+                    <!--begin::Info-->
+                    <div class="d-flex align-items-center flex-wrap mr-1">
+                        <!--begin::Mobile Toggle-->
+                        <button class="burger-icon burger-icon-left mr-4 d-inline-block d-lg-none" id="kt_subheader_mobile_toggle">
+                            <span></span>
+                        </button>
+                        <!--end::Mobile Toggle-->
+                        <!--begin::Page Heading-->
+                        <div class="d-flex align-items-baseline mr-5">
+                            <!--begin::Page Title-->
+                            <h2 class="subheader-title text-white font-weight-bold my-2 mr-3">Provider Detail</h2>
+                            <!--end::Page Title-->
+                        </div>
+                        <!--end::Page Heading-->
+                    </div>
+                    <!--end::Info-->
+                    <!--begin::Toolbar-->
+                    <div class="d-flex align-items-center">
+                        <!--begin::Button-->
+                        <a href="/Claims/GetOSClaims?lang=ar" class="btn btn-fh btn-white btn-hover-primary font-weight-bold px-2 px-lg-5 mr-2">
+                            Back
+                        </a>
+                        <!--end::Button-->
+                    </div>
+                    <!--end::Toolbar-->
+                </div>
+            </div>
+            <!--end::Subheader-->
+            <!--begin::Entry-->
+            <div class="d-flex flex-column-fluid">
+                <!--begin::Container-->
+                <div class="container">
+                    <!--begin::Profile Account Information-->
+                    <div class="d-flex flex-row">
+                        <!--begin::Aside-->
+                        <div class="flex-row-auto offcanvas-mobile w-300px w-xxl-250px" id="kt_profile_aside">
+                            <!--begin::Profile Card-->
+                            <div class="card card-custom card-stretch">
+                                <!--begin::Body-->
+                                <div class="card-body pt-4">
+                                    <!--begin::Toolbar-->
+                                    <!--end::Toolbar-->
+                                    <!--begin::User-->
+                                    <div class="d-flex align-items-center">
+                                        <div class="symbol symbol-60 symbol-xxl-100 mr-5 align-self-start align-self-xxl-center">
+                                            <div class="symbol-label" style="background-image:url('assets/media/users/300_21.jpg')"></div>
+                                            @*<i class="symbol-badge bg-success"></i>*@
+                                        </div>
+                                        <div>
+                                            <span class="font-weight-bolder font-size-h5 text-dark-75 ">
+                                                @userdetail.MemberName
+
+                                            </span>
+                                            <div class="text-muted">ID - @userdetail.Iqama_NationalID</div>
+                                        </div>
+                                    </div>
+                                    <!--end::User-->
+                                    <!--begin::Contact-->
+                                    <div class="py-9">
+                                        <div class="d-flex align-items-center justify-content-between mb-4">
+                                            <span class="text-muted">Email:</span>
+                                            <span class="font-weight-bold mr-2">abubakar@gmail.com</span>
+                                        </div>
+                                        <div class="d-flex align-items-center justify-content-between mb-4">
+                                            <span class="text-muted">Phone:</span>
+                                            <span class="font-weight-bold mr-2"> @userdetail.MemberMobileNumber</span>
+                                        </div>
+                                        <div class="d-flex align-items-center justify-content-between mb-4">
+                                            <span class="text-muted">CardNo:</span>
+                                            <span class="font-weight-bold mr-2"> @userdetail.CardNo</span>
+                                        </div>
+                                        <div class="d-flex align-items-center justify-content-between mb-4">
+                                            <span class="text-muted">DOB:</span>
+                                            <span class="font-weight-bold mr-2">@userdetail.DOB</span>
+                                        </div>
+                                        <div class="d-flex align-items-center justify-content-between mb-4">
+                                            <span class="text-muted">Insurance No:</span>
+                                            <span class="font-weight-bold mr-2">@userdetail.TushfaMemberNo</span>
+                                        </div>
+                                        <div class="d-flex align-items-center justify-content-between mb-4">
+                                            <span class="text-muted">TPA ID:</span>
+                                            <span class="font-weight-bold mr-2">@userdetail.TPAID</span>
+                                        </div>
+                                        <div class="d-flex align-items-center justify-content-between mb-4">
+                                            <span class="text-muted">Member Type:</span>
+                                            <span class="font-weight-bold mr-2">@userdetail.MemberType</span>
+                                        </div>
+                                        <div class="d-flex align-items-center justify-content-between mb-4">
+                                            <span class="text-muted">Member Status:</span>
+                                            <span class="font-weight-bold mr-2">@userdetail.MemberStatus</span>
+                                        </div>
+
+                                        <div class="d-flex align-items-center justify-content-between">
+                                            @*<img style="height: 100px; padding-right: 70px;" src="~/assets/Custom/Images/QRCode.png" />*@
+                                        </div>
+                                    </div>
+                                    <!--end::Contact-->
+                                </div>
+                                <!--end::Body-->
+                            </div>
+                            <!--end::Profile Card-->
+                        </div>
+                        <!--end::Aside-->
+                        <!--begin::Content-->
+                        <div class="flex-row-fluid ml-lg-8">
+                            <!--begin::Card-->
+                            <div class="card card-custom">
+                                <!--begin::Header-->
+                                <div class="card-header py-3">
+                                    <div class="card-title align-items-start flex-column">
+                                        <h3 class="text-dark font-weight-bold  mt-1">OutStanding Claim Details</h3>
+                                    </div>
+                                    <div class="card-toolbar">
+                                        @*<button type="reset" class="btn btn-success btn-sm mr-2">Download</button>*@
+                                    </div>
+                                </div>
+                                <!--end::Header-->
+                                <!--begin::card body-->
+                                <div class="card-body">
+
+                                    <div class="d-flex align-items-center justify-content-between mb-3">
+                                        <span class="text-muted">ProviderName</span>
+                                        <span class="font-size-sm font-weight-bold mr-2">
+                                            @paidclaims.CL_PROVNAME
+                                        </span>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between mb-3">
+                                        <span class="text-muted">Company Policy Number</span>
+                                        <span class="font-size-sm font-weight-bold mr-2">@paidclaims.CL_INSPOLNO</span>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between mb-3">
+                                        <span class="text-muted">Company Insured Number</span>
+                                        <span class="font-size-sm font-weight-bold mr-2">@paidclaims.CL_INSINSURD</span>
+                                    </div>
+                                    <!--begin::-->
+
+                                    <div class="d-flex align-items-center justify-content-between mb-3">
+                                        <span class="text-muted">Claim Amount</span>
+                                        <span class="font-size-sm font-weight-bold mr-2">   @paidclaims.CL_CLMAMT_LL</span>
+                                    </div>
+
+                                    <div class="d-flex align-items-center justify-content-between mb-3">
+                                        <span class="text-muted">Invoice Number</span>
+                                        <span class="font-size-sm font-weight-bold mr-2">@paidclaims.CL_INV_NO</span>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between mb-3">
+                                        <span class="text-muted">CCHI Number</span>
+                                        <span class="font-size-sm font-weight-bold mr-2">@paidclaims.CL_CCHINO</span>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between mb-3">
+                                        <span class="text-muted">Claim Number</span>
+                                        <span class="font-size-sm font-weight-bold mr-2">@paidclaims.CL_VISA</span>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between mb-3">
+                                        <span class="text-muted">Admission Date</span>
+                                        <span class="font-size-sm font-weight-bold mr-2">@paidclaims.CL_ADMDATE</span>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between mb-3">
+                                        <span class="text-muted">Discharge Date</span>
+                                        <span class="font-size-sm font-weight-bold mr-2">@paidclaims.CL_DISCHARGE</span>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between mb-3">
+                                        <span class="text-muted">Processed Date</span>
+                                        <span class="font-size-sm font-weight-bold mr-2">@paidclaims.CL_STLDATE</span>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between mb-3">
+                                        <span class="text-muted">Service Desciption</span>
+                                        <span class="font-size-sm font-weight-bold mr-2">@paidclaims.SRV_DESC</span>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between mb-3">
+                                        <span class="text-muted">Claim  Gross Amount</span>
+                                        <span class="font-size-sm font-weight-bold mr-2">@paidclaims.GROSS_OR</span>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between mb-3">
+                                        <span class="text-muted">Admission Type</span>
+                                        <span class="font-size-sm font-weight-bold mr-2">@paidclaims.ADM_TYPE</span>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between mb-3">
+                                        <span class="text-muted">Claim Type</span>
+                                        <span class="font-size-sm font-weight-bold mr-2">@paidclaims.CL_CLMTYPE</span>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between mb-3">
+                                        <span class="text-muted">Diagnostics</span>
+                                        <span class="font-size-sm font-weight-bold mr-2">
+                                            @paidclaims.CL_DIAG_DESC
+                                        </span>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between mb-3">
+                                        <span class="text-muted">PP NO</span>
+                                        <span class="font-size-sm font-weight-bold mr-2">@paidclaims.CL_PP_NO</span>
+                                    </div>
+                                    <!--end::-->
+                                    <!--begin::-->
+                                    <div class="separator separator-solid my-5"></div>
+                                    <!--end::Separator-->
+                                    <!--begin::-->
+                                    @*<div class="d-flex align-items-center justify-content-between">
+                                            <span class="text-muted">For 24/7 Assistance</span>
+                                            <span class="font-size-sm font-weight-bold mr-2">920005006</span>
+                                        </div>*@
+                                    <!--end::-->
+                                </div>
+                                <!--end::card body-->
+                            </div>
+                            <!--end::Card-->
+                        </div>
+                        <!--end::Content-->
+                    </div>
+                    <!--end::Profile Account Information-->
+                </div>
+                <!--end::Container-->
+            </div>
+            <!--end::Entry-->
+        </div>
+    }
+}

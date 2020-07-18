@@ -32,7 +32,7 @@ namespace ACIGConsumer.Controllers
         public IActionResult Index()
         {
             ViewBag.lang = langcode;
-            var _policies = GetPoliciesById();          
+            var _policies = GetPoliciesById().OrderByDescending(x => x.PolicyToDate);         
             return View(_policies);
         }
 
@@ -48,6 +48,17 @@ namespace ACIGConsumer.Controllers
             var _policies = GetPoliciesById();
             var _policydetails = _policies.Where(c => (c.PolicyNumber == id)).FirstOrDefault();
             return View(_policydetails);
+        }
+
+        public IActionResult medicaladvice()
+        {
+            ViewBag.lang = langcode;
+            return View();
+        }
+        public IActionResult medicaldetails()
+        {
+            ViewBag.lang = langcode;
+            return View();
         }
 
         public List<Policies> GetPoliciesById()
