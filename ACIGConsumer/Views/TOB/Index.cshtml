@@ -1,0 +1,986 @@
+﻿@model Core.Api.TOB
+@{
+    ViewData["Title"] = "TOB";
+}
+
+@{
+    var inpatient=new List<Core.Api.Inpatient>();
+    var outpatient=new List<Core.Api.Outpatient>();
+    var MaternityBenefit = new List<Core.Api.MaternityBenefit>();
+    var DentalBenefit = new List<Core.Api.DentalBenefit>();
+    var ReimbursementClaim = new List<Core.Api.ReimbursementClaim>();
+    var AdditionalBenefit = new List<Core.Api.AdditionalBenefit>();
+    if (Model.TOBsublist.Count>0)
+    {
+        List<Core.Api.TOBsublist> tOBsublists = Model.TOBsublist;
+        for(int i = 0; i < tOBsublists.Count; i++)
+        {
+            if (tOBsublists[i].Inpatient.Count > 0)
+            {
+                inpatient = tOBsublists[i].Inpatient;
+            }
+            if (tOBsublists[i].Outpatient.Count > 0)
+            {
+                outpatient = tOBsublists[i].Outpatient;
+            }
+            if (tOBsublists[i].MaternityBenefits.Count > 0)
+            {
+                MaternityBenefit = tOBsublists[i].MaternityBenefits;
+            }
+            if (tOBsublists[i].DentalBenefits.Count > 0)
+            {
+                DentalBenefit = tOBsublists[i].DentalBenefits;
+            }
+            if (tOBsublists[i].ReimbursementClaims.Count > 0)
+            {
+                ReimbursementClaim = tOBsublists[i].ReimbursementClaims;
+            }
+            if (tOBsublists[i].AdditionalBenefits.Count > 0)
+            {
+                AdditionalBenefit = tOBsublists[i].AdditionalBenefits;
+            }
+        }
+    }
+
+
+}
+@{
+    if (ViewBag.lang == "en")
+    {
+        Layout = "_Layouten";
+        <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+            <!--begin::Subheader-->
+            <div class="subheader py-3 py-lg-8 subheader-transparent" id="kt_subheader">
+                <div class="container d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+                    <!--begin::Details-->
+                    <div class="d-flex align-items-center flex-wrap mr-1">
+                        <!--begin::Page Heading-->
+                        <div class="d-flex align-items-baseline mr-5">
+                            <!--begin::Title-->
+                            <h2 class="subheader-title text-white font-weight-bold my-2 mr-3">Table Of Benefits</h2>
+                            <!--end::Title-->
+                        </div>
+                        <!--end::Page Heading-->
+                        <!--begin::Separator-->
+                        <!--end::Separator-->
+                        <!--begin::Search Form-->
+                        <!--end::Search Form-->
+                        <!--begin::Group Actions-->
+                        <!--end::Group Actions-->
+                    </div>
+                    <!--end::Details-->
+                    <!--begin::Toolbar-->
+                    <div class="d-flex align-items-center">
+                        <!--begin::Button-->
+                        <a href="#" class=""></a>
+                        <!--end::Button-->
+                        <!--begin::Button-->
+                        <!--end::Button-->
+                        <!--begin::Dropdown-->
+                        <!--end::Dropdown-->
+                    </div>
+                    <!--end::Toolbar-->
+                </div>
+            </div>
+            <!--end::Subheader-->
+            <!--begin::Entry-->
+            <div class="d-flex flex-column-fluid">
+                <!--begin::Container-->
+                <div class="container">                   
+
+                    <div class="card card-custom gutter-b">
+                        <!--begin::Header-->
+                        <div class="card-header border-0 pt-5">
+                            <h3 class="card-title align-items-start flex-column">
+                                <span class="card-label font-weight-bolder text-dark">Table Of benefits</span>
+                                <span class="text-muted mt-3 font-weight-bold font-size-sm">@Html.DisplayFor(model => model.ClassName)</span>
+                            </h3>
+
+                            <div class="card-toolbar">
+
+                            </div>
+                        </div>
+
+                        <!--end::Header-->
+                        <!--begin::Body-->
+                        <div class="card-body pt-2 pb-0">
+                            <!--begin::Table-->
+                            <div class="table-responsive">
+                                <table class="table table-borderless table-vertical-center">
+                                    <thead>
+                                        <tr>
+                                            @*<th class="p-0" style="width: 50px"></th>*@
+                                            <th class="p-0" style="min-width: 50px"></th>
+                                            <th class="p-0" style="min-width: 120px"></th>
+                                            @*<th class="p-0" style="min-width: 70px"></th>
+                            <th class="p-0" style="min-width: 70px"></th>
+                            <th class="p-0" style="min-width: 50px"></th>*@
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model.TOBlist)
+                                        {
+                                            <tr>
+                                                <td class="pl-0">
+                                                    <a href="#" class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">InsuranceClass</a>
+
+                                                </td>
+
+                                                <td class="text-right">
+                                                    <span class="text-muted font-weight-bold d-block font-size-sm">@item.ClassName</span>
+
+                                                </td>
+                                            </tr>
+                                            <tr>
+
+                                                <td class="pl-0">
+                                                    <a href="#" class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">GeographicalLimit</a>
+                                                </td>
+
+                                                <td class="text-right">
+                                                    <span class="text-muted font-weight-bold d-block font-size-sm">@item.GeographicalLimit</span>
+                                                </td>
+
+                                            </tr>
+                                            <tr>
+
+                                                <td class="pl-0">
+                                                    <a href="#" class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">Network</a>
+                                                </td>
+
+                                                <td class="text-right">
+                                                    <span class="text-muted font-weight-bold d-block font-size-sm">@item.Network</span>
+
+                                                </td>
+
+                                            </tr>
+                                            <tr>
+                                                <td class="pl-0">
+                                                    <a href="#" class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">MemberAnnualLimit</a>
+
+                                                </td>
+
+                                                <td class="text-right">
+                                                    <span class="text-muted font-weight-bold d-block font-size-sm">@item.MemberAnnualLimit</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="pl-0">
+                                                    <a href="#" class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">PreExChrCondition</a>
+                                                </td>
+                                                <td class="text-right">
+                                                    <span class="text-muted font-weight-bold d-block font-size-sm">@item.PreExChrCondition</span>
+                                                </td>
+                                            </tr>
+                                        }
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!--end::Table-->
+                        </div>
+                        <!--end::Body-->
+                        <div class="separator separator-solid separator-dashed"></div>
+                        <!--begin::Header-->
+                        <div class="card-header border-0 pt-5">
+                            <h3 class="card-title align-items-start flex-column">
+                                <span class="card-label font-weight-bolder text-dark">Inpatient Treatment</span>
+                                <span class="text-muted mt-3 font-weight-bold font-size-sm">@Html.DisplayFor(model => model.ClassName)</span>
+                            </h3>
+
+                            <div class="card-toolbar">
+
+                            </div>
+                        </div>
+                        <!--end::Header-->
+                        <!--begin::Body-->
+                        <div class="card-body pt-2 pb-0">
+                            <!--begin::Table-->
+                            <div class="table-responsive">
+                                <table class="table table-borderless table-vertical-center">
+                                    <thead>
+                                        <tr>
+                                            <th class="p-0" style="min-width: 50px"></th>
+                                            <th class="p-0" style="min-width: 120px"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @if (inpatient != null)
+                                        {
+                                            @foreach (var item in inpatient)
+                                            {
+                                                <tr>
+                                                    <td class="pl-0">
+                                                        <a href="#" class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">RoomType</a>
+
+                                                    </td>
+                                                    <td class="text-right">
+                                                        <span class="text-muted font-weight-bold d-block font-size-sm">@item.RoomType</span>
+
+                                                    </td>
+                                                </tr>
+                                                <tr>
+
+                                                    <td class="pl-0">
+                                                        <a href="#" class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">RoomDayLimit</a>
+                                                    </td>
+
+                                                    <td class="text-right">
+                                                        <span class="text-muted font-weight-bold d-block font-size-sm">@item.RoomDayLimit</span>
+                                                    </td>
+
+                                                </tr>
+                                                <tr>
+
+                                                    <td class="pl-0">
+                                                        <a href="#" class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">Accommodation</a>
+                                                    </td>
+
+                                                    <td class="text-right">
+                                                        <span class="text-muted font-weight-bold d-block font-size-sm">@item.Accommodation</span>
+
+                                                    </td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td class="pl-0">
+                                                        <a href="#" class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">Surgical</a>
+
+                                                    </td>
+
+                                                    <td class="text-right">
+                                                        <span class="text-muted font-weight-bold d-block font-size-sm">@item.Surgical</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="pl-0">
+                                                        <a href="#" class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">MedicalNursing</a>
+                                                    </td>
+                                                    <td class="text-right">
+                                                        <span class="text-muted font-weight-bold d-block font-size-sm">@item.MedicalNursing</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="pl-0">
+                                                        <a href="#" class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">Servicessupplies</a>
+                                                    </td>
+                                                    <td class="text-right">
+                                                        <span class="text-muted font-weight-bold d-block font-size-sm">@item.Servicessupplies</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="pl-0">
+                                                        <a href="#" class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">IntensiveCareUnit</a>
+                                                    </td>
+                                                    <td class="text-right">
+                                                        <span class="text-muted font-weight-bold d-block font-size-sm">@item.IntensiveCareUnit</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="pl-0">
+                                                        <a href="#" class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">parentaccommodation</a>
+                                                    </td>
+                                                    <td class="text-right">
+                                                        <span class="text-muted font-weight-bold d-block font-size-sm">@item.parentaccommodation</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="pl-0">
+                                                        <a href="#" class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">Co_insurance_Deductible</a>
+                                                    </td>
+                                                    <td class="text-right">
+                                                        <span class="text-muted font-weight-bold d-block font-size-sm">@item.Co_insurance_Deductible</span>
+                                                    </td>
+                                                </tr>
+                                            }
+                                        }
+
+
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!--end::Table-->
+                        </div>
+                        <!--end::Body-->
+                        <div class="separator separator-solid separator-dashed"></div>
+                        <!--begin::Header-->
+                        <div class="card-header border-0 pt-5">
+                            <h3 class="card-title align-items-start flex-column">
+                                <span class="card-label font-weight-bolder text-dark">OutPatient Treatment</span>
+                                <span class="text-muted mt-3 font-weight-bold font-size-sm">@Html.DisplayFor(model => model.ClassName)</span>
+                            </h3>
+                            <div class="card-toolbar">
+
+                            </div>
+                        </div>
+                        <!--end::Header-->
+                        <!--begin::Body-->
+                        <div class="card-body pt-2 pb-0">
+                            <!--begin::Table-->
+                            <div class="table-responsive">
+                                <table class="table table-borderless table-vertical-center">
+                                    <thead>
+                                        <tr>
+                                            <th class="p-0" style="min-width: 50px"></th>
+                                            <th class="p-0" style="min-width: 120px"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @if (outpatient != null)
+                                        {
+                                            @foreach (var item in outpatient)
+                                            {
+                                                <tr>
+                                                    <td class="pl-0">
+                                                        <a href="#" class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">Consultations</a>
+
+                                                    </td>
+                                                    <td class="text-right">
+                                                        <span class="text-muted font-weight-bold d-block font-size-sm">@item.Consultations</span>
+
+                                                    </td>
+                                                </tr>
+                                                <tr>
+
+                                                    <td class="pl-0">
+                                                        <a href="#" class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">Diagnosticprocedures</a>
+                                                    </td>
+
+                                                    <td class="text-right">
+                                                        <span class="text-muted font-weight-bold d-block font-size-sm">@item.Diagnosticprocedures</span>
+                                                    </td>
+
+                                                </tr>
+                                                <tr>
+
+                                                    <td class="pl-0">
+                                                        <a href="#" class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">Prescribeddrugs</a>
+                                                    </td>
+
+                                                    <td class="text-right">
+                                                        <span class="text-muted font-weight-bold d-block font-size-sm">@item.Prescribeddrugs</span>
+
+                                                    </td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td class="pl-0">
+                                                        <a href="#" class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">Radiotherapy</a>
+
+                                                    </td>
+
+                                                    <td class="text-right">
+                                                        <span class="text-muted font-weight-bold d-block font-size-sm">@item.Radiotherapy</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="pl-0">
+                                                        <a href="#" class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">Physiotherapy</a>
+                                                    </td>
+                                                    <td class="text-right">
+                                                        <span class="text-muted font-weight-bold d-block font-size-sm">@item.Physiotherapy</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="pl-0">
+                                                        <a href="#" class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">MPN</a>
+                                                    </td>
+                                                    <td class="text-right">
+                                                        <span class="text-muted font-weight-bold d-block font-size-sm">@item.MPN</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="pl-0">
+                                                        <a href="#" class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">OHN</a>
+                                                    </td>
+                                                    <td class="text-right">
+                                                        <span class="text-muted font-weight-bold d-block font-size-sm">@item.OHN</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="pl-0">
+                                                        <a href="#" class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">OCN</a>
+                                                    </td>
+                                                    <td class="text-right">
+                                                        <span class="text-muted font-weight-bold d-block font-size-sm">@item.OCN</span>
+                                                    </td>
+                                                </tr>
+
+                                            }
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!--end::Table-->
+                        </div>
+                        <!--end::Body-->
+                        <div class="separator separator-solid separator-dashed"></div>
+                        <!--begin::Header-->
+                        <div class="card-header border-0 pt-5">
+                            <h3 class="card-title align-items-start flex-column">
+                                <span class="card-label font-weight-bolder text-dark">MaternityBenefits</span>
+                                <span class="text-muted mt-3 font-weight-bold font-size-sm">@Html.DisplayFor(model => model.ClassName)</span>
+                            </h3>
+                            <div class="card-toolbar">
+
+                            </div>
+                        </div>
+                        <!--end::Header-->
+                        <!--begin::Body-->
+                        <div class="card-body pt-2 pb-0">
+                            <!--begin::Table-->
+                            <div class="table-responsive">
+                                <table class="table table-borderless table-vertical-center">
+                                    <thead>
+                                        <tr>
+                                            <th class="p-0" style="min-width: 50px"></th>
+                                            <th class="p-0" style="min-width: 120px"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @if (MaternityBenefit != null)
+                                        {
+                                            @foreach (var item in MaternityBenefit)
+                                            {
+                                                <tr>
+                                                    <td class="pl-0">
+                                                        <a href="#" class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">Maternity_SubLimit</a>
+
+                                                    </td>
+                                                    <td class="text-right">
+                                                        <span class="text-muted font-weight-bold d-block font-size-sm">@item.Maternity_SubLimit</span>
+
+                                                    </td>
+                                                </tr>
+                                                <tr>
+
+                                                    <td class="pl-0">
+                                                        <a href="#" class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">NormalDelivery</a>
+                                                    </td>
+
+                                                    <td class="text-right">
+                                                        <span class="text-muted font-weight-bold d-block font-size-sm">@item.NormalDelivery</span>
+                                                    </td>
+
+                                                </tr>
+                                                <tr>
+
+                                                    <td class="pl-0">
+                                                        <a href="#" class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">Caesarian</a>
+                                                    </td>
+
+                                                    <td class="text-right">
+                                                        <span class="text-muted font-weight-bold d-block font-size-sm">@item.Caesarian</span>
+
+                                                    </td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td class="pl-0">
+                                                        <a href="#" class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">Miscarriage</a>
+
+                                                    </td>
+
+                                                    <td class="text-right">
+                                                        <span class="text-muted font-weight-bold d-block font-size-sm">@item.Miscarriage</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="pl-0">
+                                                        <a href="#" class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">WaitingPeriod</a>
+                                                    </td>
+                                                    <td class="text-right">
+                                                        <span class="text-muted font-weight-bold d-block font-size-sm">@item.WaitingPeriod</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="pl-0">
+                                                        <a href="#" class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">coverageofnewborns</a>
+                                                    </td>
+                                                    <td class="text-right">
+                                                        <span class="text-muted font-weight-bold d-block font-size-sm">@item.coverageofnewborns</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="pl-0">
+                                                        <a href="#" class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">PrematureBabies</a>
+                                                    </td>
+                                                    <td class="text-right">
+                                                        <span class="text-muted font-weight-bold d-block font-size-sm">@item.PrematureBabies</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="pl-0">
+                                                        <a href="#" class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">MaternityInpatient</a>
+                                                    </td>
+                                                    <td class="text-right">
+                                                        <span class="text-muted font-weight-bold d-block font-size-sm">@item.MaternityInpatient</span>
+                                                    </td>
+                                                </tr>
+
+                                            }
+                                        }
+
+
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!--end::Table-->
+                        </div>
+                        <!--end::Body-->
+                        <div class="separator separator-solid separator-dashed"></div>
+                        <!--begin::Header-->
+                        <div class="card-header border-0 pt-5">
+                            <h3 class="card-title align-items-start flex-column">
+                                <span class="card-label font-weight-bolder text-dark">DentalBenefits</span>
+                                <span class="text-muted mt-3 font-weight-bold font-size-sm">@Html.DisplayFor(model => model.ClassName)</span>
+                            </h3>
+                            <div class="card-toolbar">
+
+                            </div>
+                        </div>
+                        <!--end::Header-->
+                        <!--begin::Body-->
+                        <div class="card-body pt-2 pb-0">
+                            <!--begin::Table-->
+                            <div class="table-responsive">
+                                <table class="table table-borderless table-vertical-center">
+                                    <thead>
+                                        <tr>
+                                            <th class="p-0" style="min-width: 50px"></th>
+                                            <th class="p-0" style="min-width: 120px"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @if (DentalBenefit != null)
+                                        {
+                                            @foreach (var item in DentalBenefit)
+                                            {
+                                                <tr>
+                                                    <td class="pl-0">
+                                                        <a href="#" class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">DentalConsultation</a>
+
+                                                    </td>
+                                                    <td class="text-right">
+                                                        <span class="text-muted font-weight-bold d-block font-size-sm">@item.DentalConsultation</span>
+
+                                                    </td>
+                                                </tr>
+                                                <tr>
+
+                                                    <td class="pl-0">
+                                                        <a href="#" class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">Extraction</a>
+                                                    </td>
+
+                                                    <td class="text-right">
+                                                        <span class="text-muted font-weight-bold d-block font-size-sm">@item.Extraction</span>
+                                                    </td>
+
+                                                </tr>
+                                                <tr>
+
+                                                    <td class="pl-0">
+                                                        <a href="#" class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">X_Ray</a>
+                                                    </td>
+
+                                                    <td class="text-right">
+                                                        <span class="text-muted font-weight-bold d-block font-size-sm">@item.X_Ray</span>
+
+                                                    </td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td class="pl-0">
+                                                        <a href="#" class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">Filling</a>
+
+                                                    </td>
+
+                                                    <td class="text-right">
+                                                        <span class="text-muted font-weight-bold d-block font-size-sm">@item.Filling</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="pl-0">
+                                                        <a href="#" class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">RootCanalTreatment</a>
+                                                    </td>
+                                                    <td class="text-right">
+                                                        <span class="text-muted font-weight-bold d-block font-size-sm">@item.RootCanalTreatment</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="pl-0">
+                                                        <a href="#" class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">GumInfectionTreatment</a>
+                                                    </td>
+                                                    <td class="text-right">
+                                                        <span class="text-muted font-weight-bold d-block font-size-sm">@item.GumInfectionTreatment</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="pl-0">
+                                                        <a href="#" class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">MaximumDentalSubLimit</a>
+                                                    </td>
+                                                    <td class="text-right">
+                                                        <span class="text-muted font-weight-bold d-block font-size-sm">@item.MaximumDentalSubLimit</span>
+                                                    </td>
+                                                </tr>
+
+
+                                            }
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!--end::Table-->
+                        </div>
+                        <!--end::Body-->
+                        <div class="separator separator-solid separator-dashed"></div>
+                        <!--begin::Header-->
+                        <div class="card-header border-0 pt-5">
+                            <h3 class="card-title align-items-start flex-column">
+                                <span class="card-label font-weight-bolder text-dark">ReimbursementClaims</span>
+                                <span class="text-muted mt-3 font-weight-bold font-size-sm">@Html.DisplayFor(model => model.ClassName)</span>
+                            </h3>
+                            <div class="card-toolbar">
+
+                            </div>
+                        </div>
+                        <!--end::Header-->
+                        <!--begin::Body-->
+                        <div class="card-body pt-2 pb-0">
+                            <!--begin::Table-->
+                            <div class="table-responsive">
+                                <table class="table table-borderless table-vertical-center">
+                                    <thead>
+                                        <tr>
+                                            <th class="p-0" style="min-width: 50px"></th>
+                                            <th class="p-0" style="min-width: 120px"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @if (ReimbursementClaim != null)
+                                        {
+                                            @foreach (var item in ReimbursementClaim)
+                                            {
+                                                <tr>
+                                                    <td class="pl-0">
+                                                        <a href="#" class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">EmgTreatmentOutside</a>
+
+                                                    </td>
+                                                    <td class="text-right">
+                                                        <span class="text-muted font-weight-bold d-block font-size-sm">@item.EmgTreatmentOutside</span>
+
+                                                    </td>
+                                                </tr>
+                                                <tr>
+
+                                                    <td class="pl-0">
+                                                        <a href="#" class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">NonEmgTreatmentOutside</a>
+                                                    </td>
+
+                                                    <td class="text-right">
+                                                        <span class="text-muted font-weight-bold d-block font-size-sm">@item.NonEmgTreatmentOutside</span>
+                                                    </td>
+
+                                                </tr>
+                                                <tr>
+
+                                                    <td class="pl-0">
+                                                        <a href="#" class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">EmgExpensesOutside</a>
+                                                    </td>
+
+                                                    <td class="text-right">
+                                                        <span class="text-muted font-weight-bold d-block font-size-sm">@item.EmgExpensesOutside</span>
+
+                                                    </td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td class="pl-0">
+                                                        <a href="#" class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">ConsGeneralPractitioner</a>
+
+                                                    </td>
+
+                                                    <td class="text-right">
+                                                        <span class="text-muted font-weight-bold d-block font-size-sm">@item.ConsGeneralPractitioner</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="pl-0">
+                                                        <a href="#" class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">Specialist_2</a>
+                                                    </td>
+                                                    <td class="text-right">
+                                                        <span class="text-muted font-weight-bold d-block font-size-sm">@item.Specialist_2</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="pl-0">
+                                                        <a href="#" class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">Specialist_1</a>
+                                                    </td>
+                                                    <td class="text-right">
+                                                        <span class="text-muted font-weight-bold d-block font-size-sm">@item.Specialist_1</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="pl-0">
+                                                        <a href="#" class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">Consultant</a>
+                                                    </td>
+                                                    <td class="text-right">
+                                                        <span class="text-muted font-weight-bold d-block font-size-sm">@item.Consultant</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="pl-0">
+                                                        <a href="#" class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">ConsultantforScarcity</a>
+                                                    </td>
+                                                    <td class="text-right">
+                                                        <span class="text-muted font-weight-bold d-block font-size-sm">@item.ConsultantforScarcity</span>
+                                                    </td>
+                                                </tr>
+
+
+                                            }
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!--end::Table-->
+                        </div>
+                        <!--end::Body-->
+                        <div class="separator separator-solid separator-dashed"></div>
+                        <!--begin::Header-->
+                        <div class="card-header border-0 pt-5">
+                            <h3 class="card-title align-items-start flex-column">
+                                <span class="card-label font-weight-bolder text-dark">AdditionalBenefits</span>
+                                <span class="text-muted mt-3 font-weight-bold font-size-sm">@Html.DisplayFor(model => model.ClassName)</span>
+                            </h3>
+                            <div class="card-toolbar">
+
+                            </div>
+                        </div>
+                        <!--end::Header-->
+                        <!--begin::Body-->
+                        <div class="card-body pt-2 pb-0">
+                            <!--begin::Table-->
+                            <div class="table-responsive">
+                                <table class="table table-borderless table-vertical-center">
+                                    <thead>
+                                        <tr>
+                                            <th class="p-0" style="min-width: 50px"></th>
+                                            <th class="p-0" style="min-width: 120px"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @if (AdditionalBenefit != null)
+                                        {
+                                            @foreach (var item in AdditionalBenefit)
+                                            {
+                                                <tr>
+                                                    <td class="pl-0">
+                                                        <a href="#" class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">OpticalAids</a>
+
+                                                    </td>
+                                                    <td class="text-right">
+                                                        <span class="text-muted font-weight-bold d-block font-size-sm">@item.OpticalAids</span>
+
+                                                    </td>
+                                                </tr>
+                                                <tr>
+
+                                                    <td class="pl-0">
+                                                        <a href="#" class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">HearingAids</a>
+                                                    </td>
+
+                                                    <td class="text-right">
+                                                        <span class="text-muted font-weight-bold d-block font-size-sm">@item.HearingAids</span>
+                                                    </td>
+
+                                                </tr>
+                                                <tr>
+
+                                                    <td class="pl-0">
+                                                        <a href="#" class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">KidneyDialysis</a>
+                                                    </td>
+
+                                                    <td class="text-right">
+                                                        <span class="text-muted font-weight-bold d-block font-size-sm">@item.KidneyDialysis</span>
+
+                                                    </td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td class="pl-0">
+                                                        <a href="#" class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">Acute_NonAcuteTreatment</a>
+
+                                                    </td>
+
+                                                    <td class="text-right">
+                                                        <span class="text-muted font-weight-bold d-block font-size-sm">@item.Acute_NonAcuteTreatment</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="pl-0">
+                                                        <a href="#" class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">Costsofacquiredheart</a>
+                                                    </td>
+                                                    <td class="text-right">
+                                                        <span class="text-muted font-weight-bold d-block font-size-sm">@item.Costsofacquiredheart</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="pl-0">
+                                                        <a href="#" class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">processoforgandonation</a>
+                                                    </td>
+                                                    <td class="text-right">
+                                                        <span class="text-muted font-weight-bold d-block font-size-sm">@item.processoforgandonation</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="pl-0">
+                                                        <a href="#" class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">CostsofAlzheimer</a>
+                                                    </td>
+                                                    <td class="text-right">
+                                                        <span class="text-muted font-weight-bold d-block font-size-sm">@item.CostsofAlzheimer</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="pl-0">
+                                                        <a href="#" class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">nationalprogramscreening</a>
+                                                    </td>
+                                                    <td class="text-right">
+                                                        <span class="text-muted font-weight-bold d-block font-size-sm">@item.nationalprogramscreening</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="pl-0">
+                                                        <a href="#" class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">CostsofdisabilityCases</a>
+                                                    </td>
+                                                    <td class="text-right">
+                                                        <span class="text-muted font-weight-bold d-block font-size-sm">@item.CostsofdisabilityCases</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="pl-0">
+                                                        <a href="#" class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">CongenitalDeformities</a>
+                                                    </td>
+                                                    <td class="text-right">
+                                                        <span class="text-muted font-weight-bold d-block font-size-sm">@item.CongenitalDeformities</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="pl-0">
+                                                        <a href="#" class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">Circumcision</a>
+                                                    </td>
+                                                    <td class="text-right">
+                                                        <span class="text-muted font-weight-bold d-block font-size-sm">@item.Circumcision</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="pl-0">
+                                                        <a href="#" class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">EarPiercing</a>
+                                                    </td>
+                                                    <td class="text-right">
+                                                        <span class="text-muted font-weight-bold d-block font-size-sm">@item.EarPiercing</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="pl-0">
+                                                        <a href="#" class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">LocAmbulanceCharges</a>
+                                                    </td>
+                                                    <td class="text-right">
+                                                        <span class="text-muted font-weight-bold d-block font-size-sm">@item.LocAmbulanceCharges</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="pl-0">
+                                                        <a href="#" class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">mortalremainstoSaudi</a>
+                                                    </td>
+                                                    <td class="text-right">
+                                                        <span class="text-muted font-weight-bold d-block font-size-sm">@item.mortalremainstoSaudi</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="pl-0">
+                                                        <a href="#" class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">coveringmorbidobesitytreatment</a>
+                                                    </td>
+                                                    <td class="text-right">
+                                                        <span class="text-muted font-weight-bold d-block font-size-sm">@item.coveringmorbidobesitytreatment</span>
+                                                    </td>
+                                                </tr>
+
+
+                                            }
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!--end::Table-->
+                        </div>
+                        <!--end::Body-->
+                    </div>
+
+                    
+                </div>
+                <!--end::Container-->
+            </div>
+            <!--end::Entry-->
+        </div>
+    }
+    else if (ViewBag.lang == "ar")
+    {
+        Layout = "_Layoutv1";
+
+        <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+            <!--begin::Subheader-->
+            <div class="subheader py-3 py-lg-8 subheader-transparent" id="kt_subheader">
+                <div class="container d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+                    <!--begin::Details-->
+                    <div class="d-flex align-items-center flex-wrap mr-1">
+                        <!--begin::Page Heading-->
+                        <div class="d-flex align-items-baseline mr-5">
+                            <!--begin::Title-->
+                            <h2 class="subheader-title text-white font-weight-bold my-2 mr-3">موافقة</h2>
+                            <!--end::Title-->
+                        </div>
+                        <!--end::Page Heading-->
+                        <!--begin::Separator-->
+                        <!--end::Separator-->
+                        <!--begin::Search Form-->
+                        <!--end::Search Form-->
+                        <!--begin::Group Actions-->
+                        <!--end::Group Actions-->
+                    </div>
+                    <!--end::Details-->
+                    <!--begin::Toolbar-->
+                    <div class="d-flex align-items-center">
+                        <!--begin::Button-->
+                        <a href="#" class=""></a>
+                        <!--end::Button-->
+                        <!--begin::Button-->
+                        <!--end::Button-->
+                        <!--begin::Dropdown-->
+                        <!--end::Dropdown-->
+                    </div>
+                    <!--end::Toolbar-->
+                </div>
+            </div>
+            <!--end::Subheader-->
+            <!--begin::Entry-->
+            <div class="d-flex flex-column-fluid">
+                <!--begin::Container-->
+                <div class="container">
+                 
+
+                  
+                 
+                </div>
+                <!--end::Container-->
+            </div>
+            <!--end::Entry-->
+        </div>
+    }
+}
+
+
+
+

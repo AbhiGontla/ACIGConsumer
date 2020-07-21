@@ -35,8 +35,11 @@ namespace ACIGConsumer.Controllers
         public IActionResult Index()
         {
             ViewBag.lang = langcode;
-            var _approvals = GetApprovById().OrderByDescending(x => x.CL_DATEOT);
-       
+            string nationalId = TempData["NationalId"].ToString();
+            string yob = TempData["YOB"].ToString();
+            TempData.Keep("YOB");
+            TempData.Keep("NationalId");
+            var _approvals = _approvalsHandler.GetApprovById(nationalId,yob).OrderByDescending(x => x.CL_DATEOT);       
             return View(_approvals);
         }
         public IActionResult test()
@@ -45,29 +48,29 @@ namespace ACIGConsumer.Controllers
         }
 
 
-        public List<Approvals> GetApprovById()
-        {
-            return GetApprovalsByNationalId().Result;
-        }
-        public async Task<List<Approvals>> GetApprovalsByNationalId()
-        {
-            string nationalId = TempData["NationalId"].ToString();
-            string yob = TempData["YOB"].ToString();
-            TempData.Keep("YOB");
-            TempData.Keep("NationalId");
-            var result = new List<Approvals>();
-            if (nationalId != null && yob != null)
-            {
-                var clsInput = new ClsInput();
-                clsInput.code = "CI";
-                clsInput.nationalID = nationalId;
-                DateTime date = Convert.ToDateTime(yob);
-                clsInput.yearOfBirth = date.Year.ToString();
-                clsInput.insPolicyNo = "";
-                result = await _approvalsHandler.GetApprovalsByNationalId(clsInput);
-            }           
-            return result;
-        }
+        //public List<Approvals> GetApprovById()
+        //{
+        //    return GetApprovalsByNationalId().Result;
+        //}
+        //public async Task<List<Approvals>> GetApprovalsByNationalId()
+        //{
+        //    string nationalId = TempData["NationalId"].ToString();
+        //    string yob = TempData["YOB"].ToString();
+        //    TempData.Keep("YOB");
+        //    TempData.Keep("NationalId");
+        //    var result = new List<Approvals>();
+        //    if (nationalId != null && yob != null)
+        //    {
+        //        var clsInput = new ClsInput();
+        //        clsInput.code = "CI";
+        //        clsInput.nationalID = nationalId;
+        //        DateTime date = Convert.ToDateTime(yob);
+        //        clsInput.yearOfBirth = date.Year.ToString();
+        //        clsInput.insPolicyNo = "";
+        //        result = await _approvalsHandler.GetApprovalsByNationalId(clsInput);
+        //    }           
+        //    return result;
+        //}
 
         
     }

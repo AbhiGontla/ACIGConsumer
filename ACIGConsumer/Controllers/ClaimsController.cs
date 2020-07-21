@@ -311,6 +311,14 @@ namespace ACIGConsumer.Controllers
             var res = UpdateClaimRequest(_claimdetails);
             if (res.ToUpper() == "TRUE")
             {
+                if (res == "true")
+                {
+                    HttpContext.Session.SetString(SessionShowDialog, "updatesuccess");
+                }
+                else
+                {
+                    HttpContext.Session.SetString(SessionShowDialog, "updatefailed");
+                }
                 return RedirectToAction("ReimbursmentClaims", "Claims", new { lang = "en" });
             }
             else

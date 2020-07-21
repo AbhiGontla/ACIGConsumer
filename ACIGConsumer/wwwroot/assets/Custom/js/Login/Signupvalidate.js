@@ -257,8 +257,7 @@ $('#btn_verify_ar').on('click', function (e) {
         async: false,
         contentType: "application/json; charset=utf-8",
         dataType: "json",
-        success: function (result) {
-            debugger;
+        success: function (result) {      
             if ($.trim(result.success).toUpperCase() == "TRUE") {
                 sentotp = $.trim(result.sentotp).toUpperCase();
                 alert(sentotp);
@@ -313,8 +312,7 @@ $('#btn_otp_verify_ar').on('click', function (e) {
         contentType: "application/json; charset=utf-8",
         data: { otp: enteredotp },
         dataType: "json",
-        success: function (result) {
-            debugger;
+        success: function (result) {          
             if (result.success) {
                 location.href = "https://localhost:44310/Test/CreatePin?lang=ar";
             } else {
@@ -353,7 +351,7 @@ $('#btn_verify_pin').on('click', function (e) {
             data: { enterpin: epin, confirmpin: cpin },
             dataType: "json",
             success: function (result) {
-                debugger;
+              
                 if ($.trim(result.success).toUpperCase() === "FALSE") {
                     $("#peror").show();
                     $("#peror").text("User Registration Failed");
@@ -399,7 +397,7 @@ $('#btn_verify_pin_ar').on('click', function (e) {
             data: { enterpin: epin, confirmpin: cpin },
             dataType: "json",
             success: function (result) {
-                debugger;
+            
                 if ($.trim(result.success).toUpperCase() === "FALSE") {
                     $("#peror").show();
                     $("#peror").text("فشل تسجيل المستخدم");

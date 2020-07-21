@@ -77,9 +77,11 @@ namespace ACIGConsumer.Controllers
                 var clsInput = new ClsInput();
                 clsInput.code = "CI";
                 clsInput.nationalID = nationalId;
-                DateTime date = DateTime.Parse(yob);
+                //DateTime date = DateTime.Parse(yob);
                 //DateTime date = Convert.ToDateTime(yob);
-                clsInput.yearOfBirth = date.Year.ToString();
+                DateTime dt = Convert.ToDateTime(yob);
+                int year = dt.Year;
+                clsInput.yearOfBirth = year.ToString();
                 clsInput.insPolicyNo = "";
                 result = await _policyHandler.GetPoliciesByNationalId(clsInput);
             }

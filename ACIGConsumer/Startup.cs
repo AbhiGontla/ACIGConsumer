@@ -62,6 +62,7 @@ namespace ACIGConsumer
             services.TryAddTransient<ProvidersHandler, ProvidersHandler>();
             services.TryAddTransient<ClaimsHandler, ClaimsHandler>();
             services.TryAddTransient<CustomerHandler, CustomerHandler>();
+            services.TryAddTransient<TOBHandler, TOBHandler>();
             services.TryAddTransient<GetLang, GetLang>();         
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
         }

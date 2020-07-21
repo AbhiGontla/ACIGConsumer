@@ -104,11 +104,7 @@ namespace ACIGConsumer.Controllers
                 _customerService.Insert(_userdetails);
                 TempData["NationalId"] = nationalId;
                 DateTime dt = Convert.ToDateTime(dateofbirth);
-
-                //Know the year
-
-                int year = dt.Year;
-                TempData["YOB"] = year;
+                TempData["YOB"] = dateofbirth;
                 TempData.Keep("YOB");
                 TempData.Keep("NationalId");
                 status = "true";
