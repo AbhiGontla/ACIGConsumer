@@ -97,7 +97,7 @@ namespace Services.RequestHandler
             try
             {
                 HttpMessageHandler handler = new HttpClientHandler();
-                string url = "https://localhost:44328/api/GetClaimsByClientId/ClientId/";
+                string url = "https://localhost:44328/api/GetClaimsByClientId_New/ClientId/";
                 string cpath = url + id;
                 var httpClient = new HttpClient(handler)
                 {
@@ -129,7 +129,7 @@ namespace Services.RequestHandler
             {
 
                 HttpMessageHandler handler = new HttpClientHandler();
-                string url = "https://localhost:44328/api/GetClaimDetailsById/Id/";
+                string url = "https://localhost:44328/api/GetClaimDetailsById_New/Id/";
                 string cpath = url + id;
                 var httpClient = new HttpClient(handler)
                 {
@@ -223,7 +223,7 @@ namespace Services.RequestHandler
             {
                 reImClaimdetails = GetRequestModel(_claimdetails);
                 HttpMessageHandler handler = new HttpClientHandler();
-                string url = "https://localhost:44328/api/AddClaimRequest";
+                string url = "https://localhost:44328/api/AddClaimRequest_New";
                 string cpath = url;
                 var httpClient = new HttpClient(handler)
                 {
@@ -269,10 +269,12 @@ namespace Services.RequestHandler
                 _clmdet.HolderName = _userdetails.MemberName;
                 _clmdet.MemberID = addClaimViewModel.ClientDTO.IDNumber;
                 _clmdet.MemberName = _userdetails.MemberName;
+                _clmdet.NationalId = addClaimViewModel.NationalId;
                 _clmdet.RelationName = "";
                 _clmdet.ClaimTypeName = addClaimViewModel.ClaimTypeName;
                 _clmdet.CardNumber = _userdetails.CardNo;
                 _clmdet.CardExpireDate = null;
+                _clmdet.RequestDate = DateTime.Now;
                 _clmdet.ExpectedAmount = addClaimViewModel.ExpectedAmount;
                 _clmdet.VATAmount = addClaimViewModel.VATAmount;
                 _clmdet.Comment = addClaimViewModel.Comment;
@@ -293,7 +295,7 @@ namespace Services.RequestHandler
                         using (var ms = new MemoryStream())
                         {
                             RequestFileDTO requestFile = new RequestFileDTO();
-                            requestFile.FileDesc = file.FileName;
+                            requestFile.FileDesc = file.FileName;                            
                             requestFile.FilePath = file.FileName;
                             file.CopyTo(ms);
                             var fileBytes = ms.ToArray();

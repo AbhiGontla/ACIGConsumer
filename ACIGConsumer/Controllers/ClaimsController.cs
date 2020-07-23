@@ -89,7 +89,8 @@ namespace ACIGConsumer.Controllers
             clamDetails.registration = CustomerHandler.GetCustomerById(Nid);
             clamDetails._claimstypes = GetClaimTypesViewModel();
             clamDetails._bankNames = GetBankViewModel();
-            ViewBag.RequestStatus = GetRequestStatus(clamDetails.RequestCreateDTO.RequestStatusLogList);
+            ViewBag.RequestStatus = clamDetails.RequestCreateDTO.RequestStatusName;
+            //ViewBag.RequestStatus = GetRequestStatus(clamDetails.RequestCreateDTO.RequestStatusLogList);
             return View(clamDetails);
         }
 
@@ -129,7 +130,10 @@ namespace ACIGConsumer.Controllers
             else
             {
                 ViewBag.lang = langcode;
-               var res=AddClaimRequest(createDTO);
+                createDTO.NationalId= TempData["NationalId"].ToString();
+                TempData.Keep("NationalId");
+                var res=AddClaimRequest(createDTO);
+               
                 if(res == "true")
                 {
                     HttpContext.Session.SetString(SessionShowDialog, "true");

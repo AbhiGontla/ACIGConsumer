@@ -110,7 +110,7 @@
                             </div>
                             <div class="col-lg-4">
                                 <a href="/Claims/Index?lang=en" class="btn btn-sm btn-light-info font-weight-bolder font-size-sm " style="float:right;margin:1px;">Paid Claims</a>
-                                <a  class="btn btn-sm btn-info font-weight-bolder font-size-sm " style="float:right;margin:1px;">OS Claims</a>
+                                <a class="btn btn-sm btn-info font-weight-bolder font-size-sm " style="float:right;margin:1px;">OS Claims</a>
                             </div>
                         </div>
                     </div>
@@ -201,6 +201,7 @@
     {
         Layout = "_Layoutv1";
 
+
         <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
             <!--begin::Subheader-->
             <div class="subheader py-3 py-lg-8 subheader-transparent" id="kt_subheader">
@@ -210,7 +211,7 @@
                         <!--begin::Page Heading-->
                         <div class="d-flex align-items-baseline mr-5">
                             <!--begin::Title-->
-                            <h2 class="subheader-title text-white font-weight-bold my-2 mr-3">المطالبات</h2>
+                            <h2 class="subheader-title text-white font-weight-bold my-2 mr-3">مطالبات معلقة</h2>
                             <!--end::Title-->
                         </div>
                         <!--end::Page Heading-->
@@ -241,56 +242,54 @@
             <div class="d-flex flex-column-fluid">
                 <!--begin::Container-->
                 <div class="container">
-                    <div class="mb-7">
-                        <div class="row align-items-center">
-                            <div class="col-lg-9 col-xl-8">
-                                <div class="row align-items-center">
-                                    <div class="col-md-3 my-2 my-md-0">
-                                        <div class="input-icon">
-                                            <input type="text" class="border border-white form-control form-control-plaintext  " placeholder="بحث..." id="kt_datatable_search_query" />
-                                            <span>
-                                                <i class="flaticon2-search-1 text-muted"></i>
-                                            </span>
-                                        </div>
+                    <div class="row align-items-center">
+                        <div class="col-lg-9 col-xl-8">
+                            <div class="row align-items-center">
+                                <div class="col-md-3 my-2 my-md-0">
+                                    <div class="input-icon">
+                                        <input type="text" class="border border-white form-control form-control-plaintext  " placeholder="بحث..." id="kt_datatable_search_query" />
+                                        <span>
+                                            <i class="flaticon2-search-1 text-muted"></i>
+                                        </span>
                                     </div>
-                                    <div class="col-md-3 my-2 my-md-0">
-                                        <div class="d-flex align-items-center ">
-                                            <label class="mr-3 text-white mb-0 d-none d-md-block">الحالة:</label>&nbsp;
-                                            <select class="form-control form-control-plaintext " id="kt_datatable_search_status">
-                                                <option value="">الجميع</option>
-                                                <option value="1">ريثما</option>
-                                                <option value="2">سلم</option>
-                                                <option value="3">ألغيت</option>
-                                                <option value="4">نجاح</option>
-                                                <option value="5">معلومات</option>
-                                                <option value="6">خطر</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 my-2 my-md-0">
-                                        <div class="d-flex align-items-center ">
-                                            <label class="mr-3 text-white mb-0 d-none d-md-block">تاريخ:</label>&nbsp;
-                                            <div class="input-daterange input-group" id="kt_datepicker_5">
-                                                <input type="text" class="form-control" name="start" placeholder="start date">
-                                                <div class="input-group-append">
-                                                    <span class="input-group-text">
-                                                        <i class="la la-ellipsis-h"></i>
-                                                    </span>
-                                                </div>
-                                                <input type="text" class="form-control" name="end" placeholder="end date">
-                                            </div>
-                                        </div>
-                                    </div>
-
                                 </div>
-                            </div>
-                            <div class="col-lg-4">
-                                <a href="/Claims/Index?lang=ar" class="btn btn-sm btn-light-info font-weight-bolder font-size-sm " style="float:left;margin:1px;">Paid</a>
+                                <div class="col-md-3 my-2 my-md-0">
+                                    <div class="d-flex align-items-center ">
+                                        <label class="mr-3 text-white mb-0 d-none d-md-block">الحالة:</label>&nbsp;
+                                        <select class="form-control form-control-plaintext " id="kt_datatable_search_status">
+                                            <option value="">الجميع</option>
+                                            <option value="1">ريثما</option>
+                                            <option value="2">سلم</option>
+                                            <option value="3">ألغيت</option>
+                                            <option value="4">نجاح</option>
+                                            <option value="5">معلومات</option>
+                                            <option value="6">خطر</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 my-2 my-md-0">
+                                    <div class="d-flex align-items-center ">
+                                        <label class="mr-3 text-white mb-0 d-none d-md-block">تاريخ:</label>&nbsp;
+                                        <div class="input-daterange input-group" id="kt_datepicker_5">
+                                            <input type="text" class="form-control" name="start" placeholder="start date">
+                                            <div class="input-group-append">
+                                                <span class="input-group-text">
+                                                    <i class="la la-ellipsis-h"></i>
+                                                </span>
+                                            </div>
+                                            <input type="text" class="form-control" name="end" placeholder="end date">
+                                        </div>
+                                    </div>
+                                </div>
 
                             </div>
                         </div>
+                        <div class="col-lg-4">
+                            <a href="/Claims/Index?lang=ar" class="btn btn-sm btn-light-info font-weight-bolder font-size-sm " style="float:left;margin:1px;">مطالبات مدفوعة</a>
+                            <a class="btn btn-sm btn-info font-weight-bolder font-size-sm " style="float:left;margin:1px;">مطالبات معلقة</a>
+                        </div>
                     </div>
-
+                  
                     @foreach (var item in osclaims)
                     {
                         <!--begin::Card-->
@@ -301,7 +300,7 @@
                                     <!--begin::Pic-->
                                     <div class="flex-shrink-0 mr-7">
                                         <div class="symbol symbol-50 symbol-lg-80">
-                                            <img alt="Pic" src="~/assets/Custom/Images/Hospital-1.jpg" />
+                                            <img alt="Pic" src="~/assets/Custom/Images/hospital-2.jpg" />
                                             @*<img  src="assets/media//users/300_1.jpg">*@
                                         </div>
                                     </div>
@@ -321,14 +320,13 @@
                                                 <!--begin::Contacts-->
                                                 <div class="d-flex flex-wrap my-2">
                                                     <a href="#" class="text-muted  font-weight-bold mr-lg-8 mr-5 mb-lg-0 mb-2">
-                                                        معرف المطالبة - <span class="text-dark-75  font-size-h7 font-weight-bold mr-3" id="kt_subheader_total">@item.CL_INSINSURD</span>
+                                                        معرف التأمين - <span class="text-dark-75  font-size-h7 font-weight-bold mr-3" id="kt_subheader_total">@item.CL_INSINSURD</span>
                                                     </a>
                                                     <a href="#" class="text-muted  font-weight-bold mr-lg-8 mr-5 mb-lg-0 mb-2">
                                                         كمية - <span class="text-dark-75  font-size-h7 font-weight-bold mr-3" id="kt_subheader_total">@item.CL_CLMAMT_OR SAR</span>
                                                     </a>&nbsp;&nbsp;
                                                     <a href="#" class="text-muted font-weight-bold">
-
-                                                        تاريخ الموافقة - <span class="text-dark-75  font-size-h9 font-weight-bold mr-3" id="kt_subheader_total">@item.POLICY_INC</span>
+                                                        تاريخ الوثيقة - <span class="text-dark-75  font-size-h9 font-weight-bold mr-3" id="kt_subheader_total">@item.POLICY_INC</span>
                                                     </a>
                                                 </div>
                                                 <!--end::Contacts-->
@@ -336,7 +334,8 @@
                                             <!--begin::User-->
                                             <!--begin::Actions-->
                                             <div class="my-lg-0 my-1">
-                                                <a href="#" class="btn btn-sm btn-light-warning font-weight-bolder">OutStanding</a>
+                                                <a href="#" class="btn btn-sm btn-light-warning font-weight-bolder">أمتياز</a>
+                                                <a href="/claims/ProviderOSDetails/@item.Id?lang=ar" class="btn btn-sm btn-light-success font-weight-bolder">تفاصيل</a>
 
                                             </div>
                                             <!--end::Actions-->
@@ -358,7 +357,10 @@
                                     <!--end::Info-->
                                 </div>
                                 <!--end::Top-->
-
+                                <!--begin::Separator-->
+                                <!--end::Separator-->
+                                <!--begin::Bottom-->
+                                <!--end::Bottom-->
                             </div>
                         </div>
                         <!--end::Card-->
@@ -368,6 +370,7 @@
             </div>
             <!--end::Entry-->
         </div>
+      
 
 
     }

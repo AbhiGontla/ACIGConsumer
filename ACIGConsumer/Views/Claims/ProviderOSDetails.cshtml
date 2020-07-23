@@ -247,7 +247,7 @@
                         <!--begin::Page Heading-->
                         <div class="d-flex align-items-baseline mr-5">
                             <!--begin::Page Title-->
-                            <h2 class="subheader-title text-white font-weight-bold my-2 mr-3">Provider Detail</h2>
+                            <h2 class="subheader-title text-white font-weight-bold my-2 mr-3">تفاصيل المطالبة المدفوعة</h2>
                             <!--end::Page Title-->
                         </div>
                         <!--end::Page Heading-->
@@ -257,7 +257,7 @@
                     <div class="d-flex align-items-center">
                         <!--begin::Button-->
                         <a href="/Claims/GetOSClaims?lang=ar" class="btn btn-fh btn-white btn-hover-primary font-weight-bold px-2 px-lg-5 mr-2">
-                            Back
+                            عودة
                         </a>
                         <!--end::Button-->
                     </div>
@@ -297,35 +297,35 @@
                                     <!--begin::Contact-->
                                     <div class="py-9">
                                         <div class="d-flex align-items-center justify-content-between mb-4">
-                                            <span class="text-muted">Email:</span>
-                                            <span class="font-weight-bold mr-2">abubakar@gmail.com</span>
+                                            <span class="text-muted">البريد الإلكتروني:</span>
+                                            <span class="font-weight-bold mr-2">-</span>
                                         </div>
                                         <div class="d-flex align-items-center justify-content-between mb-4">
-                                            <span class="text-muted">Phone:</span>
+                                            <span class="text-muted">هاتف:</span>
                                             <span class="font-weight-bold mr-2"> @userdetail.MemberMobileNumber</span>
                                         </div>
                                         <div class="d-flex align-items-center justify-content-between mb-4">
-                                            <span class="text-muted">CardNo:</span>
+                                            <span class="text-muted">لا بطاقة:</span>
                                             <span class="font-weight-bold mr-2"> @userdetail.CardNo</span>
                                         </div>
                                         <div class="d-flex align-items-center justify-content-between mb-4">
-                                            <span class="text-muted">DOB:</span>
+                                            <span class="text-muted">تاريخ الولادة:</span>
                                             <span class="font-weight-bold mr-2">@userdetail.DOB</span>
                                         </div>
                                         <div class="d-flex align-items-center justify-content-between mb-4">
-                                            <span class="text-muted">Insurance No:</span>
+                                            <span class="text-muted">رقم التأمين:</span>
                                             <span class="font-weight-bold mr-2">@userdetail.TushfaMemberNo</span>
                                         </div>
                                         <div class="d-flex align-items-center justify-content-between mb-4">
-                                            <span class="text-muted">TPA ID:</span>
+                                            <span class="text-muted">معرف TPA:</span>
                                             <span class="font-weight-bold mr-2">@userdetail.TPAID</span>
                                         </div>
                                         <div class="d-flex align-items-center justify-content-between mb-4">
-                                            <span class="text-muted">Member Type:</span>
+                                            <span class="text-muted">نوع العضو:</span>
                                             <span class="font-weight-bold mr-2">@userdetail.MemberType</span>
                                         </div>
                                         <div class="d-flex align-items-center justify-content-between mb-4">
-                                            <span class="text-muted">Member Status:</span>
+                                            <span class="text-muted">حالة العضو:</span>
                                             <span class="font-weight-bold mr-2">@userdetail.MemberStatus</span>
                                         </div>
 
@@ -347,7 +347,7 @@
                                 <!--begin::Header-->
                                 <div class="card-header py-3">
                                     <div class="card-title align-items-start flex-column">
-                                        <h3 class="text-dark font-weight-bold  mt-1">OutStanding Claim Details</h3>
+                                        <h3 class="text-dark font-weight-bold  mt-1">مطالبات معلقة</h3>
                                     </div>
                                     <div class="card-toolbar">
                                         @*<button type="reset" class="btn btn-success btn-sm mr-2">Download</button>*@
@@ -358,68 +358,68 @@
                                 <div class="card-body">
 
                                     <div class="d-flex align-items-center justify-content-between mb-3">
-                                        <span class="text-muted">ProviderName</span>
+                                        <span class="text-muted">اسم المزود</span>
                                         <span class="font-size-sm font-weight-bold mr-2">
                                             @paidclaims.CL_PROVNAME
                                         </span>
                                     </div>
                                     <div class="d-flex align-items-center justify-content-between mb-3">
-                                        <span class="text-muted">Company Policy Number</span>
+                                        <span class="text-muted">رقم سياسة الشركة</span>
                                         <span class="font-size-sm font-weight-bold mr-2">@paidclaims.CL_INSPOLNO</span>
                                     </div>
                                     <div class="d-flex align-items-center justify-content-between mb-3">
-                                        <span class="text-muted">Company Insured Number</span>
+                                        <span class="text-muted">رقم شركة التأمين</span>
                                         <span class="font-size-sm font-weight-bold mr-2">@paidclaims.CL_INSINSURD</span>
                                     </div>
                                     <!--begin::-->
 
                                     <div class="d-flex align-items-center justify-content-between mb-3">
-                                        <span class="text-muted">Claim Amount</span>
-                                        <span class="font-size-sm font-weight-bold mr-2">   @paidclaims.CL_CLMAMT_LL</span>
+                                        <span class="text-muted">مبلغ المطالبة</span>
+                                        <span class="font-size-sm font-weight-bold mr-2">   @paidclaims.CL_CLMAMT_OR</span>
                                     </div>
 
                                     <div class="d-flex align-items-center justify-content-between mb-3">
-                                        <span class="text-muted">Invoice Number</span>
+                                        <span class="text-muted">رقم الفاتورة</span>
                                         <span class="font-size-sm font-weight-bold mr-2">@paidclaims.CL_INV_NO</span>
                                     </div>
                                     <div class="d-flex align-items-center justify-content-between mb-3">
-                                        <span class="text-muted">CCHI Number</span>
+                                        <span class="text-muted">رقم CCHI</span>
                                         <span class="font-size-sm font-weight-bold mr-2">@paidclaims.CL_CCHINO</span>
                                     </div>
                                     <div class="d-flex align-items-center justify-content-between mb-3">
-                                        <span class="text-muted">Claim Number</span>
+                                        <span class="text-muted">رقم المطالبة</span>
                                         <span class="font-size-sm font-weight-bold mr-2">@paidclaims.CL_VISA</span>
                                     </div>
                                     <div class="d-flex align-items-center justify-content-between mb-3">
-                                        <span class="text-muted">Admission Date</span>
+                                        <span class="text-muted">تاريخ القبول</span>
                                         <span class="font-size-sm font-weight-bold mr-2">@paidclaims.CL_ADMDATE</span>
                                     </div>
                                     <div class="d-flex align-items-center justify-content-between mb-3">
-                                        <span class="text-muted">Discharge Date</span>
+                                        <span class="text-muted">تاريخ التفريغ</span>
                                         <span class="font-size-sm font-weight-bold mr-2">@paidclaims.CL_DISCHARGE</span>
                                     </div>
                                     <div class="d-flex align-items-center justify-content-between mb-3">
-                                        <span class="text-muted">Processed Date</span>
+                                        <span class="text-muted">تاريخ المعالجة</span>
                                         <span class="font-size-sm font-weight-bold mr-2">@paidclaims.CL_STLDATE</span>
                                     </div>
                                     <div class="d-flex align-items-center justify-content-between mb-3">
-                                        <span class="text-muted">Service Desciption</span>
-                                        <span class="font-size-sm font-weight-bold mr-2">@paidclaims.SRV_DESC</span>
-                                    </div>
-                                    <div class="d-flex align-items-center justify-content-between mb-3">
-                                        <span class="text-muted">Claim  Gross Amount</span>
-                                        <span class="font-size-sm font-weight-bold mr-2">@paidclaims.GROSS_OR</span>
-                                    </div>
-                                    <div class="d-flex align-items-center justify-content-between mb-3">
-                                        <span class="text-muted">Admission Type</span>
-                                        <span class="font-size-sm font-weight-bold mr-2">@paidclaims.ADM_TYPE</span>
-                                    </div>
-                                    <div class="d-flex align-items-center justify-content-between mb-3">
-                                        <span class="text-muted">Claim Type</span>
+                                        <span class="text-muted">نوع المطالبة</span>
                                         <span class="font-size-sm font-weight-bold mr-2">@paidclaims.CL_CLMTYPE</span>
                                     </div>
                                     <div class="d-flex align-items-center justify-content-between mb-3">
-                                        <span class="text-muted">Diagnostics</span>
+                                        <span class="text-muted">وصف الخدمة</span>
+                                        <span class="font-size-sm font-weight-bold mr-2">@paidclaims.SRV_DESC</span>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between mb-3">
+                                        <span class="text-muted">المطالبة بالمبلغ الإجمالي</span>
+                                        <span class="font-size-sm font-weight-bold mr-2">@paidclaims.GROSS_OR</span>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between mb-3">
+                                        <span class="text-muted">نوع القبول</span>
+                                        <span class="font-size-sm font-weight-bold mr-2">@paidclaims.ADM_TYPE</span>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-between mb-3">
+                                        <span class="text-muted">التشخيص</span>
                                         <span class="font-size-sm font-weight-bold mr-2">
                                             @paidclaims.CL_DIAG_DESC
                                         </span>

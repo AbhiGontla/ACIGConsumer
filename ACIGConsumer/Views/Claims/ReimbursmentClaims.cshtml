@@ -223,17 +223,10 @@
                         <!--begin::Page Heading-->
                         <div class="d-flex align-items-baseline mr-5">
                             <!--begin::Title-->
-                            <h2 class="subheader-title text-white font-weight-bold my-2 mr-3">مطالبات السداد</h2>
+                            <h2 class="subheader-title text-white font-weight-bold my-2 mr-3">Reimbursment Claims</h2>
                             <!--end::Title-->
                         </div>
-                        <!--end::Page Heading-->
-                        <!--begin::Separator-->
-                        @*<div class="subheader-separator subheader-separator-ver mt-2 mb-2 mr-5 bg-gray-200"></div>*@
-                        <!--end::Separator-->
-                        <!--begin::Search Form-->
-                        <!--end::Search Form-->
-                        <!--begin::Group Actions-->
-                        <!--end::Group Actions-->
+
                     </div>
                     <!--end::Details-->
                     <!--begin::Toolbar-->
@@ -241,10 +234,7 @@
                         <!--begin::Button-->
                         <a href="#" class=""></a>
                         <!--end::Button-->
-                        <!--begin::Button-->
-                        <!--end::Button-->
-                        <!--begin::Dropdown-->
-                        <!--end::Dropdown-->
+
                     </div>
                     <!--end::Toolbar-->
                 </div>
@@ -260,7 +250,8 @@
                                 <div class="row align-items-center">
                                     <div class="col-md-3 my-2 my-md-0">
                                         <div class="input-icon">
-                                            <input type="text" class="border border-white form-control form-control-plaintext  " placeholder="بحث..." id="kt_datatable_search_query" />
+                                            <input type="text" class="border border-white form-control form-control-plaintext " placeholder="Search..." id="kt_datatable_search_query" />
+
                                             <span>
                                                 <i class="flaticon2-search-1 text-muted"></i>
                                             </span>
@@ -298,10 +289,12 @@
                                 </div>
                             </div>
                             <div class="col-lg-4">
-                                <a href="#" class="btn btn-sm btn-light-info font-weight-bolder font-size-sm " style="float:left;margin:1px;">Add Claim</a>
+
+                                <a href="/claims/AddClaim?lang=ar" class="btn btn-sm btn-light-info font-weight-bolder font-size-sm " style="float:left;margin:1px;">أضف مطالبة</a>
                             </div>
                         </div>
                     </div>
+
                     @foreach (var item in Model)
                     {
                         <!--begin::Card-->
@@ -331,14 +324,17 @@
                                                 <!--end::Name-->
                                                 <!--begin::Contacts-->
                                                 <div class="d-flex flex-wrap my-2">
-                                                    <a href="#" class="text-muted  font-weight-bold mr-lg-8 mr-5 mb-lg-0 mb-2">
-                                                        Policy Number - <span class="text-dark-75  font-size-h7 font-weight-bold mr-3" id="kt_subheader_total">@item.PolicyNumber</span>
+                                                    <a  class="text-muted  font-weight-bold mr-lg-8 mr-5 mb-lg-0 mb-2">
+                                                        رقم طلب المطالبة - <span class="text-dark-75  font-size-h7 font-weight-bold mr-3" id="kt_subheader_total">@item.RequestNumber</span>
                                                     </a>
-                                                    <a href="#" class="text-muted  font-weight-bold mr-lg-8 mr-5 mb-lg-0 mb-2">
-                                                        Premium - <span class="text-dark-75  font-size-h7 font-weight-bold mr-3" id="kt_subheader_total">@item.ExpectedAmount SAR</span>
+                                                    <a  class="text-muted  font-weight-bold mr-lg-8 mr-5 mb-lg-0 mb-2">
+                                                        رقم مركز الشرطه- <span class="text-dark-75  font-size-h7 font-weight-bold mr-3" id="kt_subheader_total">@item.PolicyNumber</span>
+                                                    </a>
+                                                    <a  class="text-muted  font-weight-bold mr-lg-8 mr-5 mb-lg-0 mb-2">
+                                                        الممتازة - <span class="text-dark-75  font-size-h7 font-weight-bold mr-3" id="kt_subheader_total">@item.ExpectedAmount SAR</span>
                                                     </a>&nbsp;&nbsp;
-                                                    <a href="#" class="text-muted font-weight-bold">
-                                                        Policy Date - <span class="text-dark-75  font-size-h9 font-weight-bold mr-3" id="kt_subheader_total">@item.RequestDate.ToString("dd-mm-yyyy")</span>
+                                                    <a  class="text-muted font-weight-bold">
+                                                        تاريخ الطلب - <span class="text-dark-75  font-size-h9 font-weight-bold mr-3" id="kt_subheader_total">@item.RequestDate.ToShortDateString()</span>
                                                     </a>
                                                 </div>
                                                 <!--end::Contacts-->
@@ -346,8 +342,8 @@
                                             <!--begin::User-->
                                             <!--begin::Actions-->
                                             <div class="my-lg-0 my-1">
-                                                <a href="#" class="btn btn-sm btn-light-success font-weight-bolder">@item.RequestStatusName</a>
-                                                <a href="/Claims/ReImClaimDetais/1?lang=ar" class="btn btn-sm btn-light-success font-weight-bolder">Details</a>
+                                                <a  class="btn btn-sm btn-light-success font-weight-bolder">@item.RequestStatusName</a>
+                                                <a href="/Claims/ReImClaimDetais/@item.RequestId?lang=ar" class="btn btn-sm btn-light-success font-weight-bolder">تفاصيل</a>
 
                                             </div>
                                             <!--end::Actions-->
@@ -377,6 +373,9 @@
                         </div>
                         <!--end::Card-->
                     }
+
+
+
                 </div>
                 <!--end::Container-->
             </div>

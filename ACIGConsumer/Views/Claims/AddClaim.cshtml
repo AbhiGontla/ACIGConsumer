@@ -189,28 +189,28 @@
                                         <span id="noteerror"></span>
                                         <div class="form-group">
 
-                                              <input asp-for="FilesUploaded" type="file" max="5" multiple class="btn-bg-primary" id="file" accept="image/jpeg,image/png,application/pdf,image/x-eps"  onchange="javascript:updateList()" required>
-                                              <span id="fileList"></span>
+                                            <input asp-for="FilesUploaded" type="file" max="5" multiple class="btn-bg-primary" id="file" accept="image/jpeg,image/png,application/pdf,image/x-eps" onchange="javascript:updateList()" required>
+                                            <span id="fileList"></span>
                                             <span class="text-danger field-validation-valid" asp-validation-for="FilesUploaded" id="filevalid" data-valmsg-replace="true"></span>
                                             <span class="form-text text-dark-50"> Only PDF & Image Files Supported. Max file size is 2MB. Maximum No of Files Suppoerted 5.</span>
                                         </div>
                                         @*<div class="form-group row">
-                                            <label class="col-lg-3 col-form-label text-lg-right">Upload Files:</label>
-                                            <div class="col-lg-9">
-                                                <div class="dropzone dropzone-multi" id="kt_dropzone_4">
-                                                    <div class="dropzone-panel mb-lg-0 mb-2">
-                                                        <a class="dropzone-select btn btn-light-primary font-weight-bold btn-sm dz-clickable">Attach files</a>
-                                                        <a class="dropzone-upload btn btn-light-primary font-weight-bold btn-sm">Upload All</a>
-                                                        <a class="dropzone-remove-all btn btn-light-primary font-weight-bold btn-sm">Remove All</a>
-                                                    </div>
-                                                    <div class="dropzone-items">
+                                                <label class="col-lg-3 col-form-label text-lg-right">Upload Files:</label>
+                                                <div class="col-lg-9">
+                                                    <div class="dropzone dropzone-multi" id="kt_dropzone_4">
+                                                        <div class="dropzone-panel mb-lg-0 mb-2">
+                                                            <a class="dropzone-select btn btn-light-primary font-weight-bold btn-sm dz-clickable">Attach files</a>
+                                                            <a class="dropzone-upload btn btn-light-primary font-weight-bold btn-sm">Upload All</a>
+                                                            <a class="dropzone-remove-all btn btn-light-primary font-weight-bold btn-sm">Remove All</a>
+                                                        </div>
+                                                        <div class="dropzone-items">
 
+                                                        </div>
+                                                        <div class="dz-default dz-message"><button class="dz-button" type="button">Drop files here to upload</button></div>
                                                     </div>
-                                                    <div class="dz-default dz-message"><button class="dz-button" type="button">Drop files here to upload</button></div>
+                                                    <span class="form-text text-muted">Max file size is 1MB and max number of files is 5.</span>
                                                 </div>
-                                                <span class="form-text text-muted">Max file size is 1MB and max number of files is 5.</span>
-                                            </div>
-                                        </div>*@
+                                            </div>*@
                                         <div class="card-footer">
                                             <button type="submit" class="btn btn-primary mr-2">Apply Claim</button>
                                         </div>
@@ -246,7 +246,7 @@
                         <!--begin::Page Heading-->
                         <div class="d-flex align-items-baseline mr-5">
                             <!--begin::Page Title-->
-                            <h2 class="subheader-title text-white font-weight-bold my-2 mr-3">Apply Claim</h2>
+                            <h2 class="subheader-title text-white font-weight-bold my-2 mr-3">تطبيق المطالبة</h2>
                             <!--end::Page Title-->
                         </div>
                         <!--end::Page Heading-->
@@ -255,8 +255,8 @@
                     <!--begin::Toolbar-->
                     <div class="d-flex align-items-center">
                         <!--begin::Button-->
-                        <a href="/claims/index?lang=en" class="btn btn-fh btn-white btn-hover-primary font-weight-bold px-2 px-lg-5 mr-2">
-                            Back
+                        <a href="/Claims/ReimbursmentClaims?lang=ar" class="btn btn-fh btn-white btn-hover-primary font-weight-bold px-2 px-lg-5 mr-2">
+                            عودة
                         </a>
                         <!--end::Button-->
                     </div>
@@ -264,158 +264,181 @@
                 </div>
             </div>
             <!--end::Subheader-->
-            <!--begin::Entry-->
-            <div class="d-flex flex-column-fluid">
-                <!--begin::Container-->
-                <div class="container">
-                    <!--begin::Profile Account Information-->
-                    <div class="d-flex flex-row">
+            <form asp-controller="Claims" asp-action="AddClaim" method="post" enctype="multipart/form-data">
 
-                        <!--begin::Content-->
-                        <div class="flex-row-fluid ml-lg-8">
-                            <!--begin::Card-->
-                            <div class="card card-custom">
-                                <!--begin::Header-->
-                                <div class="card-header py-3">
-                                    <div class="card-title align-items-start flex-column">
-                                        <h3 class="text-dark font-weight-bold  mt-1">Select Insured Member</h3>
-                                    </div>
-                                    <div class="col-lg-9 col-xl-6">
-                                        <div class="image-input" id="kt_image_2">
-                                            <div class="image-input-wrapper" style="background-image: url(assets/media/users/100_2.jpg)"></div>
-                                            <label class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="change" data-toggle="tooltip" title="" data-original-title="Change avatar">
-                                                <i class="fa fa-pen icon-sm text-muted"></i>
-                                                <input type="file" name="profile_avatar" accept=".png, .jpg, .jpeg" />
-                                                <input type="hidden" name="profile_avatar_remove" />
-                                            </label>
-                                            <span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="cancel" data-toggle="tooltip" title="Cancel avatar">
-                                                <i class="ki ki-bold-close icon-xs text-muted"></i>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--end::Header-->
-                                <!--begin::card body-->
-                                <div class="card-body">
-                                    <div class="d-flex align-items-center justify-content-between mb-4">
-                                        <span class="text-muted">Hospital Name</span>
-                                    </div>
-                                    <span class="font-size-sm font-weight-bold mr-2">Riyadh National Hospital</span>
-                                    <!--begin::Separator-->
-                                    <div class="separator separator-solid my-5"></div>
-                                    <!--end::Separator-->
-                                    <div class="d-flex align-items-center justify-content-between mb-4">
-                                        <span class="text-muted">Claim Type</span>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="col-lg-9 col-md-9 col-sm-12">
-                                            <select class="form-control" name="option">
-                                                <option value="">Select</option>
-                                                <option>In Patient</option>
-                                                <option>Out Patient</option>
-                                                <option>Repartriation</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <!--begin::Separator-->
-                                    <div class="separator separator-solid my-5"></div>
-                                    <!--end::Separator-->
-                                    <div class="d-flex align-items-center justify-content-between mb-4">
-                                        <span class="text-muted">Bank Name</span>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="col-lg-9 col-md-9 col-sm-12">
-                                            <select class="form-control" name="option">
-                                                <option value="">Select</option>
-                                                <option>1</option>
-                                                <option>2</option>
-                                                <option>3</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <!--begin::Separator-->
-                                    <div class="separator separator-solid my-5"></div>
-                                    <!--end::Separator-->
-                                    <div class="d-flex align-items-center justify-content-between mb-4">
-                                        <span class="text-muted">IBAN Number</span>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="col-lg-2">
-                                            <input type="number" class="form-control" name="" placeholder="" value="" />
-                                        </div>
-                                        <div class="col-lg-2">
-                                            <input type="number" class="form-control" name="" placeholder="" value="" />
-                                        </div>
-                                        <div class="col-lg-2">
-                                            <input type="number" class="form-control" name="" placeholder="" value="" />
-                                        </div>
-                                        <div class="col-lg-2">
-                                            <input type="number" class="form-control" name="" placeholder="" value="" />
-                                        </div>
-                                        <div class="col-lg-2">
-                                            <input type="number" class="form-control" name="" placeholder="" value="" />
-                                        </div>
-                                        <div class="col-lg-2">
-                                            <input type="number" class="form-control" name="" placeholder="" value="" />
-                                        </div>
-                                    </div>
-                                    <!--begin::Separator-->
-                                    <div class="separator separator-solid my-5"></div>
-                                    <!--end::Separator-->
-                                    <div class="d-flex align-items-center justify-content-between ">
-                                        <span class="text-muted">Reiumbursement Claim Amount</span>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="input-group input-group-solid">
-                                            <input type="text" class="form-control form-control-solid" placeholder="" />
-                                        </div>
-                                    </div>
-                                    <!--begin::Separator-->
-                                    <div class="separator separator-solid my-5"></div>
-                                    <!--end::Separator-->
-                                    <div class="d-flex align-items-center justify-content-between ">
-                                        <span class="text-muted">VAT Amount</span>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="input-group input-group-solid">
-                                            <input type="text" class="form-control form-control-solid" placeholder="" />
-                                        </div>
-                                    </div>
-                                    <!--begin::Separator-->
-                                    <div class="separator separator-solid my-5"></div>
-                                    <!--end::Separator-->
-                                    <div class="d-flex align-items-center justify-content-between ">
-                                        <span class="text-muted">Notes/Remarks</span>
-                                    </div>
-                                    <div class="form-group">
-                                        <textarea class="form-control form-control-solid" rows="3"></textarea>
-                                    </div>
-                                    <!--begin::Separator-->
-                                    <div class="separator separator-solid my-5"></div>
-                                    <!--end::Separator-->
-                                    <div class="col-lg-6">
-                                        <div class="uppy" id="kt_uppy_5">
-                                            <div class="uppy-wrapper">
-                                                <div class="uppy-Root uppy-FileInput-container">
-                                                    <input class="uppy-FileInput-input uppy-input-control" type="file" name="files[]" multiple="" id="kt_uppy_5_input_control" style="">
-                                                    <label class="uppy-input-label btn btn-light-primary btn-sm btn-bold" for="kt_uppy_5_input_control">Attach files</label>
+                <!--begin::Entry-->
+                <div class="d-flex flex-column-fluid">
+                    <!--begin::Container-->
+                    <div class="container">
+                        <!--begin::Profile Account Information-->
+                        <div class="d-flex flex-row">
+
+
+                            <!--begin::Content-->
+                            <div class="flex-row-fluid ml-lg-8">
+                                <!--begin::Card-->
+                                <div class="card card-custom">
+                                    <!--begin::Header-->
+                                    <div class="card-header py-3">
+                                        <div class="card-title align-items-start flex-column">
+                                            <h3 class="text-dark font-weight-bold  mt-1"> حدد عضو مؤمن عليه</h3><br />
+                                            <div class="col-lg-9 col-xl-6">
+                                                <div class="col-lg-9 col-xl-6">
+                                                    <div class="image-input image-input-outline" id="kt_image_1">
+                                                        <div class="image-input-wrapper" style="background-image: url(assets/media/users/100_1.jpg)"></div>
+                                                        <span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="cancel" data-toggle="tooltip" title="" data-original-title="Cancel avatar">
+                                                        </span>
+                                                        <span class="text-dark-50">@ViewBag.MemberName</span>
+                                                    </div>
                                                 </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--end::Header-->
+                                    <!--begin::card body-->
+                                    <div class="card-body">
+
+                                        <div class="d-flex align-items-center justify-content-between mb-4">
+                                            <span class="text-muted">نوع المطالبة</span>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-lg-9 col-md-9 col-sm-12">
+                                                <select class="form-control" asp-for="ClaimTypeName" asp-items="Model._claimstypes" id="kt_datatable_search_status" required>
+                                                    <option value="">حدد نوع المطالبة</option>
+                                                </select>
+                                                <span class="text-danger field-validation-valid" asp-validation-for="ClaimTypeName" data-valmsg-replace="true"></span>
+                                            </div>
+                                        </div>
+                                        <span id="errormessage"></span>
+                                        <!--begin::Separator-->
+                                        <div class="separator separator-solid my-5"></div>
+                                        <!--end::Separator-->
+                                        <div class="d-flex align-items-center justify-content-between mb-4">
+                                            <span class="text-muted">اسم البنك</span>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-lg-9 col-md-9 col-sm-12">
+                                                <select class="form-control" asp-for="ClientDTO.BankName" asp-items="Model._bankNames" id="kt_datatable_search_status1" required>
+                                                    <option value="">حدد اسم البنك</option>
+                                                </select>
+                                                <span class="text-danger field-validation-valid" asp-validation-for="ClientDTO.BankName" data-valmsg-replace="true"></span>
+                                            </div>
+                                        </div>
+                                        <span id="bnkerror"></span>
+                                        <!--begin::Separator-->
+                                        <div class="separator separator-solid my-5"></div>
+                                        <!--end::Separator-->
+                                        <div class="d-flex align-items-center justify-content-between mb-4">
+                                            <span class="text-muted">رقم IBAN</span>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <div class="col-lg-1">
+                                                <input type="text" class="form-control" placeholder="" asp-for="ClientDTO.IB0" maxlength="2" autocomplete="off" value="SA" readonly />
+                                            </div>
+                                            <div class="col-lg-1">
+                                                <input type="number" class="form-control" placeholder="" asp-for="ClientDTO.IB1" onKeyPress="if(this.value.length==2) return false;" autocomplete="off" required step="" />
+                                                <span class="text-danger field-validation-valid" asp-validation-for="ClientDTO.IB1" data-valmsg-replace="true"></span>
+                                            </div>
+                                            <div class="col-lg-2">
+                                                <input type="number" class="form-control" placeholder="" asp-for="ClientDTO.IB2" onKeyPress="if(this.value.length==4) return false;" autocomplete="off" required />
+                                                <span class="text-danger field-validation-valid" asp-validation-for="ClientDTO.IB2" data-valmsg-replace="true"></span>
+                                            </div>
+                                            <div class="col-lg-2">
+                                                <input type="number" class="form-control" placeholder="" asp-for="ClientDTO.IB3" onKeyPress="if(this.value.length==4) return false;" autocomplete="off" required />
+                                                <span class="text-danger field-validation-valid" asp-validation-for="ClientDTO.IB3" data-valmsg-replace="true"></span>
+                                            </div>
+                                            <div class="col-lg-2">
+                                                <input type="number" class="form-control" placeholder="" asp-for="ClientDTO.IB4" onKeyPress="if(this.value.length==4) return false;" autocomplete="off" required />
+                                                <span class="text-danger field-validation-valid" asp-validation-for="ClientDTO.IB4" data-valmsg-replace="true"></span>
+                                            </div>
+                                            <div class="col-lg-2">
+                                                <input type="number" class="form-control" placeholder="" asp-for="ClientDTO.IB5" onKeyPress="if(this.value.length==4) return false;" autocomplete="off" required />
+                                                <span class="text-danger field-validation-valid" asp-validation-for="ClientDTO.IB5" data-valmsg-replace="true"></span>
+                                            </div>
+                                            <div class="col-lg-2">
+                                                <input type="number" class="form-control" placeholder="" asp-for="ClientDTO.IB6" onKeyPress="if(this.value.length==4) return false;" autocomplete="off" required />
+                                                <span class="text-danger field-validation-valid" asp-validation-for="ClientDTO.IB6" data-valmsg-replace="true"></span>
                                             </div>
 
                                         </div>
+                                        <span id="ibanerror"></span>
+                                        <!--begin::Separator-->
+                                        <div class="separator separator-solid my-5"></div>
+                                        <!--end::Separator-->
+                                        <div class="d-flex align-items-center justify-content-between ">
+                                            <span class="text-muted">مبلغ مطالبة السداد</span>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="input-group input-group-solid">
+                                                <input type="number" class="form-control form-control-solid" placeholder="" asp-for="ExpectedAmount" autocomplete="off" required />
+                                            </div>
+                                            <span class="text-danger field-validation-valid" asp-validation-for="ExpectedAmount" data-valmsg-replace="true"></span>
+                                        </div>
+                                        <span id="claimerror"></span>
+                                        <!--begin::Separator-->
+                                        <div class="separator separator-solid my-5"></div>
+                                        <!--end::Separator-->
+                                        <div class="d-flex align-items-center justify-content-between ">
+                                            <span class="text-muted">قيمة الضريبة</span>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="input-group input-group-solid">
+                                                <input type="number" class="form-control form-control-solid" placeholder="" asp-for="VATAmount" autocomplete="off" required />
+                                            </div>
+                                            <span class="text-danger field-validation-valid" asp-validation-for="VATAmount" data-valmsg-replace="true"></span>
+                                        </div>
+                                        <span id="vaterror"></span>
+                                        <!--begin::Separator-->
+                                        <div class="separator separator-solid my-5"></div>
+                                        <!--end::Separator-->
+                                        <div class="d-flex align-items-center justify-content-between ">
+                                            <span class="text-muted">ملاحظات / ملاحظات</span>
+                                        </div>
+                                        <div class="form-group">
+                                            <textarea class="form-control form-control-solid" rows="3" asp-for="Comment"></textarea>
+                                        </div>
+                                        <span id="noteerror"></span>
+                                        <div class="form-group">
+
+                                            <input asp-for="FilesUploaded" type="file" max="5" multiple class="btn-bg-primary" id="file" accept="image/jpeg,image/png,application/pdf,image/x-eps" onchange="javascript:updateList()" required>
+                                            <span id="fileList"></span>
+                                            <span class="text-danger field-validation-valid" asp-validation-for="FilesUploaded" id="filevalid" data-valmsg-replace="true"></span>
+                                            <span class="form-text text-dark-50"> ملفات PDF وملفات الصور المدعومة فقط. الحد الأقصى لحجم الملف هو 2 ميغابايت. أقصى عدد للملفات المدعومة 5.</span>
+                                        </div>
+                                        @*<div class="form-group row">
+                                                <label class="col-lg-3 col-form-label text-lg-right">Upload Files:</label>
+                                                <div class="col-lg-9">
+                                                    <div class="dropzone dropzone-multi" id="kt_dropzone_4">
+                                                        <div class="dropzone-panel mb-lg-0 mb-2">
+                                                            <a class="dropzone-select btn btn-light-primary font-weight-bold btn-sm dz-clickable">Attach files</a>
+                                                            <a class="dropzone-upload btn btn-light-primary font-weight-bold btn-sm">Upload All</a>
+                                                            <a class="dropzone-remove-all btn btn-light-primary font-weight-bold btn-sm">Remove All</a>
+                                                        </div>
+                                                        <div class="dropzone-items">
+
+                                                        </div>
+                                                        <div class="dz-default dz-message"><button class="dz-button" type="button">Drop files here to upload</button></div>
+                                                    </div>
+                                                    <span class="form-text text-muted">Max file size is 1MB and max number of files is 5.</span>
+                                                </div>
+                                            </div>*@
+                                        <div class="card-footer">
+                                            <button type="submit" class="btn btn-primary mr-2">تطبيق المطالبة</button>
+                                        </div>
                                     </div>
+                                    <!--end::card body-->
                                 </div>
-                                <!--end::card body-->
+                                <!--end::Card-->
                             </div>
-                            <!--end::Card-->
+                            <!--end::Content-->
                         </div>
-                        <!--end::Content-->
+                        <!--end::Profile Account Information-->
                     </div>
-                    <!--end::Profile Account Information-->
+                    <!--end::Container-->
                 </div>
-                <!--end::Container-->
-            </div>
-            <!--end::Entry-->
+                <!--end::Entry-->
+            </form>
         </div>
     }
 }
@@ -432,7 +455,7 @@
         if ($("#file")[0].files.length > 5) {
 
             $("#filevalid").text('Please Select only 5 files');
-            $("#file").val('');           
+            $("#file").val('');
         } else {
             $("#filevalid").hide();
             var input = document.getElementById('file');
@@ -443,7 +466,7 @@
                 output.innerHTML += '<li>' + input.files.item(i).name + '</li>';
             }
             output.innerHTML += '</ul>';
-        }     
-       
+        }
+
     }
 </script>

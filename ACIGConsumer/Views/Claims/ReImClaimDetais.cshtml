@@ -268,6 +268,7 @@
                                             <!--begin::Body-->
                                             <form asp-controller="Claims" asp-action="UpdateClaim" method="post" enctype="multipart/form-data">
                                                 <input asp-for="RequestCreateDTO.RequestNumber" type="hidden" />
+                                                <input asp-for="RequestCreateDTO.ClientDTO.ClientId" type="hidden" />
                                                 <div class="card-body px-0">
                                                     <div class="tab-content pt-5">
                                                         <!--begin::Tab Content-->
@@ -353,120 +354,335 @@
     {
         Layout = "_Layoutv1";
 
-        <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
-            <!--begin::Subheader-->
-            <div class="subheader py-3 py-lg-8 subheader-transparent" id="kt_subheader">
-                <div class="container d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
-                    <!--begin::Details-->
-                    <div class="d-flex align-items-center flex-wrap mr-1">
-                        <!--begin::Page Heading-->
-                        <div class="d-flex align-items-baseline mr-5">
-                            <!--begin::Title-->
-                            <h2 class="subheader-title text-white font-weight-bold my-2 mr-3">مطالبات المزود</h2>
-                            <!--end::Title-->
-                        </div>
-                        <!--end::Page Heading-->
-                        <!--begin::Separator-->
-                        @*<div class="subheader-separator subheader-separator-ver mt-2 mb-2 mr-5 bg-gray-200"></div>*@
-                        <!--end::Separator-->
-                        <!--begin::Search Form-->
-                        <!--end::Search Form-->
-                        <!--begin::Group Actions-->
-                        <!--end::Group Actions-->
-                    </div>
-                    <!--end::Details-->
-                    <!--begin::Toolbar-->
-                    <div class="d-flex align-items-center">
-                        <!--begin::Button-->
-                        <a href="/Claims/ReimbursmentClaims?lang=ar" class="btn btn-primary ">Back</a>
-                        <!--end::Button-->
-                        <!--begin::Button-->
-                        <!--end::Button-->
-                        <!--begin::Dropdown-->
-                        <!--end::Dropdown-->
-                    </div>
-                    <!--end::Toolbar-->
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <!--begin::Subheader-->
+    <div class="subheader py-3 py-lg-8 subheader-transparent" id="kt_subheader">
+        <div class="container d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+            <!--begin::Details-->
+            <div class="d-flex align-items-center flex-wrap mr-1">
+                <!--begin::Page Heading-->
+                <div class="d-flex align-items-baseline mr-5">
+                    <!--begin::Title-->
+                    <h2 class="subheader-title text-white font-weight-bold my-2 mr-3">تفاصيل مطالبة التعويض</h2>
+                    <!--end::Title-->
                 </div>
-            </div>
-            <!--end::Subheader-->
-            <!--begin::Entry-->
-            <div class="d-flex flex-column-fluid">
-                <!--begin::Container-->
-                <div class="container">
-                    <!--begin::Aside-->
-                    <div class="flex-row-auto offcanvas-mobile w-300px w-xxl-250px" id="kt_profile_aside">
-                        <!--begin::Profile Card-->
-                        <div class="card card-custom card-stretch">
-                            <!--begin::Body-->
-                            <div class="card-body pt-4">
-                                <!--begin::Toolbar-->
-                                <!--end::Toolbar-->
-                                <!--begin::User-->
-                                <div class="d-flex align-items-center">
-                                    <div class="symbol symbol-60 symbol-xxl-60 mr-5 align-self-start align-self-xxl-center">
-                                        <div class="symbol-label" style="background-image:url('assets/media/users/300_21.jpg')"></div>
-                                        @*<i class="symbol-badge bg-success"></i>*@
-                                    </div>
-                                    <div>
-                                        <span class="font-weight-bolder font-size-h5 text-dark-75 ">
-                                            @userdetail.MemberName
-                                        </span>
-                                        <div class="text-muted">ID - @userdetail.Iqama_NationalID</div>
-                                    </div>
-                                </div>
-                                <!--end::User-->
-                                <!--begin::Contact-->
-                                <div class="py-9">
-                                    <div class="d-flex align-items-center justify-content-between mb-4">
-                                        <span class="text-muted">Email:</span>
-                                        <span class="font-weight-bold mr-2">abubakar@gmail.com</span>
-                                    </div>
-                                    <div class="d-flex align-items-center justify-content-between mb-4">
-                                        <span class="text-muted">Phone:</span>
-                                        <span class="font-weight-bold mr-2"> @userdetail.MemberMobileNumber</span>
-                                    </div>
-                                    <div class="d-flex align-items-center justify-content-between mb-4">
-                                        <span class="text-muted">DOB:</span>
-                                        <span class="font-weight-bold mr-2">@userdetail.DOB</span>
-                                    </div>
-                                    <div class="d-flex align-items-center justify-content-between mb-4">
-                                        <span class="text-muted">MemberStatus:</span>
-                                        <span class="font-weight-bold mr-2">@userdetail.MemberStatus</span>
-                                    </div>
-                                    <div class="d-flex align-items-center justify-content-between mb-4">
-                                        <span class="text-muted">TPAID:</span>
-                                        <span class="font-weight-bold mr-2">@userdetail.TPAID</span>
-                                    </div>
-                                    <div class="d-flex align-items-center justify-content-between mb-4">
-                                        <span class="text-muted">PolicyNo:</span>
-                                        <span class="font-weight-bold mr-2">@userdetail.PolicyNo</span>
-                                    </div>
-                                    <div class="d-flex align-items-center justify-content-between mb-4">
-                                        <span class="text-muted">TushfaMemberNo:</span>
-                                        <span class="font-weight-bold mr-2">@userdetail.TushfaMemberNo</span>
-                                    </div>
-                                    <div class="d-flex align-items-center justify-content-between mb-4">
-                                        <span class="text-muted">CardNo:</span>
-                                        <span class="font-weight-bold mr-2">@userdetail.CardNo</span>
-                                    </div>
+                <!--end::Page Heading-->
 
-                                    <div class="d-flex align-items-center justify-content-between">
-                                        @*<img style="height: 100px; padding-right: 70px;" src="~/assets/Custom/Images/QRCode.png" />*@
-                                    </div>
-                                </div>
-                                <!--end::Contact-->
-                            </div>
-                            <!--end::Body-->
-                        </div>
-                        <!--end::Profile Card-->
-                    </div>
-                    <!--end::Aside-->
-
-                </div>
-                <!--end::Container-->
             </div>
-            <!--end::Entry-->
+            <!--end::Details-->
+            <!--begin::Toolbar-->
+            <div class="d-flex align-items-center">
+                <!--begin::Button-->
+                <a href="/Claims/ReimbursmentClaims?lang=ar" class="btn btn-primary btn-sm">عودة</a>
+                <!--end::Button-->
+                <!--begin::Button-->
+                <!--end::Button-->
+                <!--begin::Dropdown-->
+                <!--end::Dropdown-->
+            </div>
+            <!--end::Toolbar-->
         </div>
+    </div>
+    <!--end::Subheader-->
+    <!--begin::Entry-->
+    <div class="d-flex flex-column-fluid">
+        <!--begin::Container-->
+        <div class="container">
+            <div class="d-flex flex-row">
+                <!--begin::Aside-->
+                <div class="flex-row-auto offcanvas-mobile w-300px w-xxl-250px" id="kt_profile_aside">
+                    <!--begin::Profile Card-->
+                    <div class="card card-custom card-stretch">
+                        <!--begin::Body-->
+                        <div class="card-body pt-4">
+                            <!--begin::Toolbar-->
+                            <!--end::Toolbar-->
+                            <!--begin::User-->
+                            <div class="d-flex align-items-center">
+                                <div class="symbol symbol-60 symbol-xxl-100 mr-5 align-self-start align-self-xxl-center">
+                                    <div class="symbol-label" style="background-image:url('assets/media/users/300_21.jpg')"></div>
+                                    @*<i class="symbol-badge bg-success"></i>*@
+                                </div>
+                                <div>
+                                    <span class="font-weight-bolder font-size-h5 text-dark-75 ">
+                                        @userdetail.MemberName
+                                    </span>
+                                    <div class="text-muted">ID - @userdetail.Iqama_NationalID</div>
+                                </div>
+                            </div>
+                            <!--end::User-->
+                            <!--begin::Contact-->
+                            <div class="py-9">
+                                <div class="d-flex align-items-center justify-content-between mb-4">
+                                    <span class="text-muted">البريد الإلكتروني:</span>
+                                    <span class="font-weight-bold mr-2">-</span>
+                                </div>
+                                <div class="d-flex align-items-center justify-content-between mb-4">
+                                    <span class="text-muted">هاتف:</span>
+                                    <span class="font-weight-bold mr-2"> @userdetail.MemberMobileNumber</span>
+                                </div>
+                                <div class="d-flex align-items-center justify-content-between mb-4">
+                                    <span class="text-muted">لا بطاقة:</span>
+                                    <span class="font-weight-bold mr-2"> @userdetail.CardNo</span>
+                                </div>
+                                <div class="d-flex align-items-center justify-content-between mb-4">
+                                    <span class="text-muted">تاريخ الولادة:</span>
+                                    <span class="font-weight-bold mr-2">@userdetail.DOB</span>
+                                </div>
+                                <div class="d-flex align-items-center justify-content-between mb-4">
+                                    <span class="text-muted">رقم التأمين:</span>
+                                    <span class="font-weight-bold mr-2">@userdetail.TushfaMemberNo</span>
+                                </div>
+                                <div class="d-flex align-items-center justify-content-between mb-4">
+                                    <span class="text-muted">معرف TPA:</span>
+                                    <span class="font-weight-bold mr-2">@userdetail.TPAID</span>
+                                </div>
+                                <div class="d-flex align-items-center justify-content-between mb-4">
+                                    <span class="text-muted">نوع العضو:</span>
+                                    <span class="font-weight-bold mr-2">@userdetail.MemberType</span>
+                                </div>
+                                <div class="d-flex align-items-center justify-content-between mb-4">
+                                    <span class="text-muted">حالة العضو:</span>
+                                    <span class="font-weight-bold mr-2">@userdetail.MemberStatus</span>
+                                </div>
+
+                                <div class="d-flex align-items-center justify-content-between">
+                                    @*<img style="height: 100px; padding-right: 70px;" src="~/assets/Custom/Images/QRCode.png" />*@
+                                </div>
+                            </div>
+                            <!--end::Contact-->
+                        </div>
+                        <!--end::Body-->
+                    </div>
+                    <!--end::Profile Card-->
+                </div>
+                <!--end::Aside-->
+                <div class="flex-row-fluid ml-lg-8">
+                    <div class="card card-custom gutter-bs">
+                        <!--begin::Header-->
+                        <div class="card-header card-header-tabs-line">
+                            <div class="card-toolbar">
+                                <ul class="nav nav-tabs nav-tabs-space-lg nav-tabs-line nav-tabs-bold nav-tabs-line-3x" role="tablist">
+                                    <li class="nav-item mr-3">
+                                        <a class="nav-link active" data-toggle="tab" href="#kt_apps_projects_view_tab_2">
+                                            <span class="nav-icon mr-2">
+                                                <span class="svg-icon mr-3">
+                                                    <!--begin::Svg Icon | path:/metronic/theme/html/demo3/dist/assets/media/svg/icons/Communication/Chat-check.svg-->
+                                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                            <rect x="0" y="0" width="24" height="24"></rect>
+                                                            <path d="M4.875,20.75 C4.63541667,20.75 4.39583333,20.6541667 4.20416667,20.4625 L2.2875,18.5458333 C1.90416667,18.1625 1.90416667,17.5875 2.2875,17.2041667 C2.67083333,16.8208333 3.29375,16.8208333 3.62916667,17.2041667 L4.875,18.45 L8.0375,15.2875 C8.42083333,14.9041667 8.99583333,14.9041667 9.37916667,15.2875 C9.7625,15.6708333 9.7625,16.2458333 9.37916667,16.6291667 L5.54583333,20.4625 C5.35416667,20.6541667 5.11458333,20.75 4.875,20.75 Z" fill="#000000" fill-rule="nonzero" opacity="0.3"></path>
+                                                            <path d="M2,11.8650466 L2,6 C2,4.34314575 3.34314575,3 5,3 L19,3 C20.6568542,3 22,4.34314575 22,6 L22,15 C22,15.0032706 21.9999948,15.0065399 21.9999843,15.009808 L22.0249378,15 L22.0249378,19.5857864 C22.0249378,20.1380712 21.5772226,20.5857864 21.0249378,20.5857864 C20.7597213,20.5857864 20.5053674,20.4804296 20.317831,20.2928932 L18.0249378,18 L12.9835977,18 C12.7263047,14.0909841 9.47412135,11 5.5,11 C4.23590829,11 3.04485894,11.3127315 2,11.8650466 Z M6,7 C5.44771525,7 5,7.44771525 5,8 C5,8.55228475 5.44771525,9 6,9 L15,9 C15.5522847,9 16,8.55228475 16,8 C16,7.44771525 15.5522847,7 15,7 L6,7 Z" fill="#000000"></path>
+                                                        </g>
+                                                    </svg>
+                                                    <!--end::Svg Icon-->
+                                                </span>
+                                            </span>
+                                            <span class="nav-text font-weight-bold">تفاصيل المطالبة</span>
+                                        </a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                        <!--end::Header-->
+                        <!--begin::Body-->
+
+                        <div class="card-body px-0">
+                            <div class="tab-content pt-5">
+                                <!--begin::Tab Content-->
+                                <div class="tab-pane active" id="kt_apps_projects_view_tab_2" role="tabpanel">
+                                    <div class="form-group row">
+                                        <label class="col-xl-3 col-lg-3 col-form-label text-right">رقم الطلب</label>
+                                        <div class="col-lg-9 col-xl-6">
+                                            <input class="form-control form-control-lg form-control-solid" type="text" asp-for="RequestCreateDTO.RequestNumber" readonly>
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-xl-3 col-lg-3 col-form-label text-right">نوع المطالبة</label>
+                                        <div class="col-lg-9 col-xl-6">
+                                            <input class="form-control form-control-lg form-control-solid" type="text" asp-for="RequestCreateDTO.ClaimTypeName" readonly>
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-xl-3 col-lg-3 col-form-label text-right">اسم البنك</label>
+                                        <div class="col-lg-9 col-xl-6">
+                                            <input class="form-control form-control-lg form-control-solid" type="text" asp-for="RequestCreateDTO.ClientDTO.BankName" readonly>
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-xl-3 col-lg-3 col-form-label text-right">رقم IBAN</label>
+                                        <div class="col-lg-9 col-xl-6">
+                                            <input class="form-control form-control-lg form-control-solid" type="text" asp-for="RequestCreateDTO.ClientDTO.IBANNumber" readonly>
+
+                                        </div>
+                                    </div>
+                                    <div class="separator separator-dashed my-10"></div>
+                                    <!--begin::Heading-->
+                                    <div class="form-group row">
+                                        <label class="col-xl-3 col-lg-3 col-form-label text-right">المبلغ المتوقع</label>
+                                        <div class="col-lg-9 col-xl-6">
+                                            <input class="form-control form-control-lg form-control-solid" type="number" asp-for="RequestCreateDTO.ExpectedAmount" readonly>
+
+                                        </div>
+                                    </div>
+                                    <!--end::Heading-->
+                                    <div class="form-group row">
+                                        <label class="col-xl-3 col-lg-3 col-form-label text-right">قيمة الضريبة</label>
+                                        <div class="col-lg-9 col-xl-6">
+                                            <input class="form-control form-control-lg form-control-solid" type="number" asp-for="RequestCreateDTO.VATAmount" readonly>
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-xl-3 col-lg-3 col-form-label text-right">تعليقات</label>
+
+                                        <div class="col-lg-9 col-xl-6">
+                                            @foreach (var item in reclaimdetai.RequestStatusLogList)
+                                            {
+                                                if (item.Comment != null)
+                                                {
+                                                    <span class="form-control form-control-lg form-control-solid">@item.Comment</span>
+                                                }
+                                            }
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-xl-3 col-lg-3 col-form-label text-right">الملفات</label>
+
+                                        <div class="col-lg-9 col-xl-6">
+                                            @foreach (var item in reclaimdetai.RequestFileList)
+                                            {
+                                                <span class="form-control-lg">@item.FileDesc</span>
+                                            }
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                                <!--end::Tab Content-->
+                            </div>
+                        </div>
+                        <!--end::Body-->
+                    </div>
+                    <br />
+                    <div class="card card-custom gutter-bs">
+                        @if (ViewBag.RequestStatus == "Missing / Additional information")
+                        {
+
+                            <div class="flex-column-fluid">
+                                <div class="card card-custom gutter-bs">
+                                    <!--begin::Header-->
+                                    <div class="card-header card-header-tabs-line">
+                                        <div class="card-toolbar">
+                                            <ul class="nav nav-tabs nav-tabs-space-lg nav-tabs-line nav-tabs-bold nav-tabs-line-3x" role="tablist">
+                                                <li class="nav-item">
+                                                    <a class="nav-link active" data-toggle="tab" href="#kt_apps_projects_view_tab_1">
+                                                        <span class="nav-icon mr-2">
+                                                            <span class="svg-icon mr-3">
+                                                                <!--begin::Svg Icon | path:/metronic/theme/html/demo3/dist/assets/media/svg/icons/General/Notification2.svg-->
+                                                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                                        <rect x="0" y="0" width="24" height="24"></rect>
+                                                                        <path d="M13.2070325,4 C13.0721672,4.47683179 13,4.97998812 13,5.5 C13,8.53756612 15.4624339,11 18.5,11 C19.0200119,11 19.5231682,10.9278328 20,10.7929675 L20,17 C20,18.6568542 18.6568542,20 17,20 L7,20 C5.34314575,20 4,18.6568542 4,17 L4,7 C4,5.34314575 5.34314575,4 7,4 L13.2070325,4 Z" fill="#000000"></path>
+                                                                        <circle fill="#000000" opacity="0.3" cx="18.5" cy="5.5" r="2.5"></circle>
+                                                                    </g>
+                                                                </svg>
+                                                                <!--end::Svg Icon-->
+                                                            </span>
+                                                        </span>
+                                                        <span class="nav-text font-weight-bold">عملية المطالبة</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <!--end::Header-->
+                                    <!--begin::Body-->
+                                    <form asp-controller="Claims" asp-action="UpdateClaim" method="post" enctype="multipart/form-data">
+                                        <input asp-for="RequestCreateDTO.RequestNumber" type="hidden" />
+                                        <input asp-for="RequestCreateDTO.ClientDTO.ClientId" type="hidden" />
+                                        <div class="card-body px-0">
+                                            <div class="tab-content pt-5">
+                                                <!--begin::Tab Content-->
+                                                <div class="tab-pane active" id="kt_apps_projects_view_tab_1" role="tabpanel">
+                                                    <div class="container">
+
+                                                        <div class="form-group">
+                                                            <textarea class="form-control form-control-lg form-control-solid" asp-for="RequestCreateDTO.Comment" id="exampleTextarea" rows="3" placeholder="Type notes"></textarea>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col">
+                                                                <input asp-for="FilesUploaded" type="file" multiple class="btn-bg-primary" id="file" accept="image/jpeg,image/png,application/pdf,image/x-eps" onchange="javascript:updateList()" required>
+                                                                <span id="fileList"></span>
+                                                                <span class="text-danger field-validation-valid" asp-validation-for="FilesUploaded" id="filevalid" data-valmsg-replace="true"></span>
+                                                                <span class="form-text text-dark-50"> ملفات PDF وملفات الصور المدعومة فقط. الحد الأقصى لحجم الملف هو 2 ميغابايت. أقصى عدد للملفات المدعومة 5.</span>
+                                                            </div>
+                                                            <div class="col">
+                                                                <button type="submit" class="btn btn-light-primary font-weight-bold" style="float:left">تحديث المطالبة</button>
+
+                                                            </div>
+                                                        </div>
+
+
+                                                        <div class="separator separator-dashed my-10"></div>
+                                                        <!--begin::Timeline-->
+                                                        <div class="timeline timeline-3">
+                                                            <div class="timeline-items">
+                                                                @foreach (var item in reclaimdetai.RequestStatusLogList)
+                                                                {
+                                                                    <div class="timeline-item">
+                                                                        <div class="timeline-media">
+                                                                            @if (item.Comment == null)
+                                                                            {
+                                                                                <img src="~/assets/Custom/Images/logo-1.jpeg" />
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                <img src="assets/media/svg/avatars/001-boy.svg">
+                                                                            }
+
+                                                                        </div>
+                                                                        <div class="timeline-content">
+                                                                            <div class="d-flex align-items-center justify-content-between mb-3">
+                                                                                <div class="mr-2">
+                                                                                    <span class="text-dark-75 text-hover-primary font-weight-bold">@item.Comment</span>
+                                                                                    <span class="text-muted text-hover-primary font-weight-bold">@item.RequestStatusName</span>
+
+                                                                                </div>
+                                                                                <span class="text-muted text-hover-primary font-weight-bold" style="text-align:right">@item.CreateDate</span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                }
+                                                            </div>
+                                                        </div>
+
+                                                        <!--end::Timeline-->
+                                                    </div>
+                                                </div>
+                                                <!--end::Tab Content-->
+                                            </div>
+                                        </div>
+                                    </form>
+
+
+                                    <!--end::Body-->
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!--end::Container-->
+    </div>
+    <!--end::Entry-->
+</div>
 
 
     }
